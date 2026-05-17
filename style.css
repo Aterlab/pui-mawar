@@ -1,0 +1,360 @@
+/** Essentials */
+
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --light: #F9F1E7;
+    --dark: #1D1D1D;
+
+    --spacing: 20px;
+    --margin: 20px;
+    --image-spacing: 30px;
+
+    --button-height-multiplier: 1.618;
+
+    --x-small: 13px;
+    --small: 16px;
+    --medium: 24px;
+    --big: 36px;
+    --x-big: 48px;
+
+    --normal: 400;
+    --medium: 500;
+    --semi-bold: 600;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+::-moz-selection {
+    color: var(--light);
+    background-color: rgba(249, 241, 231, 0.2);
+}
+
+body {
+    background-color: var(--dark);
+    letter-spacing: -0.04em;
+    color: var(--light);
+    font-family: 'Instrument sans', sans-serif;
+    font-weight: var(--medium);
+    margin: var(--margin);
+    /* overflow-x: hidden; */
+    overflow: hidden;
+}
+
+/*? Grain effect from Codepen */
+.grain {
+    width: 100dvw;
+    height: 100dvh;
+    position: fixed;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    background-size: contain;
+    background-repeat: repeat;
+    background-position: center;
+    z-index: 999;
+    pointer-events: none;
+}
+
+.grain::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/7/76/1k_Dissolve_Noise_Texture.png');
+    opacity: 7%;
+    filter: blur(0.5px);
+    animation: noise 1s steps(2) infinite;
+    z-index: 998;
+}
+
+@keyframes noise {
+
+    0%,
+    100% {
+        background-position: 0 0;
+    }
+
+    10% {
+        background-position: -5% -10%;
+    }
+
+    20% {
+        background-position: -15% 5%;
+    }
+
+    30% {
+        background-position: 7% -25%;
+    }
+
+    40% {
+        background-position: 20% 25%;
+    }
+
+    50% {
+        background-position: -25% 10%;
+    }
+
+    60% {
+        background-position: 15% 5%;
+    }
+
+    70% {
+        background-position: 0% 15%;
+    }
+
+    80% {
+        background-position: 25% 35%;
+    }
+
+    90% {
+        background-position: -10% 10%;
+    }
+}
+
+/** Animations (except noise) */
+
+@keyframes enterAnimation {
+    from {}
+
+    to {
+        opacity: 1;
+        filter: none;
+        transform: translateY(0%);
+        scale: 1;
+    }
+}
+
+/** Components */
+
+button {
+    font-size: var(--x-small);
+    font-weight: var(--medium);
+    background-color: var(--light);
+    height: calc(var(--x-small) * var(--button-height-multiplier));
+    padding: 0 calc((var(--x-small) * var(--button-height-multiplier)) / 2) 0 calc((var(--x-small) * var(--button-height-multiplier)) / 2);
+    border-radius: calc((var(--x-small) * var(--button-height-multiplier)) / 2);
+    border: none;
+    width: fit-content;
+    font-family: "Instrument sans";
+    overflow: hidden;
+    position: relative;
+    transition: 0.25s ease;
+
+    /** Animation stuff */
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateY(100%);
+    scale: 0.9;
+
+    animation: enterAnimation 0.3s ease 0.65s forwards;
+}
+
+button::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    box-shadow: inset 0 0 0 5px var(--light);
+    z-index: 10;
+    pointer-events: none;
+}
+
+button #content {
+    padding: 2px 0 0 0;
+    margin: 0;
+    transition: 0.25s ease;
+}
+
+.link {
+    background-color: transparent;
+    color: var(--light);
+}
+
+.link::after {
+    box-shadow: none
+}
+
+button:hover {
+    /* TODO Odblokować */
+    /* scale: 0.9;
+    filter: brightness(80%); */
+    cursor: not-allowed;
+}
+
+button:active {
+    /* TODO Odblokować */
+    /* filter: brightness(60%);
+    scale: 0.85; */
+    scale: 1;
+}
+
+button:hover #content {
+    transform: translateY(-100%);
+    white-space: nowrap;
+}
+
+section {
+    height: calc(100dvh - (var(--margin) * 2));
+    width: calc(100dvw - (var(--margin) * 2));
+}
+
+.small-text {
+    font-size: var(--small);
+}
+
+.medium-text {
+    font-size: var(--medium);
+}
+
+.big-text {
+    font-size: var(--big);
+}
+
+.x-big-text {
+    font-size: var(--x-big);
+}
+
+nav {
+    position: fixed;
+    top: var(--margin);
+    left: var(--margin);
+    right: var(--margin);
+    width: calc(100dvw - (var(--margin) * 2));
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--spacing);
+}
+
+nav .logo {
+    width: 95.15px;
+}
+
+nav .logo:hover {
+    width: 175px;
+    scale: 1;
+}
+
+nav .logo:hover::after {
+    box-shadow: inset 0 0 0 0px var(--light);
+}
+
+.columns {
+    height: 100dvh;
+    width: calc(100dvw - (var(--margin) * 2));
+    position: fixed;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+    top: 0;
+    left: var(--margin);
+    right: var(--margin);
+}
+
+.column {
+    height: 100dvh;
+    background-color: var(--light);
+    opacity: 0.025;
+    width: 100px;
+}
+
+
+/** Elements */
+
+#hero h1 {
+    width: calc(100dvw - (var(--margin) * 2));
+    font-size: 17.25vw;
+    letter-spacing: -0.06em;
+    margin: 0;
+    white-space: nowrap;
+}
+
+.bottom {
+    position: absolute;
+    bottom: var(--margin);
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    border: 1px solid rgba(255, 166, 0, 0);
+    width: calc(100dvw - (var(--margin) * 2));
+}
+
+.bottom .info {
+    gap: var(--margin);
+    display: flex;
+    flex-direction: column;
+    max-width: 50%;
+}
+
+.bottom .projects img {
+    width: calc((100vw - 260px) / 6 + 20px);
+    height: auto;
+    object-fit: cover;
+    border-radius: 9.5px;
+    background-color: var(--light);
+
+    /** Animation stuff */
+    opacity: 0;
+    filter: blur(5px);
+    transform: translateY(0%);
+    scale: 1;
+
+    animation: enterAnimation 0.3s ease 0.65s forwards;
+}
+
+.line {
+    overflow: hidden;
+}
+
+@media screen and (max-width: 798px) {
+    :root {
+        --x-small: 10px;
+        --small: 13px;
+        --big: 24px;
+    }
+
+    .projects {
+        display: none;
+    }
+
+    #hero h1 {
+        font-size: 16vw;
+        margin-top: calc((var(--x-small) * 1.618) + (var(--margin) * 1));
+    }
+
+    .info,
+    #desc {
+        max-width: calc(100vw - (var(--margin) * 2));
+        width: calc(100vw - (var(--margin) * 2));
+    }
+
+    .column#mobile-hidden {
+        display: none;
+    }
+
+    nav .right {
+        display: none;
+    }
+
+    nav .logo {
+        max-width: 80.15px;
+    }
+
+    nav .logo:hover {
+        width: 130px;
+        max-width: 130px;
+        scale: 1;
+    }
+
+    button::after {
+        box-shadow: inset 0 0 0 3px var(--light);
+    }
+}
