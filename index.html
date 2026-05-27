@@ -12,6 +12,8 @@
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/ScrollTrigger.min.js"></script>
     <script src="https://unpkg.com/split-type"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/Draggable.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/InertiaPlugin.min.js"></script>
     <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
 
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@500&display=swap" rel="stylesheet">
@@ -24,6 +26,24 @@
 
 <body>
     <div class="grain"></div>
+    <!-- <div class="vignette"></div> -->
+    <div class="gradient-blur">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+    <div class="gradient-blur" id="bottom-gradient-blur">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
 
     <div class="columns">
         <div class="column"></div>
@@ -51,44 +71,419 @@
         <div class="right">
             <button class="link">
                 <p id="content">O pracowni</p>
-                <p id="content">Już wkrótce</p>
+                <p id="content">O pracowni</p>
             </button>
             <button class="link">
                 <p id="content">Realizacje</p>
-                <p id="content">Już wkrótce</p>
+                <p id="content">Realizacje</p>
             </button>
             <button>
                 <p id="content">Skontaktuj się</p>
-                <p id="content">Już wkrótce</p>
+                <p id="content">Skontaktuj się</p>
             </button>
         </div>
     </nav>
 
     <section id="hero">
-        <h1 class="headline">PUI MAWAR</h1>
+        <div class="hero-wrapper">
+            <h1 class="headline">PUI MAWAR</h1>
 
-        <div class="bottom">
-            <div class="info">
-                <div class="small-text" id="notice">( Strona w trakcie budowy )</div>
-                <div id="desc" class="big-text">Krótki opis pracowni, opisujący działalność i projekty w ciekawy
-                    sposób. Około 2-3 zdań.
+            <div class="bottom">
+                <div class="info">
+                    <div class="small-text" id="notice">( Strona w trakcie budowy )</div>
+                    <div id="desc" class="big-text">Projektujemy wielobranżowo, stawiając na potrzeby Inwestora.
+                        Zachowujemy
+                        idealną równowagę między estetyką, funkcjonalnością a kosztami.
+                    </div>
+                    <button>
+                        <p id="content">O pracowni</p>
+                        <p id="content">O pracowni</p>
+                    </button>
                 </div>
-                <button>
-                    <p id="content">O pracowni</p>
-                    <p id="content">Już wkrótce</p>
-                </button>
+
+                <div class="projects" id="projects-hero">
+                    <img id="expand-img" src="assets/projects/2_budynki_mieszkalne_wielorodzinne.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="gradient-overlay"></div>
+
+        <div class="projects-wrapper">
+            <div class="images">
+                <img src="assets/projects/1_modernizacja_stacji_wodociagowej_2004_lublin.jpg" alt="" class="active"
+                    style="z-index: 12">
+                <img src="assets/projects/2_budynki_mieszkalne_wielorodzinne.jpg" alt="" style="z-index: 11">
+                <img src="assets/projects/3_modernizacja_obiektow_zabytkowych-2017_willa_kamilcin.jpg" alt=""
+                    style="z-index: 10">
+                <img src="assets/projects/4_renowacja_ogrod_saski_lublin_2007.jpg" alt="" style="z-index: 9">
+                <img src="assets/projects/5_dom_pomocy_2021_nowa_wies.png" alt="" style="z-index: 8">
+                <img src="assets/projects/6_stacja_paliw_2023_helm.jpg" alt="" style="z-index: 7">
+                <img src="assets/projects/7_rezydencja_2007_marysin.jpg" alt="" style="z-index: 6">
+                <img src="assets/projects/8_dom_handlowy_bazar_1998_lublin.jpg" alt="" style="z-index: 5">
+                <img src="assets/projects/9_fontanna_miejska_2004_lublin.jpg" alt="" style="z-index: 4">
+                <img src="assets/projects/10_zabudowa_jednorodzinna_2007_kalinowka.jpg" alt="" style="z-index: 3">
+                <img src="assets/projects/11_remiza_osp_2023_samowodzie.png" alt="" style="z-index: 2">
+                <img src="assets/projects/12_lodowisko_2019_opole.jpg" alt="" style="z-index: 1">
             </div>
 
-            <div class="projects" id="projects-hero">
-                <img id="expand-img" src="assets/projects/modernizacja_stacji_wodociagowej-2004-lublin.jpg" alt="">
+            <div class="project-info">
+                <div class="left-info">
+                    <div class="counter">
+                        <div class="dot active"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                        <div class="dot"></div>
+                    </div>
+
+                    <div class="texts">
+                        <div class="text active" id="static">
+                            <div class="x-big-text">Modernizacja stacji wodociągowej w Lublinie</div>
+                            <div class="medium-text">Krótki, ciekawy opis projektu, z najważniejszymi informacjami o
+                                nim.
+                                Około
+                                2-3
+                                zdania.</div>
+                        </div>
+
+                        <div class="text">
+                            <div class="x-big-text">Rys ilustracyjny budynku wielorodzinnego</div>
+                            <div class="medium-text">Krótki, ciekawy opis projektu, z najważniejszymi informacjami o
+                                nim.
+                                Około
+                                2-3
+                                zdania.</div>
+                        </div>
+
+                        <div class="text">
+                            <div class="x-big-text">Modernizacja budynków zabytkowych - Willa Kamilcin</div>
+                            <div class="medium-text">Krótki, ciekawy opis projektu, z najważniejszymi informacjami o
+                                nim.
+                                Około
+                                2-3
+                                zdania.</div>
+                        </div>
+
+                        <div class="text">
+                            <div class="x-big-text">Renowacja Ogrodu Saskiego w Lublinie</div>
+                            <div class="medium-text">Krótki, ciekawy opis projektu, z najważniejszymi informacjami o
+                                nim.
+                                Około
+                                2-3
+                                zdania.</div>
+                        </div>
+
+                        <div class="text">
+                            <div class="x-big-text">Projekt domu pomocy w Nowej Wsi</div>
+                            <div class="medium-text">Krótki, ciekawy opis projektu, z najważniejszymi informacjami o
+                                nim.
+                                Około
+                                2-3
+                                zdania.</div>
+                        </div>
+
+                        <div class="text">
+                            <div class="x-big-text">Projekt miejskiej stacji paliw w Hełmie</div>
+                            <div class="medium-text">Krótki, ciekawy opis projektu, z najważniejszymi informacjami o
+                                nim.
+                                Około
+                                2-3
+                                zdania.</div>
+                        </div>
+
+                        <div class="text">
+                            <div class="x-big-text">Rezydencja mieszkaniowa w Marysinie</div>
+                            <div class="medium-text">Krótki, ciekawy opis projektu, z najważniejszymi informacjami o
+                                nim.
+                                Około
+                                2-3
+                                zdania.</div>
+                        </div>
+
+                        <div class="text">
+                            <div class="x-big-text">Bazar - dom handlowy w Lublinie</div>
+                            <div class="medium-text">Krótki, ciekawy opis projektu, z najważniejszymi informacjami o
+                                nim.
+                                Około
+                                2-3
+                                zdania.</div>
+                        </div>
+
+                        <div class="text">
+                            <div class="x-big-text">Projekt fontanna miejskiej w Lublinie</div>
+                            <div class="medium-text">Krótki, ciekawy opis projektu, z najważniejszymi informacjami o
+                                nim.
+                                Około
+                                2-3
+                                zdania.</div>
+                        </div>
+
+                        <div class="text">
+                            <div class="x-big-text">Zabudowa jednorodzinna w Kalinówce</div>
+                            <div class="medium-text">Krótki, ciekawy opis projektu, z najważniejszymi informacjami o
+                                nim.
+                                Około
+                                2-3
+                                zdania.</div>
+                        </div>
+
+                        <div class="text">
+                            <div class="x-big-text">Remiza Ochotniczej Straży Pożarnej w Samowodziu</div>
+                            <div class="medium-text">Krótki, ciekawy opis projektu, z najważniejszymi informacjami o
+                                nim.
+                                Około
+                                2-3
+                                zdania.</div>
+                        </div>
+
+                        <div class="text">
+                            <div class="x-big-text">Miejskie lodowisko w Opolu lubelskim</div>
+                            <div class="medium-text">Krótki, ciekawy opis projektu, z najważniejszymi informacjami o
+                                nim.
+                                Około
+                                2-3
+                                zdania.</div>
+                        </div>
+                    </div>
+
+                    <div class="buttons">
+                        <button id="static" class="active button">
+                            <div id="content">O projekcie</div>
+                            <div id="content">O projekcie</div>
+                        </button>
+
+                        <button class="button">
+                            <div id="content">O projekcie</div>
+                            <div id="content">O projekcie</div>
+                        </button>
+
+                        <button class="button">
+                            <div id="content">O projekcie</div>
+                            <div id="content">O projekcie</div>
+                        </button>
+
+                        <button class="button">
+                            <div id="content">O projekcie</div>
+                            <div id="content">O projekcie</div>
+                        </button>
+
+                        <button class="button">
+                            <div id="content">O projekcie</div>
+                            <div id="content">O projekcie</div>
+                        </button>
+
+                        <button class="button">
+                            <div id="content">O projekcie</div>
+                            <div id="content">O projekcie</div>
+                        </button>
+
+                        <button class="button">
+                            <div id="content">O projekcie</div>
+                            <div id="content">O projekcie</div>
+                        </button>
+
+                        <button class="button">
+                            <div id="content">O projekcie</div>
+                            <div id="content">O projekcie</div>
+                        </button>
+
+                        <button class="button">
+                            <div id="content">O projekcie</div>
+                            <div id="content">O projekcie</div>
+                        </button>
+
+                        <button class="button">
+                            <div id="content">O projekcie</div>
+                            <div id="content">O projekcie</div>
+                        </button>
+
+                        <button class="button">
+                            <div id="content">O projekcie</div>
+                            <div id="content">O projekcie</div>
+                        </button>
+
+                        <button class="button">
+                            <div id="content">O projekcie</div>
+                            <div id="content">O projekcie</div>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="right-info">
+                    <div class="arrow" id="prev">
+                        <div class="interaction-wrapper">
+                            <div class="x-small-text"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    fill="currentColor" viewBox="0 0 24 24">
+                                    <!--Boxicons v3.0.8 https://boxicons.com | License  https://docs.boxicons.com/free-->
+                                    <path
+                                        d="m14.76 6.09-6.11 5.35c-.34.3-.34.83 0 1.13l6.11 5.35c.48.42 1.24.08 1.24-.56V6.65c0-.64-.76-.99-1.24-.56">
+                                    </path>
+                                </svg>
+                            </div>
+
+                            <div class="x-small-text"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    fill="currentColor" viewBox="0 0 24 24">
+                                    <!--Boxicons v3.0.8 https://boxicons.com | License  https://docs.boxicons.com/free-->
+                                    <path
+                                        d="m14.76 6.09-6.11 5.35c-.34.3-.34.83 0 1.13l6.11 5.35c.48.42 1.24.08 1.24-.56V6.65c0-.64-.76-.99-1.24-.56">
+                                    </path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="arrow" id="next">
+                        <div class="interaction-wrapper">
+                            <div class="x-small-text"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    fill="currentColor" viewBox="0 0 24 24">
+                                    <!--Boxicons v3.0.8 https://boxicons.com | License  https://docs.boxicons.com/free-->
+                                    <path
+                                        d="M8 6.65v10.69c0 .64.76.99 1.24.56l6.11-5.35c.34-.3.34-.83 0-1.13L9.24 6.07C8.76 5.65 8 5.99 8 6.63Z">
+                                    </path>
+                                </svg>
+                            </div>
+
+                            <div class="x-small-text"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                    fill="currentColor" viewBox="0 0 24 24">
+                                    <!--Boxicons v3.0.8 https://boxicons.com | License  https://docs.boxicons.com/free-->
+                                    <path
+                                        d="M8 6.65v10.69c0 .64.76.99 1.24.56l6.11-5.35c.34-.3.34-.83 0-1.13L9.24 6.07C8.76 5.65 8 5.99 8 6.63Z">
+                                    </path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="big-text" id="about-section-desc">Pracownia nasza dysponuje posiadającym wieloletnie doświadczenie
+            zespołem projektantów we
+            wszystkich niezbędnych branżach: architektonicznej, konstrukcyjno–budowlanej, sanitarnej, elektrycznej,
+            telekomunikacyjnej, drogowej, architektury zieleni.</div>
+
+        <div class="shadow"></div>
+
+        <div class="images">
+            <img src="assets/projects/1_modernizacja_stacji_wodociagowej_2004_lublin.jpg" alt="" id="image-1">
+            <img src="assets/projects/2_budynki_mieszkalne_wielorodzinne.jpg" alt="" id="image-2">
+            <img src="assets/projects/3_modernizacja_obiektow_zabytkowych-2017_willa_kamilcin.jpg" alt="" id="image-3">
+            <img src="assets/projects/4_renowacja_ogrod_saski_lublin_2007.jpg" alt="" id="image-4">
+            <img src="assets/projects/5_dom_pomocy_2021_nowa_wies.png" alt="" id="image-5">
+            <img src="assets/projects/10_zabudowa_jednorodzinna_2007_kalinowka.jpg" alt="" id="image-6">
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="big-text">Pracownia Usług Inwestycyjnych MAWAR Biuro Projektów zajmuje się wykonywaniem – na terenie
+            całego kraju - wielobranżowych dokumentacji technicznych, o różnorodnej tematyce i zakresie, takich jak:
+        </div>
+
+        <div class="categories-wrapper">
+            <div class="categories">
+                <div class="category">
+                    <div class="number small-text">( 01 )</div>
+                    <img src="assets/services/stacje_paliw.png">
+                    <div class="medium-text">Stacje paliw</div>
+                </div>
+
+                <div class="category">
+                    <div class="number small-text">( 02 )</div>
+                    <img src="assets/services/budynki_przemyslowe.png">
+                    <div class="medium-text">Budynki uż. publicznej</div>
+                </div>
+
+                <div class="category">
+                    <div class="number small-text">( 03 )</div>
+                    <img src="assets/services/budynki_mieszkalne.png">
+                    <div class="medium-text">Modernizacja zabytków</div>
+                </div>
+
+                <div class="category">
+                    <div class="number small-text">( 04 )</div>
+                    <img src="assets/services/budynki_przemyslowe.png">
+                    <div class="medium-text">Obiekty sportowe</div>
+                </div>
+
+                <div class="category">
+                    <div class="number small-text">( 05 )</div>
+                    <img src="assets/services/budynki_mieszkalne.png">
+                    <div class="medium-text">Obiekty przemysłowe</div>
+                </div>
+
+                <div class="category">
+                    <div class="number small-text">( 06 )</div>
+                    <img src="assets/services/budynki_przemyslowe.png">
+                    <div class="medium-text">Obiekty techniczne</div>
+                </div>
+
+                <div class="category">
+                    <div class="number small-text">( 07 )</div>
+                    <img src="assets/services/budynki_przemyslowe.png">
+                    <div class="medium-text">Obiekty handlowe</div>
+                </div>
+
+                <div class="category">
+                    <div class="number small-text">( 08 )</div>
+                    <img src="assets/services/budynki_przemyslowe.png">
+                    <div class="medium-text">Obiekty służby zdrowia</div>
+                </div>
+
+                <div class="category">
+                    <div class="number small-text">( 09 )</div>
+                    <img src="assets/services/budynki_przemyslowe.png">
+                    <div class="medium-text">Budynki rezydencjolane</div>
+                </div>
+
+                <div class="category">
+                    <div class="number small-text">( 10 )</div>
+                    <img src="assets/services/budynki_przemyslowe.png">
+                    <div class="medium-text">Budynki wielorodzinne</div>
+                </div>
+
+                <div class="category">
+                    <div class="number small-text">( 11 )</div>
+                    <img src="assets/services/budynki_przemyslowe.png">
+                    <div class="medium-text">Zespoły jednorodzinne</div>
+                </div>
+
+                <div class="category">
+                    <!-- TODO  Krotsza nazwa bez skrotow-->
+                    <div class="number small-text">( 12 )</div>
+                    <img src="assets/services/budynki_przemyslowe.png">
+                    <div class="medium-text">Zagospodarowanie prz. pub.</div>
+                </div>
+
+                <div class="category">
+                    <div class="number small-text">( 13 )</div>
+                    <img src="assets/services/budynki_przemyslowe.png">
+                    <div class="medium-text">Renowacja ob. parkowych</div>
+                </div>
+
+                <div class="category">
+                    <div class="number small-text">( 14 )</div>
+                    <img src="assets/services/budynki_przemyslowe.png">
+                    <div class="medium-text">Zag. ob. parkowych</div>
+                </div>
             </div>
         </div>
     </section>
 
     <script>
+        // Smooth scroll (gsap + lenis)
 
-
-        /* ── Lenis smooth scroll wired to GSAP ticker ── */
         const lenis = new Lenis({
             duration: 1,
             easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -100,7 +495,9 @@
         gsap.ticker.add((time) => { lenis.raf(time * 1000); });
         gsap.ticker.lagSmoothing(0);
 
-        /* ── Hero text animations ── */
+
+        // Hero
+
         window.addEventListener('load', () => {
             const desc = new SplitType('#desc', { type: 'words, lines', mask: 'lines', linesClass: 'line++' });
             gsap.from(desc.words, { opacity: 0, y: 100, duration: 0.8, delay: 0.2, ease: 'power4.out', stagger: { amount: 0.25, from: 'start' } });
@@ -109,7 +506,416 @@
             gsap.from(headline.chars, { opacity: 0, y: 200, duration: 0.8, delay: 0.2, ease: 'power4.out', stagger: { amount: 0.25, from: 'start' } });
 
             const notice = new SplitType('#notice', { type: 'chars, lines', mask: 'lines', linesClass: 'line++' });
-            gsap.from(notice.chars, { opacity: 0, y: 200, duration: 0.8, delay: 0.2, ease: 'power4.out', stagger: { amount: 0.25, from: 'start' } });
+            gsap.from(notice.chars, { opacity: 0, y: 100, duration: 0.8, delay: 0.2, ease: 'power4.out', stagger: { amount: 0.25, from: 'start' } });
+        });
+
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                scrub: 0,
+                pin: false,
+                trigger: "#hero",
+                start: "top 40px",
+                endTrigger: "#projects",
+                end: "bottom 50%",
+            },
+        });
+
+        tl.to("#hero", {
+            opacity: "0",
+            scale: "0.8",
+            y: 800,
+        });
+
+
+        // Projects
+
+        let projectPin = ScrollTrigger.create({
+            trigger: "#projects",
+            pin: "#projects",
+            start: "top 20px",
+            end: "+=500",
+        });
+
+        console.log(projectPin.pin); // pin element (not selector text)
+
+        let totalSection = document.querySelectorAll("#projects");
+
+        totalSection.forEach(function (elem, index) {
+            const headline = new SplitType(elem.querySelectorAll("#projects .x-big-text"));
+            let headlineChars = headline.chars;
+
+            const description = new SplitType(elem.querySelector(".medium-text"));
+            let descriptionChars = description.chars;
+
+            const counter = document.querySelector(".counter");
+            const staticButton = document.querySelector(".buttons #static");
+            const arrows = document.querySelector(".right-info")
+
+            gsap.from(headlineChars, {
+                scrollTrigger: {
+                    trigger: elem,
+                    start: "bottom bottom",
+                    end: "bottom top",
+                },
+                opacity: 0,
+                y: 100,
+                duration: 0.8,
+                ease: 'power4.out',
+                stagger: {
+                    amount: 0.25,
+                    from: 'start'
+                }
+            });
+
+            gsap.from(descriptionChars, {
+                scrollTrigger: {
+                    trigger: elem,
+                    start: "bottom bottom",
+                    end: "bottom top",
+                },
+                opacity: 0,
+                y: 100,
+                duration: 0.8,
+                ease: 'power4.out',
+                stagger: {
+                    amount: 0.25,
+                    from: 'start'
+                }
+            });
+
+            gsap.from(counter, {
+                scrollTrigger: {
+                    trigger: elem,
+                    start: "bottom bottom",
+                    end: "bottom top",
+                },
+                opacity: 0,
+                y: 100,
+                duration: 0.8,
+                ease: 'power4.out',
+            });
+
+            gsap.from(staticButton, {
+                scrollTrigger: {
+                    trigger: elem,
+                    start: "bottom bottom",
+                    end: "bottom top",
+                },
+                opacity: 0,
+                y: 100,
+                duration: 0.8,
+                ease: "power4.out",
+            });
+
+            gsap.from(arrows, {
+                scrollTrigger: {
+                    trigger: elem,
+                    start: "bottom bottom",
+                    end: "bottom top",
+                },
+                opacity: 0,
+                y: 50,
+                duration: 0.8,
+                ease: "power4.out",
+            });
+        });
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const dots = document.querySelectorAll(".counter .dot");
+            const images = document.querySelectorAll(".images img");
+            const texts = document.querySelectorAll(".texts .text");
+            // Updated selector to match how you find your buttons globally
+            const buttons = document.querySelectorAll(".project-info .buttons .button");
+
+            // Target your new navigation arrows
+            const prevBtn = document.querySelector("#prev");
+            const nextBtn = document.querySelector("#next");
+
+            let currentIndex = 0; // Track the active index
+            const duration = 0; // Changed from 0 to 0.5 so you can actually see the GSAP animations!
+
+            // ==========================================
+            // 1. REUSABLE SWITCH FUNCTION
+            // ==========================================
+            function switchToIndex(index) {
+                // Boundary check: ensure the index is valid
+                if (index < 0 || index >= dots.length) return;
+                if (index === currentIndex) return;
+
+                // --- Handle Dots ---
+                document.querySelector(".counter .dot.active")?.classList.remove("active");
+                dots[index].classList.add("active");
+
+                // --- Handle Images ---
+                const currentImage = document.querySelector(".images img.active");
+                const nextImage = images[index];
+
+                if (currentImage) {
+                    currentImage.classList.remove("active");
+                    gsap.to(currentImage, { opacity: 0, duration: duration, ease: "power2.inOut" });
+                }
+                if (nextImage) {
+                    nextImage.classList.add("active");
+                    gsap.to(nextImage, { opacity: 1, duration: duration, ease: "power2.inOut" });
+                }
+
+                // --- Handle Texts ---
+                const currentText = document.querySelector(".texts .text.active");
+                const nextText = texts[index];
+
+                if (currentText) {
+                    currentText.classList.remove("active");
+                    gsap.to(currentText, {
+                        opacity: 0,
+                        duration: duration,
+                        filter: "blur(10px)",
+                        ease: "power2.inOut"
+                    });
+                }
+
+                setTimeout(() => {
+                    if (nextText) {
+                        nextText.classList.add("active");
+                        gsap.to(nextText, {
+                            opacity: 1,
+                            duration: duration,
+                            filter: "blur(0px)",
+                            ease: "power2.inOut"
+                        });
+                    }
+                }, 200);
+
+                // --- Handle Project Buttons ---
+                const currentButton = document.querySelector(".project-info .buttons .button.active");
+                const nextButton = buttons[index];
+
+                if (currentButton) {
+                    currentButton.classList.remove("active");
+                    gsap.to(currentButton, {
+                        opacity: 0,
+                        duration: duration,
+                        filter: "blur(10px)",
+                        ease: "power2.inOut",
+                    });
+                }
+
+                setTimeout(() => {
+                    if (nextButton) {
+                        nextButton.classList.add("active");
+                        gsap.to(nextButton, {
+                            opacity: 1,
+                            duration: duration,
+                            filter: "blur(0px)",
+                            ease: "power2.inOut",
+                        });
+                    }
+                }, 200);
+
+                // Update global tracker
+                currentIndex = index;
+            }
+
+            // ==========================================
+            // 2. EVENT LISTENERS
+            // ==========================================
+
+            // Dot Clicks
+            dots.forEach((dot, index) => {
+                dot.addEventListener("click", () => {
+                    switchToIndex(index);
+                });
+            });
+
+            // Prev Button Click
+            prevBtn?.addEventListener("click", () => {
+                // Loop back to the end if at the beginning, or just go back one
+                let targetIndex = currentIndex - 1;
+                if (targetIndex < 0) {
+                    targetIndex = dots.length - 1; // Infinite loop behavior
+                }
+                switchToIndex(targetIndex);
+            });
+
+            // Next Button Click
+            nextBtn?.addEventListener("click", () => {
+                // Loop back to the start if at the end, or just go forward one
+                let targetIndex = currentIndex + 1;
+                if (targetIndex >= dots.length) {
+                    targetIndex = 0; // Infinite loop behavior
+                }
+                switchToIndex(targetIndex);
+            });
+        });
+
+
+        // About
+
+        let aboutPin = ScrollTrigger.create({
+            trigger: "#about",
+            pin: "#about",
+            start: "top 20px",
+            end: "+=3500",
+        });
+
+        let aboutSection = document.querySelectorAll("#about");
+
+        aboutSection.forEach(function (elem) {
+            // Rozbijamy tekst na litery (chars) oraz słowa (words)
+            const aboutText = new SplitType(elem.querySelector("#about-section-desc"));
+            let aboutChars = aboutText.chars; // To są elementy, które faktycznie animujemy
+
+            const bottomGradientBlur = document.querySelector("#bottom-gradient-blur")
+
+            gsap.from(aboutChars, {
+                scrollTrigger: {
+                    trigger: elem,
+                    // Animacja zacznie się, gdy sekcja wskoczy na górę ekranu 
+                    // i zacznie się proces jej "przypięcia" (pinning)
+                    start: "bottom bottom",
+                    end: "+=300",
+                    // toggleActions: "play none none reverse",
+                },
+                opacity: 0,
+                y: 100, // 100px potrafi brzydko rozbić tekst, 40px da płynny, nowoczesny efekt wyskakiwania
+                duration: 0.6,
+                ease: 'power4.out',
+                stagger: {
+                    amount: 0.4, // Czas, w jakim rozłoży się animacja wszystkich liter
+                    from: 'start',
+                }
+            });
+
+            gsap.from(bottomGradientBlur, {
+                scrollTrigger: {
+                    trigger: elem,
+                    start: "bottom bottom",
+                    end: "+=4000",
+                    toggleActions: "play reverse play reverse",
+                },
+                opacity: 0,
+                duration: 0.6,
+                ease: 'power4.out',
+            });
+        });
+
+        var randomOffset = gsap.utils.random(-1200, -1800, true);
+        // var randomPos = gsap.utils.random(600, 400, true)
+
+        const img1 = gsap.timeline({
+            scrollTrigger: {
+                scrub: 0,
+                pin: false,
+                trigger: "#about #image-1",
+                start: "top top",
+                endTrigger: "#services",
+                end: "+=3500",
+                ease: "linear"
+            },
+        });
+
+        img1.to("#about #image-1", {
+            y: randomOffset,
+        });
+
+        const img2 = gsap.timeline({
+            scrollTrigger: {
+                scrub: 0,
+                pin: false,
+                trigger: "#about #image-2",
+                start: "top top",
+                endTrigger: "#services",
+                end: "+=3500",
+                ease: "linear"
+            },
+        });
+
+        img2.to("#about #image-2", {
+            y: randomOffset,
+        });
+
+        const img3 = gsap.timeline({
+            scrollTrigger: {
+                scrub: 0,
+                pin: false,
+                trigger: "#about #image-3",
+                start: "center center",
+                endTrigger: "#services",
+                end: "+=3500",
+                ease: "linear",
+            },
+        });
+
+        img3.to("#about #image-3", {
+            y: randomOffset,
+        });
+
+        const img4 = gsap.timeline({
+            scrollTrigger: {
+                scrub: 0,
+                pin: false,
+                trigger: "#about #image-4",
+                start: "center center",
+                endTrigger: "#services",
+                end: "+=3500",
+                ease: "linear"
+            },
+        });
+
+        img4.to("#about #image-4", {
+            y: randomOffset,
+        });
+
+        const img5 = gsap.timeline({
+            scrollTrigger: {
+                scrub: 0,
+                pin: false,
+                trigger: "#about #image-5",
+                start: "center center",
+                endTrigger: "#services",
+                end: "+=3500",
+                ease: "linear"
+            },
+        });
+
+        img5.to("#about #image-5", {
+            y: randomOffset,
+        });
+
+        const img6 = gsap.timeline({
+            scrollTrigger: {
+                scrub: 0,
+                pin: false,
+                trigger: "#about #image-6",
+                start: "center center",
+                endTrigger: "#services",
+                end: "+=3500",
+                ease: "linear"
+            },
+        });
+
+        img6.to("#about #image-6", {
+            y: randomOffset,
+        });
+
+
+        // Services section
+
+        gsap.registerPlugin(Draggable, InertiaPlugin)
+
+        // Draggable.create('.categories', {
+        //     type: 'x'
+        // });
+
+        Draggable.create('.categories', {
+            type: 'x',
+            bounds: document.querySelector('.categories-wrapper'),
+            inertia: true,
+            onClick: function () {
+                console.log('clicked');
+            },
+            onDragEnd: function () {
+                console.log('drag ended');
+            }
         });
     </script>
 
