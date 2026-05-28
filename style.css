@@ -1,6 +1,6 @@
-/*? ----------------------- ?*/
-/*? --- CODE BY ATERLAB --- ?*/
-/*? ----------------------- ?*/
+/** ----------------------- **/
+/** --- CODE BY ATERLAB --- **/
+/** ----------------------- **/
 
 /** Essentials */
 
@@ -61,6 +61,7 @@ body {
     margin: var(--margin);
     /* overflow-x: hidden; */
     overflow: hidden;
+    max-width: 100vw;
 }
 
 /** Grain effect from Codepen */
