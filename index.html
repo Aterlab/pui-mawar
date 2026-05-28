@@ -395,7 +395,7 @@
             <!-- <div class="cursor">
                 <div class="small-text">( Przesuwaj )</div>
             </div> -->
-            
+
             <div class="categories">
                 <div class="category">
                     <div class="number small-text">( 01 )</div>
@@ -517,34 +517,10 @@
             gsap.from(notice.chars, { opacity: 0, y: 100, duration: 0.8, delay: 0.2, ease: 'power4.out', stagger: { amount: 0.25, from: 'start' } });
         });
 
-        const tl = gsap.timeline({
-            scrollTrigger: {
-                scrub: 0,
-                pin: false,
-                trigger: "#hero",
-                start: "top 40px",
-                endTrigger: "#projects",
-                end: "bottom 50%",
-            },
-        });
-
-        tl.to("#hero", {
-            opacity: "0",
-            scale: "0.8",
-            y: 800,
-        });
-
 
         // Projects
 
-        let projectPin = ScrollTrigger.create({
-            trigger: "#projects",
-            pin: "#projects",
-            start: "top 20px",
-            end: "+=500",
-        });
-
-        console.log(projectPin.pin); // pin element (not selector text)
+        // this might be moved to desktop-only
 
         let totalSection = document.querySelectorAll("#projects");
 
@@ -632,29 +608,21 @@
             const dots = document.querySelectorAll(".counter .dot");
             const images = document.querySelectorAll(".images img");
             const texts = document.querySelectorAll(".texts .text");
-            // Updated selector to match how you find your buttons globally
             const buttons = document.querySelectorAll(".project-info .buttons .button");
 
-            // Target your new navigation arrows
             const prevBtn = document.querySelector("#prev");
             const nextBtn = document.querySelector("#next");
 
-            let currentIndex = 0; // Track the active index
-            const duration = 0; // Changed from 0 to 0.5 so you can actually see the GSAP animations!
+            let currentIndex = 0;
+            const duration = 0; // it's already in css
 
-            // ==========================================
-            // 1. REUSABLE SWITCH FUNCTION
-            // ==========================================
             function switchToIndex(index) {
-                // Boundary check: ensure the index is valid
                 if (index < 0 || index >= dots.length) return;
                 if (index === currentIndex) return;
 
-                // --- Handle Dots ---
                 document.querySelector(".counter .dot.active")?.classList.remove("active");
                 dots[index].classList.add("active");
 
-                // --- Handle Images ---
                 const currentImage = document.querySelector(".images img.active");
                 const nextImage = images[index];
 
@@ -667,7 +635,6 @@
                     gsap.to(nextImage, { opacity: 1, duration: duration, ease: "power2.inOut" });
                 }
 
-                // --- Handle Texts ---
                 const currentText = document.querySelector(".texts .text.active");
                 const nextText = texts[index];
 
@@ -693,7 +660,6 @@
                     }
                 }, 200);
 
-                // --- Handle Project Buttons ---
                 const currentButton = document.querySelector(".project-info .buttons .button.active");
                 const nextButton = buttons[index];
 
@@ -719,37 +685,27 @@
                     }
                 }, 200);
 
-                // Update global tracker
                 currentIndex = index;
             }
 
-            // ==========================================
-            // 2. EVENT LISTENERS
-            // ==========================================
-
-            // Dot Clicks
             dots.forEach((dot, index) => {
                 dot.addEventListener("click", () => {
                     switchToIndex(index);
                 });
             });
 
-            // Prev Button Click
             prevBtn?.addEventListener("click", () => {
-                // Loop back to the end if at the beginning, or just go back one
                 let targetIndex = currentIndex - 1;
                 if (targetIndex < 0) {
-                    targetIndex = dots.length - 1; // Infinite loop behavior
+                    targetIndex = dots.length - 1;
                 }
                 switchToIndex(targetIndex);
             });
 
-            // Next Button Click
             nextBtn?.addEventListener("click", () => {
-                // Loop back to the start if at the end, or just go forward one
                 let targetIndex = currentIndex + 1;
                 if (targetIndex >= dots.length) {
-                    targetIndex = 0; // Infinite loop behavior
+                    targetIndex = 0;
                 }
                 switchToIndex(targetIndex);
             });
@@ -757,13 +713,6 @@
 
 
         // About
-
-        let aboutPin = ScrollTrigger.create({
-            trigger: "#about",
-            pin: "#about",
-            start: "top 20px",
-            end: "+=3500",
-        });
 
         let aboutSection = document.querySelectorAll("#about");
 
@@ -777,18 +726,16 @@
             gsap.from(aboutChars, {
                 scrollTrigger: {
                     trigger: elem,
-                    // Animacja zacznie się, gdy sekcja wskoczy na górę ekranu 
-                    // i zacznie się proces jej "przypięcia" (pinning)
                     start: "bottom bottom",
                     end: "+=300",
                     // toggleActions: "play none none reverse",
                 },
                 opacity: 0,
-                y: 100, // 100px potrafi brzydko rozbić tekst, 40px da płynny, nowoczesny efekt wyskakiwania
+                y: 100,
                 duration: 0.6,
                 ease: 'power4.out',
                 stagger: {
-                    amount: 0.4, // Czas, w jakim rozłoży się animacja wszystkich liter
+                    amount: 0.4,
                     from: 'start',
                 }
             });
@@ -806,8 +753,7 @@
             });
         });
 
-        var randomOffset = gsap.utils.random(-1200, -1800, true);
-        // var randomPos = gsap.utils.random(600, 400, true)
+        var randomOffset = gsap.utils.random(-1200, -1800, true); // Random offset for imgs
 
         const img1 = gsap.timeline({
             scrollTrigger: {
@@ -943,6 +889,55 @@
                     from: 'start',
                 }
             });
+        });
+
+        const mm = gsap.matchMedia();
+
+        // Every animation that isn't in desktop or mobile query plays always (staggers, enter anims etc..)
+
+        // Run only on DESKOTP (mainly gsap pins, which broke the layout)
+        mm.add("(min-width: 768px)", () => {
+            // Pins
+
+            let projectPin = ScrollTrigger.create({
+                trigger: "#projects",
+                pin: "#projects",
+                start: "top 20px",
+                end: "+=500",
+            });
+
+            let aboutPin = ScrollTrigger.create({
+                trigger: "#about",
+                pin: "#about",
+                start: "top 20px",
+                end: "+=3500",
+            });
+
+            console.log(projectPin.pin);
+
+            // ..and the hero tl
+
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    scrub: 0,
+                    pin: false,
+                    trigger: "#hero",
+                    start: "top 40px",
+                    endTrigger: "#projects",
+                    end: "bottom 50%",
+                },
+            });
+
+            tl.to("#hero", {
+                opacity: "0",
+                scale: "0.8",
+                y: 800,
+            });
+        });
+
+        // Run only on MOBILE (not used, bc mobile needs less animations than desktop, just in case)
+        mm.add("(max-width: 767px)", () => {
+            // something may be there in the future...
         });
     </script>
 

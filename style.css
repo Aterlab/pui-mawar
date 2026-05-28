@@ -1,6 +1,6 @@
-/** ----------------------- **/
-/** --- CODE BY ATERLAB --- **/
-/** ----------------------- **/
+/*? ----------------------- ?*/
+/*? --- CODE BY ATERLAB --- ?*/
+/*? ----------------------- ?*/
 
 /** Essentials */
 
@@ -59,9 +59,9 @@ body {
     font-family: 'Instrument sans', sans-serif;
     font-weight: var(--medium);
     margin: var(--margin);
-    /* overflow-x: hidden; */
-    overflow: hidden;
-    max-width: 200px;
+    overflow-x: hidden;
+    max-width: 100dvw;
+    /* overflow: hidden; */
 }
 
 /** Grain effect from Codepen */
@@ -890,6 +890,10 @@ nav .logo:hover::after {
     #desc {
         max-width: calc(100vw - (var(--margin) * 2));
         width: calc(100vw - (var(--margin) * 2));
+    }
+
+    .hero-wrapper {
+        position: static;
     }
 
 
