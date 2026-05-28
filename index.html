@@ -395,7 +395,7 @@
             <!-- <div class="cursor">
                 <div class="small-text">( Przesuwaj )</div>
             </div> -->
-
+            
             <div class="categories">
                 <div class="category">
                     <div class="number small-text">( 01 )</div>
@@ -506,902 +506,444 @@
 
         // Hero
 
-        // window.addEventListener('load', () => {
-        //     const desc = new SplitType('#desc', { type: 'words, lines', mask: 'lines', linesClass: 'line++' });
-        //     gsap.from(desc.words, { opacity: 0, y: 100, duration: 0.8, delay: 0.2, ease: 'power4.out', stagger: { amount: 0.25, from: 'start' } });
-
-        //     const headline = new SplitType('.headline', { type: 'chars, lines', mask: 'lines', linesClass: 'line++' });
-        //     gsap.from(headline.chars, { opacity: 0, y: 200, duration: 0.8, delay: 0.2, ease: 'power4.out', stagger: { amount: 0.25, from: 'start' } });
-
-        //     const notice = new SplitType('#notice', { type: 'chars, lines', mask: 'lines', linesClass: 'line++' });
-        //     gsap.from(notice.chars, { opacity: 0, y: 100, duration: 0.8, delay: 0.2, ease: 'power4.out', stagger: { amount: 0.25, from: 'start' } });
-        // });
-
-        // const tl = gsap.timeline({
-        //     scrollTrigger: {
-        //         scrub: 0,
-        //         pin: false,
-        //         trigger: "#hero",
-        //         start: "top 40px",
-        //         endTrigger: "#projects",
-        //         end: "bottom 50%",
-        //     },
-        // });
-
-        // tl.to("#hero", {
-        //     opacity: "0",
-        //     scale: "0.8",
-        //     y: 800,
-        // });
-
-
-        // // Projects
-
-        // let projectPin = ScrollTrigger.create({
-        //     trigger: "#projects",
-        //     pin: "#projects",
-        //     start: "top 20px",
-        //     end: "+=500",
-        // });
-
-        // console.log(projectPin.pin); // pin element (not selector text)
-
-        // let totalSection = document.querySelectorAll("#projects");
-
-        // totalSection.forEach(function (elem, index) {
-        //     const headline = new SplitType(elem.querySelectorAll("#projects .x-big-text"));
-        //     let headlineChars = headline.chars;
-
-        //     const description = new SplitType(elem.querySelector(".medium-text"));
-        //     let descriptionChars = description.chars;
-
-        //     const counter = document.querySelector(".counter");
-        //     const staticButton = document.querySelector(".buttons #static");
-        //     const arrows = document.querySelector(".right-info")
-
-        //     gsap.from(headlineChars, {
-        //         scrollTrigger: {
-        //             trigger: elem,
-        //             start: "bottom bottom",
-        //             end: "bottom top",
-        //         },
-        //         opacity: 0,
-        //         y: 100,
-        //         duration: 0.8,
-        //         ease: 'power4.out',
-        //         stagger: {
-        //             amount: 0.25,
-        //             from: 'start'
-        //         }
-        //     });
-
-        //     gsap.from(descriptionChars, {
-        //         scrollTrigger: {
-        //             trigger: elem,
-        //             start: "bottom bottom",
-        //             end: "bottom top",
-        //         },
-        //         opacity: 0,
-        //         y: 100,
-        //         duration: 0.8,
-        //         ease: 'power4.out',
-        //         stagger: {
-        //             amount: 0.25,
-        //             from: 'start'
-        //         }
-        //     });
-
-        //     gsap.from(counter, {
-        //         scrollTrigger: {
-        //             trigger: elem,
-        //             start: "bottom bottom",
-        //             end: "bottom top",
-        //         },
-        //         opacity: 0,
-        //         y: 100,
-        //         duration: 0.8,
-        //         ease: 'power4.out',
-        //     });
-
-        //     gsap.from(staticButton, {
-        //         scrollTrigger: {
-        //             trigger: elem,
-        //             start: "bottom bottom",
-        //             end: "bottom top",
-        //         },
-        //         opacity: 0,
-        //         y: 100,
-        //         duration: 0.8,
-        //         ease: "power4.out",
-        //     });
-
-        //     gsap.from(arrows, {
-        //         scrollTrigger: {
-        //             trigger: elem,
-        //             start: "bottom bottom",
-        //             end: "bottom top",
-        //         },
-        //         opacity: 0,
-        //         y: 50,
-        //         duration: 0.8,
-        //         ease: "power4.out",
-        //     });
-        // });
-
-        // document.addEventListener("DOMContentLoaded", () => {
-        //     const dots = document.querySelectorAll(".counter .dot");
-        //     const images = document.querySelectorAll(".images img");
-        //     const texts = document.querySelectorAll(".texts .text");
-        //     // Updated selector to match how you find your buttons globally
-        //     const buttons = document.querySelectorAll(".project-info .buttons .button");
-
-        //     // Target your new navigation arrows
-        //     const prevBtn = document.querySelector("#prev");
-        //     const nextBtn = document.querySelector("#next");
-
-        //     let currentIndex = 0; // Track the active index
-        //     const duration = 0; // Changed from 0 to 0.5 so you can actually see the GSAP animations!
-
-        //     // ==========================================
-        //     // 1. REUSABLE SWITCH FUNCTION
-        //     // ==========================================
-        //     function switchToIndex(index) {
-        //         // Boundary check: ensure the index is valid
-        //         if (index < 0 || index >= dots.length) return;
-        //         if (index === currentIndex) return;
-
-        //         // --- Handle Dots ---
-        //         document.querySelector(".counter .dot.active")?.classList.remove("active");
-        //         dots[index].classList.add("active");
-
-        //         // --- Handle Images ---
-        //         const currentImage = document.querySelector(".images img.active");
-        //         const nextImage = images[index];
-
-        //         if (currentImage) {
-        //             currentImage.classList.remove("active");
-        //             gsap.to(currentImage, { opacity: 0, duration: duration, ease: "power2.inOut" });
-        //         }
-        //         if (nextImage) {
-        //             nextImage.classList.add("active");
-        //             gsap.to(nextImage, { opacity: 1, duration: duration, ease: "power2.inOut" });
-        //         }
-
-        //         // --- Handle Texts ---
-        //         const currentText = document.querySelector(".texts .text.active");
-        //         const nextText = texts[index];
-
-        //         if (currentText) {
-        //             currentText.classList.remove("active");
-        //             gsap.to(currentText, {
-        //                 opacity: 0,
-        //                 duration: duration,
-        //                 filter: "blur(10px)",
-        //                 ease: "power2.inOut"
-        //             });
-        //         }
-
-        //         setTimeout(() => {
-        //             if (nextText) {
-        //                 nextText.classList.add("active");
-        //                 gsap.to(nextText, {
-        //                     opacity: 1,
-        //                     duration: duration,
-        //                     filter: "blur(0px)",
-        //                     ease: "power2.inOut"
-        //                 });
-        //             }
-        //         }, 200);
-
-        //         // --- Handle Project Buttons ---
-        //         const currentButton = document.querySelector(".project-info .buttons .button.active");
-        //         const nextButton = buttons[index];
-
-        //         if (currentButton) {
-        //             currentButton.classList.remove("active");
-        //             gsap.to(currentButton, {
-        //                 opacity: 0,
-        //                 duration: duration,
-        //                 filter: "blur(10px)",
-        //                 ease: "power2.inOut",
-        //             });
-        //         }
-
-        //         setTimeout(() => {
-        //             if (nextButton) {
-        //                 nextButton.classList.add("active");
-        //                 gsap.to(nextButton, {
-        //                     opacity: 1,
-        //                     duration: duration,
-        //                     filter: "blur(0px)",
-        //                     ease: "power2.inOut",
-        //                 });
-        //             }
-        //         }, 200);
-
-        //         // Update global tracker
-        //         currentIndex = index;
-        //     }
-
-        //     // ==========================================
-        //     // 2. EVENT LISTENERS
-        //     // ==========================================
-
-        //     // Dot Clicks
-        //     dots.forEach((dot, index) => {
-        //         dot.addEventListener("click", () => {
-        //             switchToIndex(index);
-        //         });
-        //     });
-
-        //     // Prev Button Click
-        //     prevBtn?.addEventListener("click", () => {
-        //         // Loop back to the end if at the beginning, or just go back one
-        //         let targetIndex = currentIndex - 1;
-        //         if (targetIndex < 0) {
-        //             targetIndex = dots.length - 1; // Infinite loop behavior
-        //         }
-        //         switchToIndex(targetIndex);
-        //     });
-
-        //     // Next Button Click
-        //     nextBtn?.addEventListener("click", () => {
-        //         // Loop back to the start if at the end, or just go forward one
-        //         let targetIndex = currentIndex + 1;
-        //         if (targetIndex >= dots.length) {
-        //             targetIndex = 0; // Infinite loop behavior
-        //         }
-        //         switchToIndex(targetIndex);
-        //     });
-        // });
-
-
-        // // About
-
-        // let aboutPin = ScrollTrigger.create({
-        //     trigger: "#about",
-        //     pin: "#about",
-        //     start: "top 20px",
-        //     end: "+=3500",
-        // });
-
-        // let aboutSection = document.querySelectorAll("#about");
-
-        // aboutSection.forEach(function (elem) {
-        //     // Rozbijamy tekst na litery (chars) oraz słowa (words)
-        //     const aboutText = new SplitType(elem.querySelector("#about-section-desc"));
-        //     let aboutChars = aboutText.chars; // To są elementy, które faktycznie animujemy
-
-        //     const bottomGradientBlur = document.querySelector("#bottom-gradient-blur")
-
-        //     gsap.from(aboutChars, {
-        //         scrollTrigger: {
-        //             trigger: elem,
-        //             // Animacja zacznie się, gdy sekcja wskoczy na górę ekranu 
-        //             // i zacznie się proces jej "przypięcia" (pinning)
-        //             start: "bottom bottom",
-        //             end: "+=300",
-        //             // toggleActions: "play none none reverse",
-        //         },
-        //         opacity: 0,
-        //         y: 100, // 100px potrafi brzydko rozbić tekst, 40px da płynny, nowoczesny efekt wyskakiwania
-        //         duration: 0.6,
-        //         ease: 'power4.out',
-        //         stagger: {
-        //             amount: 0.4, // Czas, w jakim rozłoży się animacja wszystkich liter
-        //             from: 'start',
-        //         }
-        //     });
-
-        //     gsap.from(bottomGradientBlur, {
-        //         scrollTrigger: {
-        //             trigger: elem,
-        //             start: "bottom bottom",
-        //             end: "+=4000",
-        //             toggleActions: "play reverse play reverse",
-        //         },
-        //         opacity: 0,
-        //         duration: 0.6,
-        //         ease: 'power4.out',
-        //     });
-        // });
-
-        // var randomOffset = gsap.utils.random(-1200, -1800, true);
-        // // var randomPos = gsap.utils.random(600, 400, true)
-
-        // const img1 = gsap.timeline({
-        //     scrollTrigger: {
-        //         scrub: 0,
-        //         pin: false,
-        //         trigger: "#about #image-1",
-        //         start: "top top",
-        //         endTrigger: "#services",
-        //         end: "+=3500",
-        //         ease: "linear"
-        //     },
-        // });
-
-        // img1.to("#about #image-1", {
-        //     y: randomOffset,
-        // });
-
-        // const img2 = gsap.timeline({
-        //     scrollTrigger: {
-        //         scrub: 0,
-        //         pin: false,
-        //         trigger: "#about #image-2",
-        //         start: "top top",
-        //         endTrigger: "#services",
-        //         end: "+=3500",
-        //         ease: "linear"
-        //     },
-        // });
-
-        // img2.to("#about #image-2", {
-        //     y: randomOffset,
-        // });
-
-        // const img3 = gsap.timeline({
-        //     scrollTrigger: {
-        //         scrub: 0,
-        //         pin: false,
-        //         trigger: "#about #image-3",
-        //         start: "center center",
-        //         endTrigger: "#services",
-        //         end: "+=3500",
-        //         ease: "linear",
-        //     },
-        // });
-
-        // img3.to("#about #image-3", {
-        //     y: randomOffset,
-        // });
-
-        // const img4 = gsap.timeline({
-        //     scrollTrigger: {
-        //         scrub: 0,
-        //         pin: false,
-        //         trigger: "#about #image-4",
-        //         start: "center center",
-        //         endTrigger: "#services",
-        //         end: "+=3500",
-        //         ease: "linear"
-        //     },
-        // });
-
-        // img4.to("#about #image-4", {
-        //     y: randomOffset,
-        // });
-
-        // const img5 = gsap.timeline({
-        //     scrollTrigger: {
-        //         scrub: 0,
-        //         pin: false,
-        //         trigger: "#about #image-5",
-        //         start: "center center",
-        //         endTrigger: "#services",
-        //         end: "+=3500",
-        //         ease: "linear"
-        //     },
-        // });
-
-        // img5.to("#about #image-5", {
-        //     y: randomOffset,
-        // });
-
-        // const img6 = gsap.timeline({
-        //     scrollTrigger: {
-        //         scrub: 0,
-        //         pin: false,
-        //         trigger: "#about #image-6",
-        //         start: "center center",
-        //         endTrigger: "#services",
-        //         end: "+=3500",
-        //         ease: "linear"
-        //     },
-        // });
-
-        // img6.to("#about #image-6", {
-        //     y: randomOffset,
-        // });
-
-
-        // // Services section
-
-        // gsap.registerPlugin(Draggable, InertiaPlugin)
-
-        // Draggable.create('.categories', {
-        //     type: 'x',
-        //     bounds: document.querySelector('.categories-wrapper'),
-        //     inertia: true,
-        //     onClick: function () {
-        //         console.log('clicked');
-        //     },
-        //     onDragEnd: function () {
-        //         console.log('drag ended');
-        //     }
-        // });
-
-        // let servicesSection = document.querySelectorAll("#services");
-
-        // servicesSection.forEach(function (elem) {
-        //     const servicesText = new SplitType(elem.querySelector("#services .big-text"));
-        //     let servicesChars = servicesText.chars;
-
-        //     gsap.from(servicesChars, {
-        //         scrollTrigger: {
-        //             trigger: elem,
-        //             start: "bottom bottom",
-        //             end: "+=300",
-        //         },
-        //         opacity: 0,
-        //         y: 100,
-        //         duration: 0.6,
-        //         ease: 'power4.out',
-        //         stagger: {
-        //             amount: 0.4,
-        //             from: 'start',
-        //         }
-        //     });
-        // });
-
-
-        // Disabling anims on mobile, since they kinda broke the layout...
-
-        const mm = gsap.matchMedia();
-
-        mm.add(
-            {
-                isDesktop: "(min-width: 768px)",
-                isMobile: "(max-width: 767px)",
+        window.addEventListener('load', () => {
+            const desc = new SplitType('#desc', { type: 'words, lines', mask: 'lines', linesClass: 'line++' });
+            gsap.from(desc.words, { opacity: 0, y: 100, duration: 0.8, delay: 0.2, ease: 'power4.out', stagger: { amount: 0.25, from: 'start' } });
+
+            const headline = new SplitType('.headline', { type: 'chars, lines', mask: 'lines', linesClass: 'line++' });
+            gsap.from(headline.chars, { opacity: 0, y: 200, duration: 0.8, delay: 0.2, ease: 'power4.out', stagger: { amount: 0.25, from: 'start' } });
+
+            const notice = new SplitType('#notice', { type: 'chars, lines', mask: 'lines', linesClass: 'line++' });
+            gsap.from(notice.chars, { opacity: 0, y: 100, duration: 0.8, delay: 0.2, ease: 'power4.out', stagger: { amount: 0.25, from: 'start' } });
+        });
+
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                scrub: 0,
+                pin: false,
+                trigger: "#hero",
+                start: "top 40px",
+                endTrigger: "#projects",
+                end: "bottom 50%",
             },
-            (context) => {
-                const { isDesktop } = context.conditions;
-
-                if (isDesktop) {
-                    window.addEventListener('load', () => {
-                        const desc = new SplitType('#desc', { type: 'words, lines', mask: 'lines', linesClass: 'line++' });
-                        gsap.from(desc.words, { opacity: 0, y: 100, duration: 0.8, delay: 0.2, ease: 'power4.out', stagger: { amount: 0.25, from: 'start' } });
-
-                        const headline = new SplitType('.headline', { type: 'chars, lines', mask: 'lines', linesClass: 'line++' });
-                        gsap.from(headline.chars, { opacity: 0, y: 200, duration: 0.8, delay: 0.2, ease: 'power4.out', stagger: { amount: 0.25, from: 'start' } });
-
-                        const notice = new SplitType('#notice', { type: 'chars, lines', mask: 'lines', linesClass: 'line++' });
-                        gsap.from(notice.chars, { opacity: 0, y: 100, duration: 0.8, delay: 0.2, ease: 'power4.out', stagger: { amount: 0.25, from: 'start' } });
-                    });
-
-                    const tl = gsap.timeline({
-                        scrollTrigger: {
-                            scrub: 0,
-                            pin: false,
-                            trigger: "#hero",
-                            start: "top 40px",
-                            endTrigger: "#projects",
-                            end: "bottom 50%",
-                        },
-                    });
-
-                    tl.to("#hero", {
-                        opacity: "0",
-                        scale: "0.8",
-                        y: 800,
-                    });
-
-
-                    // Projects
-
-                    let projectPin = ScrollTrigger.create({
-                        trigger: "#projects",
-                        pin: "#projects",
-                        start: "top 20px",
-                        end: "+=500",
-                    });
-
-                    console.log(projectPin.pin); // pin element (not selector text)
-
-                    let totalSection = document.querySelectorAll("#projects");
-
-                    totalSection.forEach(function (elem, index) {
-                        const headline = new SplitType(elem.querySelectorAll("#projects .x-big-text"));
-                        let headlineChars = headline.chars;
-
-                        const description = new SplitType(elem.querySelector(".medium-text"));
-                        let descriptionChars = description.chars;
-
-                        const counter = document.querySelector(".counter");
-                        const staticButton = document.querySelector(".buttons #static");
-                        const arrows = document.querySelector(".right-info")
-
-                        gsap.from(headlineChars, {
-                            scrollTrigger: {
-                                trigger: elem,
-                                start: "bottom bottom",
-                                end: "bottom top",
-                            },
-                            opacity: 0,
-                            y: 100,
-                            duration: 0.8,
-                            ease: 'power4.out',
-                            stagger: {
-                                amount: 0.25,
-                                from: 'start'
-                            }
-                        });
-
-                        gsap.from(descriptionChars, {
-                            scrollTrigger: {
-                                trigger: elem,
-                                start: "bottom bottom",
-                                end: "bottom top",
-                            },
-                            opacity: 0,
-                            y: 100,
-                            duration: 0.8,
-                            ease: 'power4.out',
-                            stagger: {
-                                amount: 0.25,
-                                from: 'start'
-                            }
-                        });
-
-                        gsap.from(counter, {
-                            scrollTrigger: {
-                                trigger: elem,
-                                start: "bottom bottom",
-                                end: "bottom top",
-                            },
-                            opacity: 0,
-                            y: 100,
-                            duration: 0.8,
-                            ease: 'power4.out',
-                        });
-
-                        gsap.from(staticButton, {
-                            scrollTrigger: {
-                                trigger: elem,
-                                start: "bottom bottom",
-                                end: "bottom top",
-                            },
-                            opacity: 0,
-                            y: 100,
-                            duration: 0.8,
-                            ease: "power4.out",
-                        });
-
-                        gsap.from(arrows, {
-                            scrollTrigger: {
-                                trigger: elem,
-                                start: "bottom bottom",
-                                end: "bottom top",
-                            },
-                            opacity: 0,
-                            y: 50,
-                            duration: 0.8,
-                            ease: "power4.out",
-                        });
-                    });
-
-                    document.addEventListener("DOMContentLoaded", () => {
-                        const dots = document.querySelectorAll(".counter .dot");
-                        const images = document.querySelectorAll(".images img");
-                        const texts = document.querySelectorAll(".texts .text");
-                        // Updated selector to match how you find your buttons globally
-                        const buttons = document.querySelectorAll(".project-info .buttons .button");
-
-                        // Target your new navigation arrows
-                        const prevBtn = document.querySelector("#prev");
-                        const nextBtn = document.querySelector("#next");
-
-                        let currentIndex = 0; // Track the active index
-                        const duration = 0; // Changed from 0 to 0.5 so you can actually see the GSAP animations!
-
-                        // ==========================================
-                        // 1. REUSABLE SWITCH FUNCTION
-                        // ==========================================
-                        function switchToIndex(index) {
-                            // Boundary check: ensure the index is valid
-                            if (index < 0 || index >= dots.length) return;
-                            if (index === currentIndex) return;
-
-                            // --- Handle Dots ---
-                            document.querySelector(".counter .dot.active")?.classList.remove("active");
-                            dots[index].classList.add("active");
-
-                            // --- Handle Images ---
-                            const currentImage = document.querySelector(".images img.active");
-                            const nextImage = images[index];
-
-                            if (currentImage) {
-                                currentImage.classList.remove("active");
-                                gsap.to(currentImage, { opacity: 0, duration: duration, ease: "power2.inOut" });
-                            }
-                            if (nextImage) {
-                                nextImage.classList.add("active");
-                                gsap.to(nextImage, { opacity: 1, duration: duration, ease: "power2.inOut" });
-                            }
-
-                            // --- Handle Texts ---
-                            const currentText = document.querySelector(".texts .text.active");
-                            const nextText = texts[index];
-
-                            if (currentText) {
-                                currentText.classList.remove("active");
-                                gsap.to(currentText, {
-                                    opacity: 0,
-                                    duration: duration,
-                                    filter: "blur(10px)",
-                                    ease: "power2.inOut"
-                                });
-                            }
-
-                            setTimeout(() => {
-                                if (nextText) {
-                                    nextText.classList.add("active");
-                                    gsap.to(nextText, {
-                                        opacity: 1,
-                                        duration: duration,
-                                        filter: "blur(0px)",
-                                        ease: "power2.inOut"
-                                    });
-                                }
-                            }, 200);
-
-                            // --- Handle Project Buttons ---
-                            const currentButton = document.querySelector(".project-info .buttons .button.active");
-                            const nextButton = buttons[index];
-
-                            if (currentButton) {
-                                currentButton.classList.remove("active");
-                                gsap.to(currentButton, {
-                                    opacity: 0,
-                                    duration: duration,
-                                    filter: "blur(10px)",
-                                    ease: "power2.inOut",
-                                });
-                            }
-
-                            setTimeout(() => {
-                                if (nextButton) {
-                                    nextButton.classList.add("active");
-                                    gsap.to(nextButton, {
-                                        opacity: 1,
-                                        duration: duration,
-                                        filter: "blur(0px)",
-                                        ease: "power2.inOut",
-                                    });
-                                }
-                            }, 200);
-
-                            // Update global tracker
-                            currentIndex = index;
-                        }
-
-                        // ==========================================
-                        // 2. EVENT LISTENERS
-                        // ==========================================
-
-                        // Dot Clicks
-                        dots.forEach((dot, index) => {
-                            dot.addEventListener("click", () => {
-                                switchToIndex(index);
-                            });
-                        });
-
-                        // Prev Button Click
-                        prevBtn?.addEventListener("click", () => {
-                            // Loop back to the end if at the beginning, or just go back one
-                            let targetIndex = currentIndex - 1;
-                            if (targetIndex < 0) {
-                                targetIndex = dots.length - 1; // Infinite loop behavior
-                            }
-                            switchToIndex(targetIndex);
-                        });
-
-                        // Next Button Click
-                        nextBtn?.addEventListener("click", () => {
-                            // Loop back to the start if at the end, or just go forward one
-                            let targetIndex = currentIndex + 1;
-                            if (targetIndex >= dots.length) {
-                                targetIndex = 0; // Infinite loop behavior
-                            }
-                            switchToIndex(targetIndex);
-                        });
-                    });
-
-
-                    // About
-
-                    let aboutPin = ScrollTrigger.create({
-                        trigger: "#about",
-                        pin: "#about",
-                        start: "top 20px",
-                        end: "+=3500",
-                    });
-
-                    let aboutSection = document.querySelectorAll("#about");
-
-                    aboutSection.forEach(function (elem) {
-                        // Rozbijamy tekst na litery (chars) oraz słowa (words)
-                        const aboutText = new SplitType(elem.querySelector("#about-section-desc"));
-                        let aboutChars = aboutText.chars; // To są elementy, które faktycznie animujemy
-
-                        const bottomGradientBlur = document.querySelector("#bottom-gradient-blur")
-
-                        gsap.from(aboutChars, {
-                            scrollTrigger: {
-                                trigger: elem,
-                                // Animacja zacznie się, gdy sekcja wskoczy na górę ekranu 
-                                // i zacznie się proces jej "przypięcia" (pinning)
-                                start: "bottom bottom",
-                                end: "+=300",
-                                // toggleActions: "play none none reverse",
-                            },
-                            opacity: 0,
-                            y: 100, // 100px potrafi brzydko rozbić tekst, 40px da płynny, nowoczesny efekt wyskakiwania
-                            duration: 0.6,
-                            ease: 'power4.out',
-                            stagger: {
-                                amount: 0.4, // Czas, w jakim rozłoży się animacja wszystkich liter
-                                from: 'start',
-                            }
-                        });
-
-                        gsap.from(bottomGradientBlur, {
-                            scrollTrigger: {
-                                trigger: elem,
-                                start: "bottom bottom",
-                                end: "+=4000",
-                                toggleActions: "play reverse play reverse",
-                            },
-                            opacity: 0,
-                            duration: 0.6,
-                            ease: 'power4.out',
-                        });
-                    });
-
-                    var randomOffset = gsap.utils.random(-1200, -1800, true);
-                    // var randomPos = gsap.utils.random(600, 400, true)
-
-                    const img1 = gsap.timeline({
-                        scrollTrigger: {
-                            scrub: 0,
-                            pin: false,
-                            trigger: "#about #image-1",
-                            start: "top top",
-                            endTrigger: "#services",
-                            end: "+=3500",
-                            ease: "linear"
-                        },
-                    });
-
-                    img1.to("#about #image-1", {
-                        y: randomOffset,
-                    });
-
-                    const img2 = gsap.timeline({
-                        scrollTrigger: {
-                            scrub: 0,
-                            pin: false,
-                            trigger: "#about #image-2",
-                            start: "top top",
-                            endTrigger: "#services",
-                            end: "+=3500",
-                            ease: "linear"
-                        },
-                    });
-
-                    img2.to("#about #image-2", {
-                        y: randomOffset,
-                    });
-
-                    const img3 = gsap.timeline({
-                        scrollTrigger: {
-                            scrub: 0,
-                            pin: false,
-                            trigger: "#about #image-3",
-                            start: "center center",
-                            endTrigger: "#services",
-                            end: "+=3500",
-                            ease: "linear",
-                        },
-                    });
-
-                    img3.to("#about #image-3", {
-                        y: randomOffset,
-                    });
-
-                    const img4 = gsap.timeline({
-                        scrollTrigger: {
-                            scrub: 0,
-                            pin: false,
-                            trigger: "#about #image-4",
-                            start: "center center",
-                            endTrigger: "#services",
-                            end: "+=3500",
-                            ease: "linear"
-                        },
-                    });
-
-                    img4.to("#about #image-4", {
-                        y: randomOffset,
-                    });
-
-                    const img5 = gsap.timeline({
-                        scrollTrigger: {
-                            scrub: 0,
-                            pin: false,
-                            trigger: "#about #image-5",
-                            start: "center center",
-                            endTrigger: "#services",
-                            end: "+=3500",
-                            ease: "linear"
-                        },
-                    });
-
-                    img5.to("#about #image-5", {
-                        y: randomOffset,
-                    });
-
-                    const img6 = gsap.timeline({
-                        scrollTrigger: {
-                            scrub: 0,
-                            pin: false,
-                            trigger: "#about #image-6",
-                            start: "center center",
-                            endTrigger: "#services",
-                            end: "+=3500",
-                            ease: "linear"
-                        },
-                    });
-
-                    img6.to("#about #image-6", {
-                        y: randomOffset,
-                    });
-
-
-                    // Services section
-
-                    gsap.registerPlugin(Draggable, InertiaPlugin)
-
-                    Draggable.create('.categories', {
-                        type: 'x',
-                        bounds: document.querySelector('.categories-wrapper'),
-                        inertia: true,
-                        onClick: function () {
-                            console.log('clicked');
-                        },
-                        onDragEnd: function () {
-                            console.log('drag ended');
-                        }
-                    });
-
-                    let servicesSection = document.querySelectorAll("#services");
-
-                    servicesSection.forEach(function (elem) {
-                        const servicesText = new SplitType(elem.querySelector("#services .big-text"));
-                        let servicesChars = servicesText.chars;
-
-                        gsap.from(servicesChars, {
-                            scrollTrigger: {
-                                trigger: elem,
-                                start: "bottom bottom",
-                                end: "+=300",
-                            },
-                            opacity: 0,
-                            y: 100,
-                            duration: 0.6,
-                            ease: 'power4.out',
-                            stagger: {
-                                amount: 0.4,
-                                from: 'start',
-                            }
-                        });
+        });
+
+        tl.to("#hero", {
+            opacity: "0",
+            scale: "0.8",
+            y: 800,
+        });
+
+
+        // Projects
+
+        let projectPin = ScrollTrigger.create({
+            trigger: "#projects",
+            pin: "#projects",
+            start: "top 20px",
+            end: "+=500",
+        });
+
+        console.log(projectPin.pin); // pin element (not selector text)
+
+        let totalSection = document.querySelectorAll("#projects");
+
+        totalSection.forEach(function (elem, index) {
+            const headline = new SplitType(elem.querySelectorAll("#projects .x-big-text"));
+            let headlineChars = headline.chars;
+
+            const description = new SplitType(elem.querySelector(".medium-text"));
+            let descriptionChars = description.chars;
+
+            const counter = document.querySelector(".counter");
+            const staticButton = document.querySelector(".buttons #static");
+            const arrows = document.querySelector(".right-info")
+
+            gsap.from(headlineChars, {
+                scrollTrigger: {
+                    trigger: elem,
+                    start: "bottom bottom",
+                    end: "bottom top",
+                },
+                opacity: 0,
+                y: 100,
+                duration: 0.8,
+                ease: 'power4.out',
+                stagger: {
+                    amount: 0.25,
+                    from: 'start'
+                }
+            });
+
+            gsap.from(descriptionChars, {
+                scrollTrigger: {
+                    trigger: elem,
+                    start: "bottom bottom",
+                    end: "bottom top",
+                },
+                opacity: 0,
+                y: 100,
+                duration: 0.8,
+                ease: 'power4.out',
+                stagger: {
+                    amount: 0.25,
+                    from: 'start'
+                }
+            });
+
+            gsap.from(counter, {
+                scrollTrigger: {
+                    trigger: elem,
+                    start: "bottom bottom",
+                    end: "bottom top",
+                },
+                opacity: 0,
+                y: 100,
+                duration: 0.8,
+                ease: 'power4.out',
+            });
+
+            gsap.from(staticButton, {
+                scrollTrigger: {
+                    trigger: elem,
+                    start: "bottom bottom",
+                    end: "bottom top",
+                },
+                opacity: 0,
+                y: 100,
+                duration: 0.8,
+                ease: "power4.out",
+            });
+
+            gsap.from(arrows, {
+                scrollTrigger: {
+                    trigger: elem,
+                    start: "bottom bottom",
+                    end: "bottom top",
+                },
+                opacity: 0,
+                y: 50,
+                duration: 0.8,
+                ease: "power4.out",
+            });
+        });
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const dots = document.querySelectorAll(".counter .dot");
+            const images = document.querySelectorAll(".images img");
+            const texts = document.querySelectorAll(".texts .text");
+            // Updated selector to match how you find your buttons globally
+            const buttons = document.querySelectorAll(".project-info .buttons .button");
+
+            // Target your new navigation arrows
+            const prevBtn = document.querySelector("#prev");
+            const nextBtn = document.querySelector("#next");
+
+            let currentIndex = 0; // Track the active index
+            const duration = 0; // Changed from 0 to 0.5 so you can actually see the GSAP animations!
+
+            // ==========================================
+            // 1. REUSABLE SWITCH FUNCTION
+            // ==========================================
+            function switchToIndex(index) {
+                // Boundary check: ensure the index is valid
+                if (index < 0 || index >= dots.length) return;
+                if (index === currentIndex) return;
+
+                // --- Handle Dots ---
+                document.querySelector(".counter .dot.active")?.classList.remove("active");
+                dots[index].classList.add("active");
+
+                // --- Handle Images ---
+                const currentImage = document.querySelector(".images img.active");
+                const nextImage = images[index];
+
+                if (currentImage) {
+                    currentImage.classList.remove("active");
+                    gsap.to(currentImage, { opacity: 0, duration: duration, ease: "power2.inOut" });
+                }
+                if (nextImage) {
+                    nextImage.classList.add("active");
+                    gsap.to(nextImage, { opacity: 1, duration: duration, ease: "power2.inOut" });
+                }
+
+                // --- Handle Texts ---
+                const currentText = document.querySelector(".texts .text.active");
+                const nextText = texts[index];
+
+                if (currentText) {
+                    currentText.classList.remove("active");
+                    gsap.to(currentText, {
+                        opacity: 0,
+                        duration: duration,
+                        filter: "blur(10px)",
+                        ease: "power2.inOut"
                     });
                 }
 
-                // So the animation run only on desktop or laptop
+                setTimeout(() => {
+                    if (nextText) {
+                        nextText.classList.add("active");
+                        gsap.to(nextText, {
+                            opacity: 1,
+                            duration: duration,
+                            filter: "blur(0px)",
+                            ease: "power2.inOut"
+                        });
+                    }
+                }, 200);
+
+                // --- Handle Project Buttons ---
+                const currentButton = document.querySelector(".project-info .buttons .button.active");
+                const nextButton = buttons[index];
+
+                if (currentButton) {
+                    currentButton.classList.remove("active");
+                    gsap.to(currentButton, {
+                        opacity: 0,
+                        duration: duration,
+                        filter: "blur(10px)",
+                        ease: "power2.inOut",
+                    });
+                }
+
+                setTimeout(() => {
+                    if (nextButton) {
+                        nextButton.classList.add("active");
+                        gsap.to(nextButton, {
+                            opacity: 1,
+                            duration: duration,
+                            filter: "blur(0px)",
+                            ease: "power2.inOut",
+                        });
+                    }
+                }, 200);
+
+                // Update global tracker
+                currentIndex = index;
             }
-        );
+
+            // ==========================================
+            // 2. EVENT LISTENERS
+            // ==========================================
+
+            // Dot Clicks
+            dots.forEach((dot, index) => {
+                dot.addEventListener("click", () => {
+                    switchToIndex(index);
+                });
+            });
+
+            // Prev Button Click
+            prevBtn?.addEventListener("click", () => {
+                // Loop back to the end if at the beginning, or just go back one
+                let targetIndex = currentIndex - 1;
+                if (targetIndex < 0) {
+                    targetIndex = dots.length - 1; // Infinite loop behavior
+                }
+                switchToIndex(targetIndex);
+            });
+
+            // Next Button Click
+            nextBtn?.addEventListener("click", () => {
+                // Loop back to the start if at the end, or just go forward one
+                let targetIndex = currentIndex + 1;
+                if (targetIndex >= dots.length) {
+                    targetIndex = 0; // Infinite loop behavior
+                }
+                switchToIndex(targetIndex);
+            });
+        });
+
+
+        // About
+
+        let aboutPin = ScrollTrigger.create({
+            trigger: "#about",
+            pin: "#about",
+            start: "top 20px",
+            end: "+=3500",
+        });
+
+        let aboutSection = document.querySelectorAll("#about");
+
+        aboutSection.forEach(function (elem) {
+            // Rozbijamy tekst na litery (chars) oraz słowa (words)
+            const aboutText = new SplitType(elem.querySelector("#about-section-desc"));
+            let aboutChars = aboutText.chars; // To są elementy, które faktycznie animujemy
+
+            const bottomGradientBlur = document.querySelector("#bottom-gradient-blur")
+
+            gsap.from(aboutChars, {
+                scrollTrigger: {
+                    trigger: elem,
+                    // Animacja zacznie się, gdy sekcja wskoczy na górę ekranu 
+                    // i zacznie się proces jej "przypięcia" (pinning)
+                    start: "bottom bottom",
+                    end: "+=300",
+                    // toggleActions: "play none none reverse",
+                },
+                opacity: 0,
+                y: 100, // 100px potrafi brzydko rozbić tekst, 40px da płynny, nowoczesny efekt wyskakiwania
+                duration: 0.6,
+                ease: 'power4.out',
+                stagger: {
+                    amount: 0.4, // Czas, w jakim rozłoży się animacja wszystkich liter
+                    from: 'start',
+                }
+            });
+
+            gsap.from(bottomGradientBlur, {
+                scrollTrigger: {
+                    trigger: elem,
+                    start: "bottom bottom",
+                    end: "+=4000",
+                    toggleActions: "play reverse play reverse",
+                },
+                opacity: 0,
+                duration: 0.6,
+                ease: 'power4.out',
+            });
+        });
+
+        var randomOffset = gsap.utils.random(-1200, -1800, true);
+        // var randomPos = gsap.utils.random(600, 400, true)
+
+        const img1 = gsap.timeline({
+            scrollTrigger: {
+                scrub: 0,
+                pin: false,
+                trigger: "#about #image-1",
+                start: "top top",
+                endTrigger: "#services",
+                end: "+=3500",
+                ease: "linear"
+            },
+        });
+
+        img1.to("#about #image-1", {
+            y: randomOffset,
+        });
+
+        const img2 = gsap.timeline({
+            scrollTrigger: {
+                scrub: 0,
+                pin: false,
+                trigger: "#about #image-2",
+                start: "top top",
+                endTrigger: "#services",
+                end: "+=3500",
+                ease: "linear"
+            },
+        });
+
+        img2.to("#about #image-2", {
+            y: randomOffset,
+        });
+
+        const img3 = gsap.timeline({
+            scrollTrigger: {
+                scrub: 0,
+                pin: false,
+                trigger: "#about #image-3",
+                start: "center center",
+                endTrigger: "#services",
+                end: "+=3500",
+                ease: "linear",
+            },
+        });
+
+        img3.to("#about #image-3", {
+            y: randomOffset,
+        });
+
+        const img4 = gsap.timeline({
+            scrollTrigger: {
+                scrub: 0,
+                pin: false,
+                trigger: "#about #image-4",
+                start: "center center",
+                endTrigger: "#services",
+                end: "+=3500",
+                ease: "linear"
+            },
+        });
+
+        img4.to("#about #image-4", {
+            y: randomOffset,
+        });
+
+        const img5 = gsap.timeline({
+            scrollTrigger: {
+                scrub: 0,
+                pin: false,
+                trigger: "#about #image-5",
+                start: "center center",
+                endTrigger: "#services",
+                end: "+=3500",
+                ease: "linear"
+            },
+        });
+
+        img5.to("#about #image-5", {
+            y: randomOffset,
+        });
+
+        const img6 = gsap.timeline({
+            scrollTrigger: {
+                scrub: 0,
+                pin: false,
+                trigger: "#about #image-6",
+                start: "center center",
+                endTrigger: "#services",
+                end: "+=3500",
+                ease: "linear"
+            },
+        });
+
+        img6.to("#about #image-6", {
+            y: randomOffset,
+        });
+
+
+        // Services section
+
+        gsap.registerPlugin(Draggable, InertiaPlugin)
+
+        Draggable.create('.categories', {
+            type: 'x',
+            bounds: document.querySelector('.categories-wrapper'),
+            inertia: true,
+            onClick: function () {
+                console.log('clicked');
+            },
+            onDragEnd: function () {
+                console.log('drag ended');
+            }
+        });
+
+        let servicesSection = document.querySelectorAll("#services");
+
+        servicesSection.forEach(function (elem) {
+            const servicesText = new SplitType(elem.querySelector("#services .big-text"));
+            let servicesChars = servicesText.chars;
+
+            gsap.from(servicesChars, {
+                scrollTrigger: {
+                    trigger: elem,
+                    start: "bottom bottom",
+                    end: "+=300",
+                },
+                opacity: 0,
+                y: 100,
+                duration: 0.6,
+                ease: 'power4.out',
+                stagger: {
+                    amount: 0.4,
+                    from: 'start',
+                }
+            });
+        });
     </script>
 
 </body>

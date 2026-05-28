@@ -305,6 +305,8 @@ nav .logo:hover::after {
     inset: auto 0 0 0;
 }
 
+
+
 .gradient-blur {
     position: fixed;
     z-index: 14;
@@ -835,7 +837,7 @@ nav .logo:hover::after {
 
 /** Responsiveness */
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 798px) {
 
     /** Components */
     :root {
@@ -875,20 +877,12 @@ nav .logo:hover::after {
         display: none;
     }
 
-    .hero-wrapper #hero h1 {
+    #hero h1 {
         font-size: 16vw;
     }
 
     #hero {
-        margin-top: 40px;
-    }
-
-    .hero-wrapper {
-        position: static;
-    }
-
-    #bottom-gradient-blur {
-        display: none;
+        margin-top: 0;
     }
 
     .info,
