@@ -305,8 +305,6 @@ nav .logo:hover::after {
     inset: auto 0 0 0;
 }
 
-
-
 .gradient-blur {
     position: fixed;
     z-index: 14;
@@ -816,9 +814,28 @@ nav .logo:hover::after {
     right: var(--margin);
 }
 
+#services .categories:hover .cursor {
+    height: 200px;
+    width: 200px;
+    opacity: 1;
+}
+
+#services .cursor {
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+    background-color: var(--light);
+    color: var(--dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: 0.25s ease;
+}
+
 /** Responsiveness */
 
-@media screen and (max-width: 798px) {
+@media screen and (max-width: 767px) {
 
     /** Components */
     :root {
@@ -858,12 +875,20 @@ nav .logo:hover::after {
         display: none;
     }
 
-    #hero h1 {
+    .hero-wrapper #hero h1 {
         font-size: 16vw;
     }
 
     #hero {
-        margin-top: 0;
+        margin-top: 40px;
+    }
+
+    .hero-wrapper {
+        position: static;
+    }
+
+    #bottom-gradient-blur {
+        display: none;
     }
 
     .info,
