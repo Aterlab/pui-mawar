@@ -60,7 +60,8 @@ body {
     font-weight: var(--medium);
     margin: var(--margin);
     overflow-x: hidden;
-    max-width: 100dvw;
+    width: 100%;
+    touch-action: pan-y;
     /* overflow: hidden; */
 }
 
@@ -413,6 +414,7 @@ nav .logo:hover::after {
     justify-content: space-between;
     gap: 20px;
     top: 0;
+    bottom: 0;
     z-index: 999;
     left: var(--margin);
     right: var(--margin);
@@ -779,6 +781,11 @@ nav .logo:hover::after {
     width: fit-content;
     gap: var(--margin);
     z-index: 1 !important;
+    overflow: hidden;
+}
+
+#services .categories-wrapper {
+    overflow: hidden;
 }
 
 #services .category {

@@ -522,88 +522,6 @@
 
         // this might be moved to desktop-only
 
-        let totalSection = document.querySelectorAll("#projects");
-
-        totalSection.forEach(function (elem, index) {
-            const headline = new SplitType(elem.querySelectorAll("#projects .x-big-text"));
-            let headlineChars = headline.chars;
-
-            const description = new SplitType(elem.querySelector(".medium-text"));
-            let descriptionChars = description.chars;
-
-            const counter = document.querySelector(".counter");
-            const staticButton = document.querySelector(".buttons #static");
-            const arrows = document.querySelector(".right-info")
-
-            gsap.from(headlineChars, {
-                scrollTrigger: {
-                    trigger: elem,
-                    start: "bottom bottom",
-                    end: "bottom top",
-                },
-                opacity: 0,
-                y: 100,
-                duration: 0.8,
-                ease: 'power4.out',
-                stagger: {
-                    amount: 0.25,
-                    from: 'start'
-                }
-            });
-
-            gsap.from(descriptionChars, {
-                scrollTrigger: {
-                    trigger: elem,
-                    start: "bottom bottom",
-                    end: "bottom top",
-                },
-                opacity: 0,
-                y: 100,
-                duration: 0.8,
-                ease: 'power4.out',
-                stagger: {
-                    amount: 0.25,
-                    from: 'start'
-                }
-            });
-
-            gsap.from(counter, {
-                scrollTrigger: {
-                    trigger: elem,
-                    start: "bottom bottom",
-                    end: "bottom top",
-                },
-                opacity: 0,
-                y: 100,
-                duration: 0.8,
-                ease: 'power4.out',
-            });
-
-            gsap.from(staticButton, {
-                scrollTrigger: {
-                    trigger: elem,
-                    start: "bottom bottom",
-                    end: "bottom top",
-                },
-                opacity: 0,
-                y: 100,
-                duration: 0.8,
-                ease: "power4.out",
-            });
-
-            gsap.from(arrows, {
-                scrollTrigger: {
-                    trigger: elem,
-                    start: "bottom bottom",
-                    end: "bottom top",
-                },
-                opacity: 0,
-                y: 50,
-                duration: 0.8,
-                ease: "power4.out",
-            });
-        });
-
         document.addEventListener("DOMContentLoaded", () => {
             const dots = document.querySelectorAll(".counter .dot");
             const images = document.querySelectorAll(".images img");
@@ -714,183 +632,6 @@
 
         // About
 
-        let aboutSection = document.querySelectorAll("#about");
-
-        aboutSection.forEach(function (elem) {
-            // Rozbijamy tekst na litery (chars) oraz słowa (words)
-            const aboutText = new SplitType(elem.querySelector("#about-section-desc"));
-            let aboutChars = aboutText.chars; // To są elementy, które faktycznie animujemy
-
-            const bottomGradientBlur = document.querySelector("#bottom-gradient-blur")
-
-            gsap.from(aboutChars, {
-                scrollTrigger: {
-                    trigger: elem,
-                    start: "bottom bottom",
-                    end: "+=300",
-                    // toggleActions: "play none none reverse",
-                },
-                opacity: 0,
-                y: 100,
-                duration: 0.6,
-                ease: 'power4.out',
-                stagger: {
-                    amount: 0.4,
-                    from: 'start',
-                }
-            });
-
-            gsap.from(bottomGradientBlur, {
-                scrollTrigger: {
-                    trigger: elem,
-                    start: "bottom bottom",
-                    end: "+=4000",
-                    toggleActions: "play reverse play reverse",
-                },
-                opacity: 0,
-                duration: 0.6,
-                ease: 'power4.out',
-            });
-        });
-
-        var randomOffset = gsap.utils.random(-1200, -1800, true); // Random offset for imgs
-
-        const img1 = gsap.timeline({
-            scrollTrigger: {
-                scrub: 0,
-                pin: false,
-                trigger: "#about #image-1",
-                start: "top top",
-                endTrigger: "#services",
-                end: "+=3500",
-                ease: "linear"
-            },
-        });
-
-        img1.to("#about #image-1", {
-            y: randomOffset,
-        });
-
-        const img2 = gsap.timeline({
-            scrollTrigger: {
-                scrub: 0,
-                pin: false,
-                trigger: "#about #image-2",
-                start: "top top",
-                endTrigger: "#services",
-                end: "+=3500",
-                ease: "linear"
-            },
-        });
-
-        img2.to("#about #image-2", {
-            y: randomOffset,
-        });
-
-        const img3 = gsap.timeline({
-            scrollTrigger: {
-                scrub: 0,
-                pin: false,
-                trigger: "#about #image-3",
-                start: "center center",
-                endTrigger: "#services",
-                end: "+=3500",
-                ease: "linear",
-            },
-        });
-
-        img3.to("#about #image-3", {
-            y: randomOffset,
-        });
-
-        const img4 = gsap.timeline({
-            scrollTrigger: {
-                scrub: 0,
-                pin: false,
-                trigger: "#about #image-4",
-                start: "center center",
-                endTrigger: "#services",
-                end: "+=3500",
-                ease: "linear"
-            },
-        });
-
-        img4.to("#about #image-4", {
-            y: randomOffset,
-        });
-
-        const img5 = gsap.timeline({
-            scrollTrigger: {
-                scrub: 0,
-                pin: false,
-                trigger: "#about #image-5",
-                start: "center center",
-                endTrigger: "#services",
-                end: "+=3500",
-                ease: "linear"
-            },
-        });
-
-        img5.to("#about #image-5", {
-            y: randomOffset,
-        });
-
-        const img6 = gsap.timeline({
-            scrollTrigger: {
-                scrub: 0,
-                pin: false,
-                trigger: "#about #image-6",
-                start: "center center",
-                endTrigger: "#services",
-                end: "+=3500",
-                ease: "linear"
-            },
-        });
-
-        img6.to("#about #image-6", {
-            y: randomOffset,
-        });
-
-
-        // Services section
-
-        gsap.registerPlugin(Draggable, InertiaPlugin)
-
-        Draggable.create('.categories', {
-            type: 'x',
-            bounds: document.querySelector('.categories-wrapper'),
-            inertia: true,
-            onClick: function () {
-                console.log('clicked');
-            },
-            onDragEnd: function () {
-                console.log('drag ended');
-            }
-        });
-
-        let servicesSection = document.querySelectorAll("#services");
-
-        servicesSection.forEach(function (elem) {
-            const servicesText = new SplitType(elem.querySelector("#services .big-text"));
-            let servicesChars = servicesText.chars;
-
-            gsap.from(servicesChars, {
-                scrollTrigger: {
-                    trigger: elem,
-                    start: "bottom bottom",
-                    end: "+=300",
-                },
-                opacity: 0,
-                y: 100,
-                duration: 0.6,
-                ease: 'power4.out',
-                stagger: {
-                    amount: 0.4,
-                    from: 'start',
-                }
-            });
-        });
-
         const mm = gsap.matchMedia();
 
         // Every animation that isn't in desktop or mobile query plays always (staggers, enter anims etc..)
@@ -933,6 +674,267 @@
                 scale: "0.8",
                 y: 800,
             });
+
+            let totalSection = document.querySelectorAll("#projects");
+
+            totalSection.forEach(function (elem, index) {
+                const headline = new SplitType(elem.querySelectorAll("#projects .x-big-text"));
+                let headlineChars = headline.chars;
+
+                const description = new SplitType(elem.querySelector(".medium-text"));
+                let descriptionChars = description.chars;
+
+                const counter = document.querySelector(".counter");
+                const staticButton = document.querySelector(".buttons #static");
+                const arrows = document.querySelector(".right-info")
+
+                gsap.from(headlineChars, {
+                    scrollTrigger: {
+                        trigger: elem,
+                        start: "bottom bottom",
+                        end: "bottom top",
+                    },
+                    opacity: 0,
+                    y: 100,
+                    duration: 0.8,
+                    ease: 'power4.out',
+                    stagger: {
+                        amount: 0.25,
+                        from: 'start'
+                    }
+                });
+
+                gsap.from(descriptionChars, {
+                    scrollTrigger: {
+                        trigger: elem,
+                        start: "bottom bottom",
+                        end: "bottom top",
+                    },
+                    opacity: 0,
+                    y: 100,
+                    duration: 0.8,
+                    ease: 'power4.out',
+                    stagger: {
+                        amount: 0.25,
+                        from: 'start'
+                    }
+                });
+
+                gsap.from(counter, {
+                    scrollTrigger: {
+                        trigger: elem,
+                        start: "bottom bottom",
+                        end: "bottom top",
+                    },
+                    opacity: 0,
+                    y: 100,
+                    duration: 0.8,
+                    ease: 'power4.out',
+                });
+
+                gsap.from(staticButton, {
+                    scrollTrigger: {
+                        trigger: elem,
+                        start: "bottom bottom",
+                        end: "bottom top",
+                    },
+                    opacity: 0,
+                    y: 100,
+                    duration: 0.8,
+                    ease: "power4.out",
+                });
+
+                gsap.from(arrows, {
+                    scrollTrigger: {
+                        trigger: elem,
+                        start: "bottom bottom",
+                        end: "bottom top",
+                    },
+                    opacity: 0,
+                    y: 50,
+                    duration: 0.8,
+                    ease: "power4.out",
+                });
+            });
+
+            let aboutSection = document.querySelectorAll("#about");
+
+            aboutSection.forEach(function (elem) {
+                // Rozbijamy tekst na litery (chars) oraz słowa (words)
+                const aboutText = new SplitType(elem.querySelector("#about-section-desc"));
+                let aboutChars = aboutText.chars; // To są elementy, które faktycznie animujemy
+
+                const bottomGradientBlur = document.querySelector("#bottom-gradient-blur")
+
+                gsap.from(aboutChars, {
+                    scrollTrigger: {
+                        trigger: elem,
+                        start: "bottom bottom",
+                        end: "+=300",
+                        // toggleActions: "play none none reverse",
+                    },
+                    opacity: 0,
+                    y: 100,
+                    duration: 0.6,
+                    ease: 'power4.out',
+                    stagger: {
+                        amount: 0.4,
+                        from: 'start',
+                    }
+                });
+
+                gsap.from(bottomGradientBlur, {
+                    scrollTrigger: {
+                        trigger: elem,
+                        start: "bottom bottom",
+                        end: "+=4000",
+                        toggleActions: "play reverse play reverse",
+                    },
+                    opacity: 0,
+                    duration: 0.6,
+                    ease: 'power4.out',
+                });
+            });
+
+            var randomOffset = gsap.utils.random(-1200, -1800, true); // Random offset for imgs
+
+            const img1 = gsap.timeline({
+                scrollTrigger: {
+                    scrub: 0,
+                    pin: false,
+                    trigger: "#about #image-1",
+                    start: "top top",
+                    endTrigger: "#services",
+                    end: "+=3500",
+                    ease: "linear"
+                },
+            });
+
+            img1.to("#about #image-1", {
+                y: randomOffset,
+            });
+
+            const img2 = gsap.timeline({
+                scrollTrigger: {
+                    scrub: 0,
+                    pin: false,
+                    trigger: "#about #image-2",
+                    start: "top top",
+                    endTrigger: "#services",
+                    end: "+=3500",
+                    ease: "linear"
+                },
+            });
+
+            img2.to("#about #image-2", {
+                y: randomOffset,
+            });
+
+            const img3 = gsap.timeline({
+                scrollTrigger: {
+                    scrub: 0,
+                    pin: false,
+                    trigger: "#about #image-3",
+                    start: "center center",
+                    endTrigger: "#services",
+                    end: "+=3500",
+                    ease: "linear",
+                },
+            });
+
+            img3.to("#about #image-3", {
+                y: randomOffset,
+            });
+
+            const img4 = gsap.timeline({
+                scrollTrigger: {
+                    scrub: 0,
+                    pin: false,
+                    trigger: "#about #image-4",
+                    start: "center center",
+                    endTrigger: "#services",
+                    end: "+=3500",
+                    ease: "linear"
+                },
+            });
+
+            img4.to("#about #image-4", {
+                y: randomOffset,
+            });
+
+            const img5 = gsap.timeline({
+                scrollTrigger: {
+                    scrub: 0,
+                    pin: false,
+                    trigger: "#about #image-5",
+                    start: "center center",
+                    endTrigger: "#services",
+                    end: "+=3500",
+                    ease: "linear"
+                },
+            });
+
+            img5.to("#about #image-5", {
+                y: randomOffset,
+            });
+
+            const img6 = gsap.timeline({
+                scrollTrigger: {
+                    scrub: 0,
+                    pin: false,
+                    trigger: "#about #image-6",
+                    start: "center center",
+                    endTrigger: "#services",
+                    end: "+=3500",
+                    ease: "linear"
+                },
+            });
+
+            img6.to("#about #image-6", {
+                y: randomOffset,
+            });
+
+            let servicesSection = document.querySelectorAll("#services");
+
+            servicesSection.forEach(function (elem) {
+                const servicesText = new SplitType(elem.querySelector("#services .big-text"));
+                let servicesChars = servicesText.chars;
+
+                gsap.from(servicesChars, {
+                    scrollTrigger: {
+                        trigger: elem,
+                        start: "bottom bottom",
+                        end: "+=300",
+                    },
+                    opacity: 0,
+                    y: 100,
+                    duration: 0.6,
+                    ease: 'power4.out',
+                    stagger: {
+                        amount: 0.4,
+                        from: 'start',
+                    }
+                });
+            });
+        });
+
+
+
+
+        // Services section
+
+        gsap.registerPlugin(Draggable, InertiaPlugin)
+
+        Draggable.create('.categories', {
+            type: 'x',
+            bounds: document.querySelector('.categories-wrapper'),
+            inertia: true,
+            onClick: function () {
+                console.log('clicked');
+            },
+            onDragEnd: function () {
+                console.log('drag ended');
+            }
         });
 
         // Run only on MOBILE (not used, bc mobile needs less animations than desktop, just in case)
