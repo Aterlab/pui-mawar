@@ -60,7 +60,7 @@ body {
     font-weight: var(--medium);
     margin: var(--margin);
     overflow-x: hidden;
-    width: 100%;
+    width: 100dvw;
     touch-action: pan-y;
     /* overflow: hidden; */
 }
@@ -865,7 +865,6 @@ nav .logo:hover::after {
         height: calc(100dvh - (var(--margin) * 2));
         width: calc(100dvw - (var(--margin) * 2));
         overflow: hidden;
-        border: 1px solid orange;
         text-align: center;
     }
 
