@@ -845,7 +845,34 @@ nav .logo:hover::after {
 
 /** Responsiveness */
 
+.mobile-version {
+    display: none;
+    pointer-events: none;
+}
+
+.desktop-version {
+    display: block;
+    pointer-events: all;
+}
+
 @media screen and (max-width: 798px) {
+    .mobile-version {
+        display: flex;
+        pointer-events: all;
+        flex-direction: column;
+        justify-content: center;
+        gap: var(--margin);
+        height: calc(100dvh - (var(--margin) * 2));
+        width: calc(100dvw - (var(--margin) * 2));
+        overflow: hidden;
+        border: 1px solid orange;
+        text-align: center;
+    }
+
+    .desktop-version {
+        display: none;
+        pointer-events: none;
+    }
 
     /** Components */
     :root {

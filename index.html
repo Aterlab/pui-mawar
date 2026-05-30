@@ -14,10 +14,7 @@
     <script src="https://unpkg.com/split-type"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/Draggable.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/InertiaPlugin.min.js"></script>
-
-    <link rel="stylesheet" href="https://unpkg.com/lenis@1.3.23/dist/lenis.css">
-    <script src="https://unpkg.com/lenis@1.3.23/dist/lenis.min.js"></script>
-    <script>new Lenis({ autoRaf: true, autoToggle: true, anchors: true, allowNestedScroll: true, naiveDimensions: true, stopInertiaOnNavigate: true })</script>
+    <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
 
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@500&display=swap" rel="stylesheet">
 
@@ -87,424 +84,433 @@
         </div>
     </nav>
 
-    <section id="hero">
-        <div class="hero-wrapper">
-            <h1 class="headline">PUI MAWAR</h1>
+    <div class="desktop-version">
+        <section id="hero">
+            <div class="hero-wrapper">
+                <h1 class="headline">PUI MAWAR</h1>
 
-            <div class="bottom">
-                <div class="info">
-                    <div class="small-text" id="notice">( Strona w trakcie budowy )</div>
-                    <div id="desc" class="big-text">Projektujemy wielobranżowo, stawiając na potrzeby Inwestora.
-                        Zachowujemy
-                        idealną równowagę między estetyką, funkcjonalnością a kosztami.
+                <div class="bottom">
+                    <div class="info">
+                        <div class="small-text" id="notice">( Strona w trakcie budowy )</div>
+                        <div id="desc" class="big-text">Projektujemy wielobranżowo, stawiając na potrzeby Inwestora.
+                            Zachowujemy
+                            idealną równowagę między estetyką, funkcjonalnością a kosztami.
+                        </div>
+                        <button>
+                            <p id="content">O pracowni</p>
+                            <p id="content">O pracowni</p>
+                        </button>
                     </div>
-                    <button>
-                        <p id="content">O pracowni</p>
-                        <p id="content">O pracowni</p>
-                    </button>
-                </div>
 
-                <div class="projects" id="projects-hero">
-                    <img id="expand-img" src="assets/projects/2_budynki_mieszkalne_wielorodzinne.jpg" alt="">
+                    <div class="projects" id="projects-hero">
+                        <img id="expand-img" src="assets/projects/2_budynki_mieszkalne_wielorodzinne.jpg" alt="">
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="projects">
-        <div class="gradient-overlay"></div>
+        <section id="projects">
+            <div class="gradient-overlay"></div>
 
-        <div class="projects-wrapper">
+            <div class="projects-wrapper">
+                <div class="images">
+                    <img src="assets/projects/1_modernizacja_stacji_wodociagowej_2004_lublin.jpg" alt="" class="active"
+                        style="z-index: 12">
+                    <img src="assets/projects/2_budynki_mieszkalne_wielorodzinne.jpg" alt="" style="z-index: 11">
+                    <img src="assets/projects/3_modernizacja_obiektow_zabytkowych-2017_willa_kamilcin.jpg" alt=""
+                        style="z-index: 10">
+                    <img src="assets/projects/4_renowacja_ogrod_saski_lublin_2007.jpg" alt="" style="z-index: 9">
+                    <img src="assets/projects/5_dom_pomocy_2021_nowa_wies.png" alt="" style="z-index: 8">
+                    <img src="assets/projects/6_stacja_paliw_2023_helm.jpg" alt="" style="z-index: 7">
+                    <img src="assets/projects/7_rezydencja_2007_marysin.jpg" alt="" style="z-index: 6">
+                    <img src="assets/projects/8_dom_handlowy_bazar_1998_lublin.jpg" alt="" style="z-index: 5">
+                    <img src="assets/projects/9_fontanna_miejska_2004_lublin.jpg" alt="" style="z-index: 4">
+                    <img src="assets/projects/10_zabudowa_jednorodzinna_2007_kalinowka.jpg" alt="" style="z-index: 3">
+                    <img src="assets/projects/11_remiza_osp_2023_samowodzie.png" alt="" style="z-index: 2">
+                    <img src="assets/projects/12_lodowisko_2019_opole.jpg" alt="" style="z-index: 1">
+                </div>
+
+                <div class="project-info">
+                    <div class="left-info">
+                        <div class="counter">
+                            <div class="dot active"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                        </div>
+
+                        <div class="texts">
+                            <div class="text active" id="static">
+                                <div class="x-big-text">Modernizacja stacji wodociągowej w Lublinie</div>
+                                <div class="medium-text">Krótki, ciekawy opis projektu, z najważniejszymi informacjami o
+                                    nim.
+                                    Około
+                                    2-3
+                                    zdania.</div>
+                            </div>
+
+                            <div class="text">
+                                <div class="x-big-text">Rys ilustracyjny budynku wielorodzinnego</div>
+                                <div class="medium-text">Krótki, ciekawy opis projektu, z najważniejszymi informacjami o
+                                    nim.
+                                    Około
+                                    2-3
+                                    zdania.</div>
+                            </div>
+
+                            <div class="text">
+                                <div class="x-big-text">Modernizacja budynków zabytkowych - Willa Kamilcin</div>
+                                <div class="medium-text">Krótki, ciekawy opis projektu, z najważniejszymi informacjami o
+                                    nim.
+                                    Około
+                                    2-3
+                                    zdania.</div>
+                            </div>
+
+                            <div class="text">
+                                <div class="x-big-text">Renowacja Ogrodu Saskiego w Lublinie</div>
+                                <div class="medium-text">Krótki, ciekawy opis projektu, z najważniejszymi informacjami o
+                                    nim.
+                                    Około
+                                    2-3
+                                    zdania.</div>
+                            </div>
+
+                            <div class="text">
+                                <div class="x-big-text">Projekt domu pomocy w Nowej Wsi</div>
+                                <div class="medium-text">Krótki, ciekawy opis projektu, z najważniejszymi informacjami o
+                                    nim.
+                                    Około
+                                    2-3
+                                    zdania.</div>
+                            </div>
+
+                            <div class="text">
+                                <div class="x-big-text">Projekt miejskiej stacji paliw w Hełmie</div>
+                                <div class="medium-text">Krótki, ciekawy opis projektu, z najważniejszymi informacjami o
+                                    nim.
+                                    Około
+                                    2-3
+                                    zdania.</div>
+                            </div>
+
+                            <div class="text">
+                                <div class="x-big-text">Rezydencja mieszkaniowa w Marysinie</div>
+                                <div class="medium-text">Krótki, ciekawy opis projektu, z najważniejszymi informacjami o
+                                    nim.
+                                    Około
+                                    2-3
+                                    zdania.</div>
+                            </div>
+
+                            <div class="text">
+                                <div class="x-big-text">Bazar - dom handlowy w Lublinie</div>
+                                <div class="medium-text">Krótki, ciekawy opis projektu, z najważniejszymi informacjami o
+                                    nim.
+                                    Około
+                                    2-3
+                                    zdania.</div>
+                            </div>
+
+                            <div class="text">
+                                <div class="x-big-text">Projekt fontanna miejskiej w Lublinie</div>
+                                <div class="medium-text">Krótki, ciekawy opis projektu, z najważniejszymi informacjami o
+                                    nim.
+                                    Około
+                                    2-3
+                                    zdania.</div>
+                            </div>
+
+                            <div class="text">
+                                <div class="x-big-text">Zabudowa jednorodzinna w Kalinówce</div>
+                                <div class="medium-text">Krótki, ciekawy opis projektu, z najważniejszymi informacjami o
+                                    nim.
+                                    Około
+                                    2-3
+                                    zdania.</div>
+                            </div>
+
+                            <div class="text">
+                                <div class="x-big-text">Remiza Ochotniczej Straży Pożarnej w Samowodziu</div>
+                                <div class="medium-text">Krótki, ciekawy opis projektu, z najważniejszymi informacjami o
+                                    nim.
+                                    Około
+                                    2-3
+                                    zdania.</div>
+                            </div>
+
+                            <div class="text">
+                                <div class="x-big-text">Miejskie lodowisko w Opolu lubelskim</div>
+                                <div class="medium-text">Krótki, ciekawy opis projektu, z najważniejszymi informacjami o
+                                    nim.
+                                    Około
+                                    2-3
+                                    zdania.</div>
+                            </div>
+                        </div>
+
+                        <div class="buttons">
+                            <button id="static" class="active button">
+                                <div id="content">O projekcie</div>
+                                <div id="content">O projekcie</div>
+                            </button>
+
+                            <button class="button">
+                                <div id="content">O projekcie</div>
+                                <div id="content">O projekcie</div>
+                            </button>
+
+                            <button class="button">
+                                <div id="content">O projekcie</div>
+                                <div id="content">O projekcie</div>
+                            </button>
+
+                            <button class="button">
+                                <div id="content">O projekcie</div>
+                                <div id="content">O projekcie</div>
+                            </button>
+
+                            <button class="button">
+                                <div id="content">O projekcie</div>
+                                <div id="content">O projekcie</div>
+                            </button>
+
+                            <button class="button">
+                                <div id="content">O projekcie</div>
+                                <div id="content">O projekcie</div>
+                            </button>
+
+                            <button class="button">
+                                <div id="content">O projekcie</div>
+                                <div id="content">O projekcie</div>
+                            </button>
+
+                            <button class="button">
+                                <div id="content">O projekcie</div>
+                                <div id="content">O projekcie</div>
+                            </button>
+
+                            <button class="button">
+                                <div id="content">O projekcie</div>
+                                <div id="content">O projekcie</div>
+                            </button>
+
+                            <button class="button">
+                                <div id="content">O projekcie</div>
+                                <div id="content">O projekcie</div>
+                            </button>
+
+                            <button class="button">
+                                <div id="content">O projekcie</div>
+                                <div id="content">O projekcie</div>
+                            </button>
+
+                            <button class="button">
+                                <div id="content">O projekcie</div>
+                                <div id="content">O projekcie</div>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="right-info">
+                        <div class="arrow" id="prev">
+                            <div class="interaction-wrapper">
+                                <div class="x-small-text"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                        fill="currentColor" viewBox="0 0 24 24">
+                                        <!--Boxicons v3.0.8 https://boxicons.com | License  https://docs.boxicons.com/free-->
+                                        <path
+                                            d="m14.76 6.09-6.11 5.35c-.34.3-.34.83 0 1.13l6.11 5.35c.48.42 1.24.08 1.24-.56V6.65c0-.64-.76-.99-1.24-.56">
+                                        </path>
+                                    </svg>
+                                </div>
+
+                                <div class="x-small-text"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                        fill="currentColor" viewBox="0 0 24 24">
+                                        <!--Boxicons v3.0.8 https://boxicons.com | License  https://docs.boxicons.com/free-->
+                                        <path
+                                            d="m14.76 6.09-6.11 5.35c-.34.3-.34.83 0 1.13l6.11 5.35c.48.42 1.24.08 1.24-.56V6.65c0-.64-.76-.99-1.24-.56">
+                                        </path>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="arrow" id="next">
+                            <div class="interaction-wrapper">
+                                <div class="x-small-text"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                        fill="currentColor" viewBox="0 0 24 24">
+                                        <!--Boxicons v3.0.8 https://boxicons.com | License  https://docs.boxicons.com/free-->
+                                        <path
+                                            d="M8 6.65v10.69c0 .64.76.99 1.24.56l6.11-5.35c.34-.3.34-.83 0-1.13L9.24 6.07C8.76 5.65 8 5.99 8 6.63Z">
+                                        </path>
+                                    </svg>
+                                </div>
+
+                                <div class="x-small-text"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                        fill="currentColor" viewBox="0 0 24 24">
+                                        <!--Boxicons v3.0.8 https://boxicons.com | License  https://docs.boxicons.com/free-->
+                                        <path
+                                            d="M8 6.65v10.69c0 .64.76.99 1.24.56l6.11-5.35c.34-.3.34-.83 0-1.13L9.24 6.07C8.76 5.65 8 5.99 8 6.63Z">
+                                        </path>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="big-text" id="about-section-desc">Pracownia nasza dysponuje posiadającym wieloletnie
+                doświadczenie
+                zespołem projektantów we
+                wszystkich niezbędnych branżach: architektonicznej, konstrukcyjno–budowlanej, sanitarnej, elektrycznej,
+                telekomunikacyjnej, drogowej, architektury zieleni.</div>
+
+            <div class="shadow"></div>
+
             <div class="images">
-                <img src="assets/projects/1_modernizacja_stacji_wodociagowej_2004_lublin.jpg" alt="" class="active"
-                    style="z-index: 12">
-                <img src="assets/projects/2_budynki_mieszkalne_wielorodzinne.jpg" alt="" style="z-index: 11">
+                <img src="assets/projects/1_modernizacja_stacji_wodociagowej_2004_lublin.jpg" alt="" id="image-1">
+                <img src="assets/projects/2_budynki_mieszkalne_wielorodzinne.jpg" alt="" id="image-2">
                 <img src="assets/projects/3_modernizacja_obiektow_zabytkowych-2017_willa_kamilcin.jpg" alt=""
-                    style="z-index: 10">
-                <img src="assets/projects/4_renowacja_ogrod_saski_lublin_2007.jpg" alt="" style="z-index: 9">
-                <img src="assets/projects/5_dom_pomocy_2021_nowa_wies.png" alt="" style="z-index: 8">
-                <img src="assets/projects/6_stacja_paliw_2023_helm.jpg" alt="" style="z-index: 7">
-                <img src="assets/projects/7_rezydencja_2007_marysin.jpg" alt="" style="z-index: 6">
-                <img src="assets/projects/8_dom_handlowy_bazar_1998_lublin.jpg" alt="" style="z-index: 5">
-                <img src="assets/projects/9_fontanna_miejska_2004_lublin.jpg" alt="" style="z-index: 4">
-                <img src="assets/projects/10_zabudowa_jednorodzinna_2007_kalinowka.jpg" alt="" style="z-index: 3">
-                <img src="assets/projects/11_remiza_osp_2023_samowodzie.png" alt="" style="z-index: 2">
-                <img src="assets/projects/12_lodowisko_2019_opole.jpg" alt="" style="z-index: 1">
+                    id="image-3">
+                <img src="assets/projects/4_renowacja_ogrod_saski_lublin_2007.jpg" alt="" id="image-4">
+                <img src="assets/projects/5_dom_pomocy_2021_nowa_wies.png" alt="" id="image-5">
+                <img src="assets/projects/10_zabudowa_jednorodzinna_2007_kalinowka.jpg" alt="" id="image-6">
+            </div>
+        </section>
+
+        <section id="services">
+            <div class="big-text">Pracownia Usług Inwestycyjnych MAWAR Biuro Projektów zajmuje się wykonywaniem – na
+                terenie
+                całego kraju - wielobranżowych dokumentacji technicznych, o różnorodnej tematyce i zakresie, takich jak:
             </div>
 
-            <div class="project-info">
-                <div class="left-info">
-                    <div class="counter">
-                        <div class="dot active"></div>
-                        <div class="dot"></div>
-                        <div class="dot"></div>
-                        <div class="dot"></div>
-                        <div class="dot"></div>
-                        <div class="dot"></div>
-                        <div class="dot"></div>
-                        <div class="dot"></div>
-                        <div class="dot"></div>
-                        <div class="dot"></div>
-                        <div class="dot"></div>
-                        <div class="dot"></div>
-                    </div>
-
-                    <div class="texts">
-                        <div class="text active" id="static">
-                            <div class="x-big-text">Modernizacja stacji wodociągowej w Lublinie</div>
-                            <div class="medium-text">Krótki, ciekawy opis projektu, z najważniejszymi informacjami o
-                                nim.
-                                Około
-                                2-3
-                                zdania.</div>
-                        </div>
-
-                        <div class="text">
-                            <div class="x-big-text">Rys ilustracyjny budynku wielorodzinnego</div>
-                            <div class="medium-text">Krótki, ciekawy opis projektu, z najważniejszymi informacjami o
-                                nim.
-                                Około
-                                2-3
-                                zdania.</div>
-                        </div>
-
-                        <div class="text">
-                            <div class="x-big-text">Modernizacja budynków zabytkowych - Willa Kamilcin</div>
-                            <div class="medium-text">Krótki, ciekawy opis projektu, z najważniejszymi informacjami o
-                                nim.
-                                Około
-                                2-3
-                                zdania.</div>
-                        </div>
-
-                        <div class="text">
-                            <div class="x-big-text">Renowacja Ogrodu Saskiego w Lublinie</div>
-                            <div class="medium-text">Krótki, ciekawy opis projektu, z najważniejszymi informacjami o
-                                nim.
-                                Około
-                                2-3
-                                zdania.</div>
-                        </div>
-
-                        <div class="text">
-                            <div class="x-big-text">Projekt domu pomocy w Nowej Wsi</div>
-                            <div class="medium-text">Krótki, ciekawy opis projektu, z najważniejszymi informacjami o
-                                nim.
-                                Około
-                                2-3
-                                zdania.</div>
-                        </div>
-
-                        <div class="text">
-                            <div class="x-big-text">Projekt miejskiej stacji paliw w Hełmie</div>
-                            <div class="medium-text">Krótki, ciekawy opis projektu, z najważniejszymi informacjami o
-                                nim.
-                                Około
-                                2-3
-                                zdania.</div>
-                        </div>
-
-                        <div class="text">
-                            <div class="x-big-text">Rezydencja mieszkaniowa w Marysinie</div>
-                            <div class="medium-text">Krótki, ciekawy opis projektu, z najważniejszymi informacjami o
-                                nim.
-                                Około
-                                2-3
-                                zdania.</div>
-                        </div>
-
-                        <div class="text">
-                            <div class="x-big-text">Bazar - dom handlowy w Lublinie</div>
-                            <div class="medium-text">Krótki, ciekawy opis projektu, z najważniejszymi informacjami o
-                                nim.
-                                Około
-                                2-3
-                                zdania.</div>
-                        </div>
-
-                        <div class="text">
-                            <div class="x-big-text">Projekt fontanna miejskiej w Lublinie</div>
-                            <div class="medium-text">Krótki, ciekawy opis projektu, z najważniejszymi informacjami o
-                                nim.
-                                Około
-                                2-3
-                                zdania.</div>
-                        </div>
-
-                        <div class="text">
-                            <div class="x-big-text">Zabudowa jednorodzinna w Kalinówce</div>
-                            <div class="medium-text">Krótki, ciekawy opis projektu, z najważniejszymi informacjami o
-                                nim.
-                                Około
-                                2-3
-                                zdania.</div>
-                        </div>
-
-                        <div class="text">
-                            <div class="x-big-text">Remiza Ochotniczej Straży Pożarnej w Samowodziu</div>
-                            <div class="medium-text">Krótki, ciekawy opis projektu, z najważniejszymi informacjami o
-                                nim.
-                                Około
-                                2-3
-                                zdania.</div>
-                        </div>
-
-                        <div class="text">
-                            <div class="x-big-text">Miejskie lodowisko w Opolu lubelskim</div>
-                            <div class="medium-text">Krótki, ciekawy opis projektu, z najważniejszymi informacjami o
-                                nim.
-                                Około
-                                2-3
-                                zdania.</div>
-                        </div>
-                    </div>
-
-                    <div class="buttons">
-                        <button id="static" class="active button">
-                            <div id="content">O projekcie</div>
-                            <div id="content">O projekcie</div>
-                        </button>
-
-                        <button class="button">
-                            <div id="content">O projekcie</div>
-                            <div id="content">O projekcie</div>
-                        </button>
-
-                        <button class="button">
-                            <div id="content">O projekcie</div>
-                            <div id="content">O projekcie</div>
-                        </button>
-
-                        <button class="button">
-                            <div id="content">O projekcie</div>
-                            <div id="content">O projekcie</div>
-                        </button>
-
-                        <button class="button">
-                            <div id="content">O projekcie</div>
-                            <div id="content">O projekcie</div>
-                        </button>
-
-                        <button class="button">
-                            <div id="content">O projekcie</div>
-                            <div id="content">O projekcie</div>
-                        </button>
-
-                        <button class="button">
-                            <div id="content">O projekcie</div>
-                            <div id="content">O projekcie</div>
-                        </button>
-
-                        <button class="button">
-                            <div id="content">O projekcie</div>
-                            <div id="content">O projekcie</div>
-                        </button>
-
-                        <button class="button">
-                            <div id="content">O projekcie</div>
-                            <div id="content">O projekcie</div>
-                        </button>
-
-                        <button class="button">
-                            <div id="content">O projekcie</div>
-                            <div id="content">O projekcie</div>
-                        </button>
-
-                        <button class="button">
-                            <div id="content">O projekcie</div>
-                            <div id="content">O projekcie</div>
-                        </button>
-
-                        <button class="button">
-                            <div id="content">O projekcie</div>
-                            <div id="content">O projekcie</div>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="right-info">
-                    <div class="arrow" id="prev">
-                        <div class="interaction-wrapper">
-                            <div class="x-small-text"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                    fill="currentColor" viewBox="0 0 24 24">
-                                    <!--Boxicons v3.0.8 https://boxicons.com | License  https://docs.boxicons.com/free-->
-                                    <path
-                                        d="m14.76 6.09-6.11 5.35c-.34.3-.34.83 0 1.13l6.11 5.35c.48.42 1.24.08 1.24-.56V6.65c0-.64-.76-.99-1.24-.56">
-                                    </path>
-                                </svg>
-                            </div>
-
-                            <div class="x-small-text"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                    fill="currentColor" viewBox="0 0 24 24">
-                                    <!--Boxicons v3.0.8 https://boxicons.com | License  https://docs.boxicons.com/free-->
-                                    <path
-                                        d="m14.76 6.09-6.11 5.35c-.34.3-.34.83 0 1.13l6.11 5.35c.48.42 1.24.08 1.24-.56V6.65c0-.64-.76-.99-1.24-.56">
-                                    </path>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="arrow" id="next">
-                        <div class="interaction-wrapper">
-                            <div class="x-small-text"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                    fill="currentColor" viewBox="0 0 24 24">
-                                    <!--Boxicons v3.0.8 https://boxicons.com | License  https://docs.boxicons.com/free-->
-                                    <path
-                                        d="M8 6.65v10.69c0 .64.76.99 1.24.56l6.11-5.35c.34-.3.34-.83 0-1.13L9.24 6.07C8.76 5.65 8 5.99 8 6.63Z">
-                                    </path>
-                                </svg>
-                            </div>
-
-                            <div class="x-small-text"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                    fill="currentColor" viewBox="0 0 24 24">
-                                    <!--Boxicons v3.0.8 https://boxicons.com | License  https://docs.boxicons.com/free-->
-                                    <path
-                                        d="M8 6.65v10.69c0 .64.76.99 1.24.56l6.11-5.35c.34-.3.34-.83 0-1.13L9.24 6.07C8.76 5.65 8 5.99 8 6.63Z">
-                                    </path>
-                                </svg>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="about">
-        <div class="big-text" id="about-section-desc">Pracownia nasza dysponuje posiadającym wieloletnie doświadczenie
-            zespołem projektantów we
-            wszystkich niezbędnych branżach: architektonicznej, konstrukcyjno–budowlanej, sanitarnej, elektrycznej,
-            telekomunikacyjnej, drogowej, architektury zieleni.</div>
-
-        <div class="shadow"></div>
-
-        <div class="images">
-            <img src="assets/projects/1_modernizacja_stacji_wodociagowej_2004_lublin.jpg" alt="" id="image-1">
-            <img src="assets/projects/2_budynki_mieszkalne_wielorodzinne.jpg" alt="" id="image-2">
-            <img src="assets/projects/3_modernizacja_obiektow_zabytkowych-2017_willa_kamilcin.jpg" alt="" id="image-3">
-            <img src="assets/projects/4_renowacja_ogrod_saski_lublin_2007.jpg" alt="" id="image-4">
-            <img src="assets/projects/5_dom_pomocy_2021_nowa_wies.png" alt="" id="image-5">
-            <img src="assets/projects/10_zabudowa_jednorodzinna_2007_kalinowka.jpg" alt="" id="image-6">
-        </div>
-    </section>
-
-    <section id="services">
-        <div class="big-text">Pracownia Usług Inwestycyjnych MAWAR Biuro Projektów zajmuje się wykonywaniem – na terenie
-            całego kraju - wielobranżowych dokumentacji technicznych, o różnorodnej tematyce i zakresie, takich jak:
-        </div>
-
-        <div class="categories-wrapper">
-            <!-- <div class="cursor">
+            <div class="categories-wrapper">
+                <!-- <div class="cursor">
                 <div class="small-text">( Przesuwaj )</div>
             </div> -->
 
-            <div class="categories">
-                <div class="category">
-                    <div class="number small-text">( 01 )</div>
-                    <img src="assets/services/blender/stacje_paliw_S-Sur.png">
-                    <div class="medium-text">Stacje paliw</div>
-                </div>
+                <div class="categories">
+                    <div class="category">
+                        <div class="number small-text">( 01 )</div>
+                        <img src="assets/services/blender/stacje_paliw_S-Sur.png">
+                        <div class="medium-text">Stacje paliw</div>
+                    </div>
 
-                <div class="category">
-                    <div class="number small-text">( 02 )</div>
-                    <img src="assets/services/budynki_przemyslowe.png">
-                    <div class="medium-text">Budynki uż. publicznej</div>
-                </div>
+                    <div class="category">
+                        <div class="number small-text">( 02 )</div>
+                        <img src="assets/services/budynki_przemyslowe.png">
+                        <div class="medium-text">Budynki uż. publicznej</div>
+                    </div>
 
-                <div class="category">
-                    <div class="number small-text">( 03 )</div>
-                    <img src="assets/services/budynki_mieszkalne.png">
-                    <div class="medium-text">Modernizacja zabytków</div>
-                </div>
+                    <div class="category">
+                        <div class="number small-text">( 03 )</div>
+                        <img src="assets/services/budynki_mieszkalne.png">
+                        <div class="medium-text">Modernizacja zabytków</div>
+                    </div>
 
-                <div class="category">
-                    <div class="number small-text">( 04 )</div>
-                    <img src="assets/services/budynki_przemyslowe.png">
-                    <div class="medium-text">Obiekty sportowe</div>
-                </div>
+                    <div class="category">
+                        <div class="number small-text">( 04 )</div>
+                        <img src="assets/services/budynki_przemyslowe.png">
+                        <div class="medium-text">Obiekty sportowe</div>
+                    </div>
 
-                <div class="category">
-                    <div class="number small-text">( 05 )</div>
-                    <img src="assets/services/budynki_mieszkalne.png">
-                    <div class="medium-text">Obiekty przemysłowe</div>
-                </div>
+                    <div class="category">
+                        <div class="number small-text">( 05 )</div>
+                        <img src="assets/services/budynki_mieszkalne.png">
+                        <div class="medium-text">Obiekty przemysłowe</div>
+                    </div>
 
-                <div class="category">
-                    <div class="number small-text">( 06 )</div>
-                    <img src="assets/services/budynki_przemyslowe.png">
-                    <div class="medium-text">Obiekty techniczne</div>
-                </div>
+                    <div class="category">
+                        <div class="number small-text">( 06 )</div>
+                        <img src="assets/services/budynki_przemyslowe.png">
+                        <div class="medium-text">Obiekty techniczne</div>
+                    </div>
 
-                <div class="category">
-                    <div class="number small-text">( 07 )</div>
-                    <img src="assets/services/budynki_przemyslowe.png">
-                    <div class="medium-text">Obiekty handlowe</div>
-                </div>
+                    <div class="category">
+                        <div class="number small-text">( 07 )</div>
+                        <img src="assets/services/budynki_przemyslowe.png">
+                        <div class="medium-text">Obiekty handlowe</div>
+                    </div>
 
-                <div class="category">
-                    <div class="number small-text">( 08 )</div>
-                    <img src="assets/services/budynki_przemyslowe.png">
-                    <div class="medium-text">Obiekty służby zdrowia</div>
-                </div>
+                    <div class="category">
+                        <div class="number small-text">( 08 )</div>
+                        <img src="assets/services/budynki_przemyslowe.png">
+                        <div class="medium-text">Obiekty służby zdrowia</div>
+                    </div>
 
-                <div class="category">
-                    <div class="number small-text">( 09 )</div>
-                    <img src="assets/services/budynki_przemyslowe.png">
-                    <div class="medium-text">Budynki rezydencjolane</div>
-                </div>
+                    <div class="category">
+                        <div class="number small-text">( 09 )</div>
+                        <img src="assets/services/budynki_przemyslowe.png">
+                        <div class="medium-text">Budynki rezydencjolane</div>
+                    </div>
 
-                <div class="category">
-                    <div class="number small-text">( 10 )</div>
-                    <img src="assets/services/budynki_przemyslowe.png">
-                    <div class="medium-text">Budynki wielorodzinne</div>
-                </div>
+                    <div class="category">
+                        <div class="number small-text">( 10 )</div>
+                        <img src="assets/services/budynki_przemyslowe.png">
+                        <div class="medium-text">Budynki wielorodzinne</div>
+                    </div>
 
-                <div class="category">
-                    <div class="number small-text">( 11 )</div>
-                    <img src="assets/services/budynki_przemyslowe.png">
-                    <div class="medium-text">Zespoły jednorodzinne</div>
-                </div>
+                    <div class="category">
+                        <div class="number small-text">( 11 )</div>
+                        <img src="assets/services/budynki_przemyslowe.png">
+                        <div class="medium-text">Zespoły jednorodzinne</div>
+                    </div>
 
-                <div class="category">
-                    <!-- TODO  Krotsza nazwa bez skrotow-->
-                    <div class="number small-text">( 12 )</div>
-                    <img src="assets/services/budynki_przemyslowe.png">
-                    <div class="medium-text">Zagospodarowanie prz. pub.</div>
-                </div>
+                    <div class="category">
+                        <!-- TODO  Krotsza nazwa bez skrotow-->
+                        <div class="number small-text">( 12 )</div>
+                        <img src="assets/services/budynki_przemyslowe.png">
+                        <div class="medium-text">Zagospodarowanie prz. pub.</div>
+                    </div>
 
-                <div class="category">
-                    <div class="number small-text">( 13 )</div>
-                    <img src="assets/services/budynki_przemyslowe.png">
-                    <div class="medium-text">Renowacja ob. parkowych</div>
-                </div>
+                    <div class="category">
+                        <div class="number small-text">( 13 )</div>
+                        <img src="assets/services/budynki_przemyslowe.png">
+                        <div class="medium-text">Renowacja ob. parkowych</div>
+                    </div>
 
-                <div class="category">
-                    <div class="number small-text">( 14 )</div>
-                    <img src="assets/services/budynki_przemyslowe.png">
-                    <div class="medium-text">Zag. ob. parkowych</div>
+                    <div class="category">
+                        <div class="number small-text">( 14 )</div>
+                        <img src="assets/services/budynki_przemyslowe.png">
+                        <div class="medium-text">Zag. ob. parkowych</div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="reviews">
-        <h1>Recenzje</h1>
-    </section>
+        <section id="reviews">
+            <h1>Recenzje</h1>
+        </section>
+    </div>
+
+    <div class="mobile-version">
+        <div class="medium-text">Wersja strony na telefon będzie wkrótce doestępna.</div>
+    </div>
 
     <script>
         // Smooth scroll (gsap + lenis)
 
-        // const lenis = new Lenis({
-        //     duration: 1,
-        //     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        //     smooth: true,
-        //     direction: 'vertical'
-        // });
+        const lenis = new Lenis({
+            duration: 1,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            smooth: true,
+            direction: 'vertical'
+        });
 
-        // lenis.on('scroll', ScrollTrigger.update);
-        // gsap.ticker.add((time) => { lenis.raf(time * 1000); });
-        // gsap.ticker.lagSmoothing(0);
+        lenis.on('scroll', ScrollTrigger.update);
+        gsap.ticker.add((time) => { lenis.raf(time * 1000); });
+        gsap.ticker.lagSmoothing(0);
 
 
         // Hero
@@ -663,7 +669,7 @@
 
             const tl = gsap.timeline({
                 scrollTrigger: {
-                    scrub: 0.2,
+                    scrub: 0,
                     pin: false,
                     trigger: "#hero",
                     start: "top 40px",
