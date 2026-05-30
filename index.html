@@ -490,27 +490,18 @@
     </section>
 
     <script>
-        // Smooth scroll (gsap + lenis) — desktop only
-        // On mobile, Lenis sets overflow:hidden on the body and scrolls via transform,
-        // which breaks position:fixed for nav, gradient-blur, and columns.
+        // Smooth scroll (gsap + lenis)
 
-        const isMobile = window.matchMedia('(max-width: 767px)').matches;
+        const lenis = new Lenis({
+            duration: 1,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            smooth: true,
+            direction: 'vertical'
+        });
 
-        if (!isMobile) {
-            const lenis = new Lenis({
-                duration: 1,
-                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-                smooth: true,
-                direction: 'vertical'
-            });
-
-            lenis.on('scroll', ScrollTrigger.update);
-            gsap.ticker.add((time) => { lenis.raf(time * 1000); });
-            gsap.ticker.lagSmoothing(0);
-        } else {
-            // On mobile use native scroll; keep ScrollTrigger in sync
-            window.addEventListener('scroll', ScrollTrigger.update, { passive: true });
-        }
+        lenis.on('scroll', ScrollTrigger.update);
+        gsap.ticker.add((time) => { lenis.raf(time * 1000); });
+        gsap.ticker.lagSmoothing(0);
 
 
         // Hero
@@ -938,10 +929,6 @@
             type: 'x',
             bounds: document.querySelector('.categories-wrapper'),
             inertia: true,
-            // On mobile, prevent the draggable from consuming vertical scroll events
-            // and fighting with native scroll / touch-action
-            allowEventDefault: true,
-            minimumMovement: 6,
             onClick: function () {
                 console.log('clicked');
             },
