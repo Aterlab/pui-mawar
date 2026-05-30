@@ -399,7 +399,7 @@
             <div class="categories">
                 <div class="category">
                     <div class="number small-text">( 01 )</div>
-                    <img src="assets/services/stacje_paliw.png">
+                    <img src="assets/services/blender/stacje_paliw_S-Sur.png">
                     <div class="medium-text">Stacje paliw</div>
                 </div>
 
@@ -490,18 +490,27 @@
     </section>
 
     <script>
-        // Smooth scroll (gsap + lenis)
+        // Smooth scroll (gsap + lenis) — desktop only
+        // On mobile, Lenis sets overflow:hidden on the body and scrolls via transform,
+        // which breaks position:fixed for nav, gradient-blur, and columns.
 
-        const lenis = new Lenis({
-            duration: 1,
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-            smooth: true,
-            direction: 'vertical'
-        });
+        const isMobile = window.matchMedia('(max-width: 767px)').matches;
 
-        lenis.on('scroll', ScrollTrigger.update);
-        gsap.ticker.add((time) => { lenis.raf(time * 1000); });
-        gsap.ticker.lagSmoothing(0);
+        if (!isMobile) {
+            const lenis = new Lenis({
+                duration: 1,
+                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                smooth: true,
+                direction: 'vertical'
+            });
+
+            lenis.on('scroll', ScrollTrigger.update);
+            gsap.ticker.add((time) => { lenis.raf(time * 1000); });
+            gsap.ticker.lagSmoothing(0);
+        } else {
+            // On mobile use native scroll; keep ScrollTrigger in sync
+            window.addEventListener('scroll', ScrollTrigger.update, { passive: true });
+        }
 
 
         // Hero
@@ -929,6 +938,10 @@
             type: 'x',
             bounds: document.querySelector('.categories-wrapper'),
             inertia: true,
+            // On mobile, prevent the draggable from consuming vertical scroll events
+            // and fighting with native scroll / touch-action
+            allowEventDefault: true,
+            minimumMovement: 6,
             onClick: function () {
                 console.log('clicked');
             },

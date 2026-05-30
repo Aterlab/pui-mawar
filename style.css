@@ -856,6 +856,12 @@ nav .logo:hover::after {
         --x-big: 40px;
     }
 
+    /* Ensure body scrolls natively on mobile (no Lenis overflow:hidden interference) */
+    body {
+        overflow-y: auto !important;
+        overflow-x: hidden;
+    }
+
     .column#mobile-hidden {
         display: none;
     }
