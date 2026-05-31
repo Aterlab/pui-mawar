@@ -52,6 +52,11 @@
     background-color: rgba(249, 241, 231, 0.2);
 }
 
+html,
+body {
+    overflow-x: hidden;
+}
+
 body {
     background-color: var(--dark);
     letter-spacing: -0.04em;
@@ -781,11 +786,6 @@ nav .logo:hover::after {
     width: fit-content;
     gap: var(--margin);
     z-index: 1 !important;
-    overflow: hidden;
-}
-
-#services .categories-wrapper {
-    overflow: hidden;
 }
 
 #services .category {
@@ -862,10 +862,15 @@ nav .logo:hover::after {
         flex-direction: column;
         justify-content: center;
         gap: var(--margin);
-        height: calc(100dvh - (var(--margin) * 2));
-        width: calc(100dvw - (var(--margin) * 2));
-        overflow: hidden;
-        text-align: center;
+        touch-action: pan-y;
+        /* height: calc(100dvh - (var(--margin) * 2)); */
+        /* width: calc(100dvw - (var(--margin) * 2)); */
+        overflow-x: hidden;
+    }
+
+    .mobile-version section {
+        touch-action: pan-y;
+        overflow-x: hidden;
     }
 
     .desktop-version {
