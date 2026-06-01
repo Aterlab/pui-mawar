@@ -856,6 +856,15 @@ nav .logo:hover::after {
 }
 
 @media screen and (max-width: 798px) {
+    body {
+        margin: var(--margin) var(--margin) var(--margin) 0;
+        /* Margin is all except left */
+    }
+
+    #bottom-gradient-blur {
+        display: none;
+    }
+
     .mobile-version {
         display: flex;
         pointer-events: all;
@@ -866,6 +875,8 @@ nav .logo:hover::after {
         /* height: calc(100dvh - (var(--margin) * 2)); */
         /* width: calc(100dvw - (var(--margin) * 2)); */
         overflow-x: hidden;
+        margin-left: var(--margin);
+        /* Somehow this prevents the mobile x-scroll, since this didnt work even with overflow-x: hidden */
     }
 
     .mobile-version section {
@@ -989,5 +1000,11 @@ nav .logo:hover::after {
 
     #services .big-text {
         max-width: calc(100dvw - (var(--margin) * 2));
+        font-size: var(--medium-text);
+    }
+
+    #services .categories,
+    #services .categories-wrapper {
+        width: calc(((13 * 300px) + (12 * var(--margin))) - 90px);
     }
 }
