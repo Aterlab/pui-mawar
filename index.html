@@ -885,9 +885,15 @@
 
         // Every animation that isn't in desktop or mobile query plays always (staggers, enter anims etc..)
 
-        // Run only on DESKOTP (mainly gsap pins, which broke the layout)
-        mm.add("(min-width: 768px)", () => {
+        // Run only on DESKOTP (gsap pins, which broke the layout and caused it to scroll back suddenly)
+        mm.add("(min-width: 798px)", () => {
             // Pins
+            let projectPin = ScrollTrigger.create({
+                trigger: "#projects",
+                pin: "#projects",
+                start: "top 20px",
+                end: "+=500",
+            });
 
             let aboutPin = ScrollTrigger.create({
                 trigger: "#about",
@@ -897,35 +903,33 @@
             });
 
             // can be the hero tl
-
-            let servicesSection = document.querySelectorAll("#services");
-
-            servicesSection.forEach(function (elem) {
-                const servicesText = new SplitType(elem.querySelector("#services .big-text"));
-                let servicesChars = servicesText.chars;
-
-                gsap.from(servicesChars, {
-                    scrollTrigger: {
-                        trigger: elem,
-                        start: "bottom bottom",
-                        end: "+=300",
-                    },
-                    opacity: 0,
-                    y: 100,
-                    duration: 0.6,
-                    ease: 'power4.out',
-                    stagger: {
-                        amount: 0.4,
-                        from: 'start',
-                    }
-                });
-            });
         });
 
 
-
-
         // Services section
+
+        let servicesSection = document.querySelectorAll("#services");
+
+        servicesSection.forEach(function (elem) {
+            const servicesText = new SplitType(elem.querySelector("#services .big-text"));
+            let servicesChars = servicesText.chars;
+
+            gsap.from(servicesChars, {
+                scrollTrigger: {
+                    trigger: elem,
+                    start: "bottom bottom",
+                    end: "+=300",
+                },
+                opacity: 0,
+                y: 100,
+                duration: 0.6,
+                ease: 'power4.out',
+                stagger: {
+                    amount: 0.4,
+                    from: 'start',
+                }
+            });
+        });
 
         gsap.registerPlugin(Draggable, InertiaPlugin)
 
