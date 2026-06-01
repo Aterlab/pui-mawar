@@ -723,6 +723,24 @@
             end: "+=3500",
         });
 
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                scrub: 0,
+                pin: false,
+                trigger: "#hero",
+                start: "top 40px",
+                endTrigger: "#projects",
+                end: "bottom 50%",
+            },
+        });
+
+        tl.to("#hero", {
+            opacity: "0",
+            scale: "0.8",
+            y: 800,
+        });
+
+
 
         // About
 
@@ -734,33 +752,9 @@
         mm.add("(min-width: 768px)", () => {
             // Pins
 
-            let projectPin = ScrollTrigger.create({
-                trigger: "#projects",
-                pin: "#projects",
-                start: "top 20px",
-                end: "+=500",
-            });
-
-            console.log(projectPin.pin);
-
             // ..and the hero tl
 
-            const tl = gsap.timeline({
-                scrollTrigger: {
-                    scrub: 0,
-                    pin: false,
-                    trigger: "#hero",
-                    start: "top 40px",
-                    endTrigger: "#projects",
-                    end: "bottom 50%",
-                },
-            });
 
-            tl.to("#hero", {
-                opacity: "0",
-                scale: "0.8",
-                y: 800,
-            });
 
             // Tutaj
 
