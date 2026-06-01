@@ -716,6 +716,13 @@
             });
         });
 
+        let aboutPin = ScrollTrigger.create({
+            trigger: "#about",
+            pin: "#about",
+            start: "top 20px",
+            end: "+=3500",
+        });
+
 
         // About
 
@@ -732,13 +739,6 @@
                 pin: "#projects",
                 start: "top 20px",
                 end: "+=500",
-            });
-
-            let aboutPin = ScrollTrigger.create({
-                trigger: "#about",
-                pin: "#about",
-                start: "top 20px",
-                end: "+=3500",
             });
 
             console.log(projectPin.pin);
