@@ -830,6 +830,9 @@ nav .logo:hover::after {
     opacity: 1;
 }
 
+#services .catego
+/*TODO Dodac cursor ( Przesuwaj ) */
+
 #services .cursor {
     height: 50px;
     width: 50px;
@@ -868,7 +871,6 @@ nav .logo:hover::after {
 .desktop-version {
     display: block;
     pointer-events: all;
-    margin-left: var(--margin);
 }
 
 @media screen and (max-width: 798px) {
@@ -895,6 +897,8 @@ nav .logo:hover::after {
 
         /* display: none;
         pointer-events: none; */
+
+        margin-left: var(--margin);
     }
 
     /** Components */
