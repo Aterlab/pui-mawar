@@ -716,12 +716,12 @@
             });
         });
 
-        let aboutPin = ScrollTrigger.create({
-            trigger: "#about",
-            pin: "#about",
-            start: "top 20px",
-            end: "+=3500",
-        });
+        // let aboutPin = ScrollTrigger.create({
+        //     trigger: "#about",
+        //     pin: "#about",
+        //     start: "top 20px",
+        //     end: "+=3500",
+        // });
 
         const tl = gsap.timeline({
             scrollTrigger: {
@@ -744,6 +744,143 @@
 
         // About
 
+        let aboutSection = document.querySelectorAll("#about");
+
+        aboutSection.forEach(function (elem) {
+            // Rozbijamy tekst na litery (chars) oraz słowa (words)
+            const aboutText = new SplitType(elem.querySelector("#about-section-desc"));
+            let aboutChars = aboutText.chars; // To są elementy, które faktycznie animujemy
+
+            const bottomGradientBlur = document.querySelector("#bottom-gradient-blur")
+
+            gsap.from(aboutChars, {
+                scrollTrigger: {
+                    trigger: elem,
+                    start: "bottom bottom",
+                    end: "+=300",
+                    // toggleActions: "play none none reverse",
+                },
+                opacity: 0,
+                y: 100,
+                duration: 0.6,
+                ease: 'power4.out',
+                stagger: {
+                    amount: 0.4,
+                    from: 'start',
+                }
+            });
+
+            gsap.from(bottomGradientBlur, {
+                scrollTrigger: {
+                    trigger: elem,
+                    start: "bottom bottom",
+                    end: "+=4000",
+                    toggleActions: "play reverse play reverse",
+                },
+                opacity: 0,
+                duration: 0.6,
+                ease: 'power4.out',
+            });
+        });
+
+        var randomOffset = gsap.utils.random(-1200, -1800, true); // Random offset for imgs
+
+        const img1 = gsap.timeline({
+            scrollTrigger: {
+                scrub: 0,
+                pin: false,
+                trigger: "#about #image-1",
+                start: "top top",
+                endTrigger: "#services",
+                end: "+=3500",
+                ease: "linear"
+            },
+        });
+
+        img1.to("#about #image-1", {
+            y: randomOffset,
+        });
+
+        const img2 = gsap.timeline({
+            scrollTrigger: {
+                scrub: 0,
+                pin: false,
+                trigger: "#about #image-2",
+                start: "top top",
+                endTrigger: "#services",
+                end: "+=3500",
+                ease: "linear"
+            },
+        });
+
+        img2.to("#about #image-2", {
+            y: randomOffset,
+        });
+
+        const img3 = gsap.timeline({
+            scrollTrigger: {
+                scrub: 0,
+                pin: false,
+                trigger: "#about #image-3",
+                start: "center center",
+                endTrigger: "#services",
+                end: "+=3500",
+                ease: "linear",
+            },
+        });
+
+        img3.to("#about #image-3", {
+            y: randomOffset,
+        });
+
+        const img4 = gsap.timeline({
+            scrollTrigger: {
+                scrub: 0,
+                pin: false,
+                trigger: "#about #image-4",
+                start: "center center",
+                endTrigger: "#services",
+                end: "+=3500",
+                ease: "linear"
+            },
+        });
+
+        img4.to("#about #image-4", {
+            y: randomOffset,
+        });
+
+        const img5 = gsap.timeline({
+            scrollTrigger: {
+                scrub: 0,
+                pin: false,
+                trigger: "#about #image-5",
+                start: "center center",
+                endTrigger: "#services",
+                end: "+=3500",
+                ease: "linear"
+            },
+        });
+
+        img5.to("#about #image-5", {
+            y: randomOffset,
+        });
+
+        const img6 = gsap.timeline({
+            scrollTrigger: {
+                scrub: 0,
+                pin: false,
+                trigger: "#about #image-6",
+                start: "center center",
+                endTrigger: "#services",
+                end: "+=3500",
+                ease: "linear"
+            },
+        });
+
+        img6.to("#about #image-6", {
+            y: randomOffset,
+        });
+
         const mm = gsap.matchMedia();
 
         // Every animation that isn't in desktop or mobile query plays always (staggers, enter anims etc..)
@@ -752,148 +889,14 @@
         mm.add("(min-width: 768px)", () => {
             // Pins
 
-            // ..and the hero tl
-
-
-
-            // Tutaj
-
-            let aboutSection = document.querySelectorAll("#about");
-
-            aboutSection.forEach(function (elem) {
-                // Rozbijamy tekst na litery (chars) oraz słowa (words)
-                const aboutText = new SplitType(elem.querySelector("#about-section-desc"));
-                let aboutChars = aboutText.chars; // To są elementy, które faktycznie animujemy
-
-                const bottomGradientBlur = document.querySelector("#bottom-gradient-blur")
-
-                gsap.from(aboutChars, {
-                    scrollTrigger: {
-                        trigger: elem,
-                        start: "bottom bottom",
-                        end: "+=300",
-                        // toggleActions: "play none none reverse",
-                    },
-                    opacity: 0,
-                    y: 100,
-                    duration: 0.6,
-                    ease: 'power4.out',
-                    stagger: {
-                        amount: 0.4,
-                        from: 'start',
-                    }
-                });
-
-                gsap.from(bottomGradientBlur, {
-                    scrollTrigger: {
-                        trigger: elem,
-                        start: "bottom bottom",
-                        end: "+=4000",
-                        toggleActions: "play reverse play reverse",
-                    },
-                    opacity: 0,
-                    duration: 0.6,
-                    ease: 'power4.out',
-                });
+            let aboutPin = ScrollTrigger.create({
+                trigger: "#about",
+                pin: "#about",
+                start: "top 20px",
+                end: "+=3500",
             });
 
-            var randomOffset = gsap.utils.random(-1200, -1800, true); // Random offset for imgs
-
-            const img1 = gsap.timeline({
-                scrollTrigger: {
-                    scrub: 0,
-                    pin: false,
-                    trigger: "#about #image-1",
-                    start: "top top",
-                    endTrigger: "#services",
-                    end: "+=3500",
-                    ease: "linear"
-                },
-            });
-
-            img1.to("#about #image-1", {
-                y: randomOffset,
-            });
-
-            const img2 = gsap.timeline({
-                scrollTrigger: {
-                    scrub: 0,
-                    pin: false,
-                    trigger: "#about #image-2",
-                    start: "top top",
-                    endTrigger: "#services",
-                    end: "+=3500",
-                    ease: "linear"
-                },
-            });
-
-            img2.to("#about #image-2", {
-                y: randomOffset,
-            });
-
-            const img3 = gsap.timeline({
-                scrollTrigger: {
-                    scrub: 0,
-                    pin: false,
-                    trigger: "#about #image-3",
-                    start: "center center",
-                    endTrigger: "#services",
-                    end: "+=3500",
-                    ease: "linear",
-                },
-            });
-
-            img3.to("#about #image-3", {
-                y: randomOffset,
-            });
-
-            const img4 = gsap.timeline({
-                scrollTrigger: {
-                    scrub: 0,
-                    pin: false,
-                    trigger: "#about #image-4",
-                    start: "center center",
-                    endTrigger: "#services",
-                    end: "+=3500",
-                    ease: "linear"
-                },
-            });
-
-            img4.to("#about #image-4", {
-                y: randomOffset,
-            });
-
-            const img5 = gsap.timeline({
-                scrollTrigger: {
-                    scrub: 0,
-                    pin: false,
-                    trigger: "#about #image-5",
-                    start: "center center",
-                    endTrigger: "#services",
-                    end: "+=3500",
-                    ease: "linear"
-                },
-            });
-
-            img5.to("#about #image-5", {
-                y: randomOffset,
-            });
-
-            const img6 = gsap.timeline({
-                scrollTrigger: {
-                    scrub: 0,
-                    pin: false,
-                    trigger: "#about #image-6",
-                    start: "center center",
-                    endTrigger: "#services",
-                    end: "+=3500",
-                    ease: "linear"
-                },
-            });
-
-            img6.to("#about #image-6", {
-                y: randomOffset,
-            });
+            // can be the hero tl
 
             let servicesSection = document.querySelectorAll("#services");
 
