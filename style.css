@@ -312,7 +312,20 @@ nav .logo:hover::after {
     inset: auto 0 0 0;
 }
 
+#contact {
+    position: relative;
+}
 
+#ellipse-gradient-blur {
+    transform: rotate(0deg);
+    inset: auto 0 0 0;
+    min-width: 100dvw;
+    min-height: 100dvh;
+    background-color: rgba(249, 241, 231, 0);
+    background: none;
+    position: absolute;
+    border: 1px solid red;
+}
 
 .gradient-blur {
     position: fixed;
@@ -906,7 +919,7 @@ body:active #drag-cursor.hovering {
     z-index: 1;
     width: max-content;
     overflow: hidden;
-    animation: marqueeMove 10s linear infinite;
+    animation: marqueeMove 25s linear infinite;
 }
 
 /* #collabs .spacing-wrapper .marquee:hover {
@@ -916,7 +929,7 @@ body:active #drag-cursor.hovering {
 .marquee-set {
     display: flex;
     align-items: center;
-    gap: calc(var(--margin) * 2);
+    gap: calc(var(--margin) * 3);
     overflow: hidden;
 }
 
@@ -940,34 +953,41 @@ body:active #drag-cursor.hovering {
     width: auto;
 }
 
-/** Responsiveness */
+/** Reviews section */
 
-.mobile-version {
-    display: none;
-    pointer-events: none;
-
-    flex-direction: column;
+#reviews {
+    display: flex;
     justify-content: center;
-    gap: var(--margin);
-    touch-action: pan-y;
-    /* height: calc(100dvh - (var(--margin) * 2)); */
-    /* width: calc(100dvw - (var(--margin) * 2)); */
-    overflow-x: hidden;
-    margin-left: var(--margin);
-    /* Somehow this prevents the mobile x-scroll, since this didnt work even with overflow-x: hidden */
+    align-items: center;
 }
 
-.mobile-version section {
-    touch-action: pan-y;
-    overflow-x: hidden;
+#reviews h2 {
+    color: var(--light);
+    opacity: 0.25;
+    font-size: 8.2vw;
+    font-weight: 500;
+    letter-spacing: -0.04em;
 }
+
+/** Responsiveness */
 
 .content-wrapper {
     display: block;
     pointer-events: all;
 }
 
-@media screen and (max-width: 798px) {
+/* .content-wrapper {
+    overflow: visible !important;
+    width: 100dvw !important;
+}
+
+body {
+    overflow: visible;
+    width: 100dvw;
+    margin-left: 0;
+} */
+
+@media screen and (max-width: 767px) {
     body {
         margin: var(--margin) var(--margin) var(--margin) 0;
         /* Margin is all except left */
