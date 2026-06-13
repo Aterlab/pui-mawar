@@ -13,16 +13,107 @@ gsap.ticker.lagSmoothing(0);
 
 
 // Hero
+const noDelay = 0.2
+const secondaryDelay = 1.2
+const thirdDelay = 1.8
 
 window.addEventListener('load', () => {
     const desc = new SplitType('#desc', { type: 'words, lines', mask: 'lines', linesClass: 'line++' });
-    gsap.from(desc.words, { opacity: 0, y: 100, duration: 0.8, delay: 0.2, ease: 'power4.out', stagger: { amount: 0.25, from: 'start' } });
+    gsap.from(desc.words, { opacity: 0, y: 100, duration: 0.8, delay: secondaryDelay, ease: 'power4.out', stagger: { amount: 0.25, from: 'start' } });
 
     const headline = new SplitType('.headline', { type: 'chars, lines', mask: 'lines', linesClass: 'line++' });
-    gsap.from(headline.chars, { opacity: 0, y: 200, duration: 0.8, delay: 0.2, ease: 'power4.out', stagger: { amount: 0.25, from: 'start' } });
+    gsap.from(headline.chars, { opacity: 0, y: 200, duration: 0.8, delay: noDelay, ease: 'power4.out', stagger: { amount: 0.25, from: 'start' } });
 
     const notice = new SplitType('#notice', { type: 'chars, lines', mask: 'lines', linesClass: 'line++' });
-    gsap.from(notice.chars, { opacity: 0, y: 100, duration: 0.8, delay: 0.2, ease: 'power4.out', stagger: { amount: 0.25, from: 'start' } });
+    gsap.from(notice.chars, { opacity: 0, y: 100, duration: 0.8, delay: secondaryDelay, ease: 'power4.out', stagger: { amount: 0.25, from: 'start' } });
+
+    const allColumns = document.querySelectorAll(".column");
+
+    allColumns.forEach(column => {
+        gsap.from(column, {
+            width: 0,
+            delay: thirdDelay,
+            ease: "power4.inOut",
+            duration: 1,
+        })
+    });
+
+    const showreel = document.querySelector(".showreel-content")
+    const playBtn = document.getElementById("playBtn")
+
+    gsap.from(showreel, {
+        width: 0,
+        delay: thirdDelay,
+        ease: "power4.inOut",
+        duration: 1,
+        scale: 1.1,
+    })
+
+    gsap.from(playBtn, {
+        opacity: 0,
+        delay: thirdDelay,
+        ease: "power4.inOut",
+        duration: 0.25,
+    })
+
+    gsap.to(playBtn, {
+        opacity: 1,
+        delay: thirdDelay + 1,
+        ease: "power4.inOut",
+        duration: 0.25,
+    })
+
+    const navRight = document.querySelector("nav .right")
+    const navLeft = document.querySelector("nav .left")
+    const heroInfoBtn = document.getElementById("heroInfoBtn")
+
+    gsap.from(navRight, {
+        opacity: 0,
+        x: "100%",
+        delay: secondaryDelay,
+        ease: "power4.inOut",
+        duration: 1,
+    })
+
+    gsap.from(navLeft, {
+        opacity: 0,
+        x: "-100%",
+        delay: secondaryDelay,
+        ease: "power4.inOut",
+        duration: 1,
+    })
+
+    gsap.from(heroInfoBtn, {
+        opacity: 0,
+        delay: secondaryDelay,
+        ease: "power4.inOut",
+        duration: 0.25,
+    })
+
+    gsap.to(heroInfoBtn, {
+        opacity: 1,
+        delay: secondaryDelay + 0.1,
+        ease: "power4.inOut",
+        duration: 0.25,
+    })
+});
+
+const tl = gsap.timeline({
+    scrollTrigger: {
+        scrub: 0,
+        pin: false,
+        trigger: "#hero",
+        start: "top 40px",
+        endTrigger: "#projects",
+        end: "bottom 50%",
+    },
+    ease: "linear"
+});
+
+tl.to("#hero", {
+    opacity: "0",
+    scale: "0.8",
+    y: "120dvh",
 });
 
 
@@ -226,23 +317,6 @@ projectsSection.forEach(function (elem, index) {
 //     end: "+=3500",
 // });
 
-const tl = gsap.timeline({
-    scrollTrigger: {
-        scrub: 0,
-        pin: false,
-        trigger: "#hero",
-        start: "top 40px",
-        endTrigger: "#projects",
-        end: "bottom 50%",
-    },
-});
-
-tl.to("#hero", {
-    opacity: "0",
-    scale: "0.8",
-    y: 800,
-});
-
 
 
 // About
@@ -269,19 +343,21 @@ gsap.from(aboutChars, {
     }
 });
 
-gsap.from(bottomGradientBlur, {
-    scrollTrigger: {
-        trigger: aboutSection,
-        start: "bottom bottom",
-        end: "+=4000",
-        toggleActions: "play reverse play reverse",
-    },
-    opacity: 0,
-    duration: 0.6,
-    ease: 'power4.out',
-});
+// gsap.from(bottomGradientBlur, {
+//     scrollTrigger: {
+//         trigger: aboutSection,
+//         start: "bottom bottom",
+//         end: "+=4000",
+//         toggleActions: "play reverse play reverse",
+//     },
+//     opacity: 0,
+//     duration: 0.6,
+//     ease: 'power4.out',
+// });
 
 var randomOffset = gsap.utils.random(-1200, -1800, true); // Random offset for imgs
+var randomScrub = gsap.utils.random(0.1, 1.2, true); // Random scrub (about imgs and reviews)
+
 
 const img1 = gsap.timeline({
     scrollTrigger: {
@@ -293,6 +369,7 @@ const img1 = gsap.timeline({
         end: "+=3500",
         ease: "linear"
     },
+    ease: "linear"
 });
 
 img1.to("#about #image-1", {
@@ -309,6 +386,7 @@ const img2 = gsap.timeline({
         end: "+=3500",
         ease: "linear"
     },
+    ease: "linear"
 });
 
 img2.to("#about #image-2", {
@@ -325,6 +403,7 @@ const img3 = gsap.timeline({
         end: "+=3500",
         ease: "linear",
     },
+    ease: "linear"
 });
 
 img3.to("#about #image-3", {
@@ -341,6 +420,7 @@ const img4 = gsap.timeline({
         end: "+=3500",
         ease: "linear"
     },
+    ease: "linear"
 });
 
 img4.to("#about #image-4", {
@@ -357,6 +437,7 @@ const img5 = gsap.timeline({
         end: "+=3500",
         ease: "linear"
     },
+    ease: "linear"
 });
 
 img5.to("#about #image-5", {
@@ -373,6 +454,7 @@ const img6 = gsap.timeline({
         end: "+=3500",
         ease: "linear"
     },
+    ease: "linear"
 });
 
 img6.to("#about #image-6", {
@@ -406,14 +488,133 @@ mm.add("(min-width: 798px)", () => {
         start: "top 20px",
         end: "+=700",
     });
-});
 
-let reviewsPin = ScrollTrigger.create({
-    trigger: "#reviews",
-    pin: "#reviews",
-    start: "top 20px",
-    end: "+=3500",
-})
+    let reviewsPin = ScrollTrigger.create({
+        trigger: "#reviews",
+        pin: "#reviews",
+        start: "top 20px",
+        end: "+=3500",
+    })
+
+    // let contactPin = ScrollTrigger.create({
+    //     trigger: "#contact",
+    //     pin: "#contact",
+    //     start: "top top",
+    //     end: "+=1500",
+    // });
+
+    // const rev1 = gsap.timeline({
+    //     scrollTrigger: {
+    //         scrub: 0,
+    //         pin: false,
+    //         trigger: "#reviews .reviews #rev1",
+    //         start: "top top",
+    //         endTrigger: "#contact",
+    //         end: "+=3500",
+    //         ease: "linear"
+    //     },
+    // });
+
+    // rev1.to("#reviews .reviews #rev1", {
+    //     y: randomOffset,
+    // });
+
+    const reviewMove = gsap.timeline({
+        scrollTrigger: {
+            scrub: 0,
+            pin: false,
+            trigger: "#reviews .reviews",
+            start: "top top",
+            endTrigger: "#contact",
+            end: "+=3500",
+            ease: "linear"
+        },
+    });
+
+    reviewMove.to("#reviews .reviews", {
+        y: "-300vh",
+    });
+
+    // const rev2 = gsap.timeline({
+    //     scrollTrigger: {
+    //         scrub: 0,
+    //         pin: false,
+    //         trigger: "#reviews .reviews #rev2",
+    //         start: "top top",
+    //         endTrigger: "#contact",
+    //         end: "+=3500",
+    //         ease: "linear"
+    //     },
+    // });
+
+    // rev2.to("#reviews .reviews #rev2", {
+    //     y: randomOffset,
+    // });
+
+    // const rev3 = gsap.timeline({
+    //     scrollTrigger: {
+    //         scrub: 0,
+    //         pin: false,
+    //         trigger: "#reviews .reviews #rev3",
+    //         start: "top top",
+    //         endTrigger: "#contact",
+    //         end: "+=3500",
+    //         ease: "linear"
+    //     },
+    // });
+
+    // rev3.to("#reviews .reviews #rev3", {
+    //     y: randomOffset,
+    // });
+
+    // const rev4 = gsap.timeline({
+    //     scrollTrigger: {
+    //         scrub: 0,
+    //         pin: false,
+    //         trigger: "#reviews .reviews #rev4",
+    //         start: "top top",
+    //         endTrigger: "#contact",
+    //         end: "+=3500",
+    //         ease: "linear"
+    //     },
+    // });
+
+    // rev4.to("#reviews .reviews #rev4", {
+    //     y: randomOffset
+    // });
+
+    // const rev5 = gsap.timeline({
+    //     scrollTrigger: {
+    //         scrub: 0,
+    //         pin: false,
+    //         trigger: "#reviews .reviews #rev5",
+    //         start: "top top",
+    //         endTrigger: "#contact",
+    //         end: "+=3500",
+    //         ease: "linear"
+    //     },
+    // });
+
+    // rev5.to("#reviews .reviews #rev5", {
+    //     y: randomOffset,
+    // });
+
+    // const rev6 = gsap.timeline({
+    //     scrollTrigger: {
+    //         scrub: 0,
+    //         pin: false,
+    //         trigger: "#reviews .reviews #rev6",
+    //         start: "top top",
+    //         endTrigger: "#contact",
+    //         end: "+=3500",
+    //         ease: "linear"
+    //     },
+    // });
+
+    // rev6.to("#reviews .reviews #rev6", {
+    //     y: randomOffset
+    // });
+});
 
 
 // Services section
@@ -498,6 +699,46 @@ gsap.from(reviewsChars, {
     }
 });
 
+// gsap.to(bottomGradientBlur, {
+//     scrollTrigger: {
+//         trigger: reviewsSection,
+//         start: "bottom bottom",
+//         end: "+=300",
+//         toggleActions: "play reverse play reverse",
+//     },
+//     opacity: 0,
+//     duration: 0.6,
+//     ease: 'power4.out',
+// })
+
+// Reviews section
+
+// const rr1 = -1600;
+// const rr2 = -1400;
+// const rr3 = -1700;
+// const rr4 = -1300;
+// const rr5 = -1600;
+// const rr6 = -1200;
+
+// Contact
+
+// const contactTl = gsap.timeline({
+//     scrollTrigger: {
+//         scrub: 0,
+//         pin: false,
+//         trigger: "#hero",
+//         start: "top 40px",
+//         endTrigger: "#projects",
+//         end: "bottom 50%",
+//     },
+// });
+
+// tl.to("#hero", {
+//     opacity: "0",
+//     scale: "0.8",
+//     y: 800,
+// });
+
 // Run only on MOBILE (mostly not used, just in case)
 mm.add("(max-width: 767px)", () => {
     const tl = gsap.timeline({
@@ -510,4 +751,30 @@ mm.add("(max-width: 767px)", () => {
             end: "bottom 50%",
         },
     });
+
+    const allReviews = document.querySelectorAll(".review")
+    const randomRotate = gsap.utils.random(-5, 5, true)
+
+    // allReviews.forEach(rev => {
+    //     gsap.to(rev, {
+    //         rotate: randomRotate
+    //     });
+    // });
+
+    // const reviewsTl = gsap.timeline({
+    //     scrollTrigger: {
+    //         scrub: 0,
+    //         pin: false,
+    //         trigger: reviewsSection,
+    //         start: "top 20px",
+    //         markers: true,
+    //         end: "+=3500",
+    //         ease: "linear"
+    //     },
+    // });
+
+    // reviewsTl.to(".reviews", {
+    //     y: "-200dvh",
+    //     ease: "linear"
+    // });
 });
