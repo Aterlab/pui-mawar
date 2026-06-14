@@ -71,6 +71,42 @@ body {
     /* overflow: hidden; */
 }
 
+/** Osmo page transition*/
+
+.transition {
+    z-index: 100;
+    background-color: #ff4c24;
+    flex-flow: wrap;
+    grid-template-columns: repeat(8, 1fr);
+    place-content: center;
+    place-items: center;
+    width: 100%;
+    min-height: 100vh;
+    display: none;
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    right: 0%;
+}
+
+.transition-block {
+    aspect-ratio: 1;
+    background-color: #ff4c24;
+    width: 100%;
+}
+
+@media screen and (max-width: 767px) {
+    .transition {
+        grid-template-columns: repeat(6, 1fr);
+    }
+}
+
+@media screen and (max-width: 479px) {
+    .transition {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
 /** Grain effect from Codepen */
 .grain {
     width: 100dvw;
@@ -497,8 +533,8 @@ nav .logo:hover::after {
 .bottom #projects-hero #showreel .showreel-content {
     max-width: 100%;
     width: calc(((100dvw - 260px) / 12) * 4 + 60px);
-    max-height: calc((((100dvw - 260px) / 12) * 4 + 60px) * 1.618);
-    height: calc((((100dvw - 260px) / 12) * 4 + 60px) * 1.618);
+    max-height: calc((((100dvw - 260px) / 12) * 4 + 60px) / 1.618);
+    height: calc((((100dvw - 260px) / 12) * 4 + 60px) / 1.618);
     object-fit: cover;
     position: relative;
     left: 0;
@@ -519,6 +555,7 @@ nav .logo:hover::after {
     display: flex;
     align-items: flex-end;
     justify-content: flex-start;
+    z-index: 0;
 }
 
 .projects-wrapper .images img {
@@ -537,6 +574,7 @@ nav .logo:hover::after {
 
 .project-info .text {
     transition: 0.5s ease;
+    z-index: 0;
 }
 
 .project-info .text:not(.active) {
@@ -622,7 +660,7 @@ nav .logo:hover::after {
 }
 
 .project-info .texts {
-    position: static;
+    position: relative;
 }
 
 .project-info .text#static {
@@ -632,6 +670,7 @@ nav .logo:hover::after {
 .project-info .text {
     position: absolute;
     bottom: calc((var(--margin) * 1) + (var(--x-small) * var(--button-height-multiplier)));
+    pointer-events: none;
 }
 
 .project-info button#static {
@@ -657,6 +696,16 @@ nav .logo:hover::after {
     pointer-events: none;
 }
 
+.project-info .buttons button:not(#static) {
+    margin-left: 0;
+    left: 0;
+}
+
+.project-info .buttons button:not(#static),
+.project-info .texts .text:not(#static) {
+    transform: translateY(var(--margin));
+}
+
 /* Arrows */
 
 .right-info button {
@@ -670,7 +719,7 @@ nav .logo:hover::after {
     position: absolute;
     bottom: var(--margin);
     right: var(--margin);
-    gap: 10px;
+    gap: calc(var(--margin) / 2);
 }
 
 .arrow {
@@ -996,14 +1045,15 @@ body:active #drag-cursor.hovering {
     gap: 20px;
     position: relative;
     will-change: transform;
-    bottom: calc(-150% + (var(--margin) * -1));
+    bottom: calc(-130% + (var(--margin) * -1));
     z-index: 4;
     height: calc(100dvh - (var(--margin) * 2));
     width: calc(100dvw - (var(--margin) * 2));
     align-items: flex-start;
     justify-content: flex-start;
     /* box-shadow: 0px 0px 100px 50px var(--dark); The reviews shadows were overlaping, so instead I added one shadow behind the reviews layer*/
-    filter: drop-shadow(0px 0px 50px var(--dark));
+    /* filter: drop-shadow(0 0 5px var(--dark)) drop-shadow(0 0 10px var(--dark)) drop-shadow(0 0 20px var(--dark)) drop-shadow(0 0 30px var(--dark)) drop-shadow(0 0 50px var(--dark)); */
+    /* filter: drop-shadow(0 0 50px var(--dark)); */
 }
 
 /* #reviews .reviews,
@@ -1090,6 +1140,10 @@ body:active #drag-cursor.hovering {
     transition: outline 0.25s ease;
 }
 
+.reviews-arrows {
+    display: none;
+}
+
 /** Contact section */
 
 /* body,
@@ -1169,6 +1223,10 @@ body {
         display: none;
     }
 
+    .column {
+        width: calc((100dvw - (3 * var(--margin))) / 4);
+    }
+
     nav .right {
         display: none;
     }
@@ -1195,7 +1253,8 @@ body {
     }
 
     #hero h1 {
-        font-size: 16vw;
+        font-size: 22vw;
+        white-space: wrap;
     }
 
     #hero {
@@ -1303,6 +1362,7 @@ body {
         top: auto;
         bottom: 0;
         border: 1px solid green;
+        filter: none;
     }
 
     #reviews .reviews #rev1,
@@ -1333,5 +1393,14 @@ body {
         top: calc(var(--margin) * 2);
         position: absolute;
         z-index: 5;
+    }
+
+    .reviews-arrows {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: calc(var(--margin) / 2);
+        position: absolute;
+        bottom: var(--margin);
     }
 }
