@@ -119,8 +119,6 @@ tl.to("#hero", {
 
 // Projects
 
-// this might be moved to desktop-only
-
 document.addEventListener("DOMContentLoaded", () => {
     const dots = document.querySelectorAll(".counter .dot");
     const images = document.querySelectorAll(".images img");
@@ -131,11 +129,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const nextBtn = document.querySelector("#next");
 
     let currentIndex = 0;
-    const duration = 0; // it's already in css
+    const duration = 0;
+    let isAnimating = false; // <-- 1. Add a lock flag
 
     function switchToIndex(index) {
         if (index < 0 || index >= dots.length) return;
         if (index === currentIndex) return;
+        if (isAnimating) return; // <-- 2. Ignore clicks if a transition is in progress
+
+        isAnimating = true; // <-- 3. Lock it down
 
         document.querySelector(".counter .dot.active")?.classList.remove("active");
         dots[index].classList.add("active");
@@ -200,11 +202,14 @@ document.addEventListener("DOMContentLoaded", () => {
                     ease: "power2.inOut",
                 });
             }
+
+            isAnimating = false; // <-- 4. Unlock after the longest timeout finishes
         }, 200);
 
         currentIndex = index;
     }
 
+    // --- Event Listeners stay exactly as you wrote them ---
     dots.forEach((dot, index) => {
         dot.addEventListener("click", () => {
             switchToIndex(index);
@@ -739,110 +744,6 @@ gsap.from(reviewsChars, {
 //     y: 800,
 // });
 
-// Osmo
-
-function adjustGrid() {
-    return new Promise((resolve) => {
-        const transition = document.querySelector('.transition');
-
-        // Get computed style of the grid and extract the number of columns
-        const computedStyle = window.getComputedStyle(transition);
-        const gridTemplateColumns = computedStyle.getPropertyValue('grid-template-columns');
-        const columns = gridTemplateColumns.split(' ').length; // Count the number of columns
-
-        const blockSize = window.innerWidth / columns;
-        const rowsNeeded = Math.ceil(window.innerHeight / blockSize);
-
-        // Update grid styles
-        transition.style.gridTemplateRows = `repeat(${rowsNeeded}, ${blockSize}px)`;
-
-        // Calculate the total number of blocks needed
-        const totalBlocks = columns * rowsNeeded;
-
-        // Clear existing blocks
-        transition.innerHTML = '';
-
-        // Generate blocks dynamically
-        for (let i = 0; i < totalBlocks; i++) {
-            const block = document.createElement('div');
-            block.classList.add('transition-block');
-            transition.appendChild(block);
-        }
-
-        // Resolve the Promise after grid creation is complete
-        resolve();
-    });
-}
-
-
-document.addEventListener("DOMContentLoaded", () => {
-    adjustGrid().then(() => {
-        let pageLoadTimeline = gsap.timeline({
-            onStart: () => {
-                gsap.set(".transition", { background: "transparent" });
-            },
-            onComplete: () => {
-                gsap.set(".transition", { display: "none" });
-            },
-            defaults: {
-                ease: "linear"
-            }
-        });
-
-        // Play the timeline only after the grid is ready
-        pageLoadTimeline.to(".transition-block", {
-            opacity: 0,
-            duration: 0.1,
-            stagger: { amount: 0.75, from: "random" },
-        }, 0.5);
-    });
-
-    // Pre-process all valid links
-    const validLinks = Array.from(document.querySelectorAll("a")).filter(link => {
-        const href = link.getAttribute("href") || "";
-        const hostname = new URL(link.href, window.location.origin).hostname;
-
-        return (
-            hostname === window.location.hostname && // Same domain
-            !href.startsWith("#") &&                 // Not an anchor link
-            link.getAttribute("target") !== "_blank" && // Not opening in a new tab
-            !link.hasAttribute("data-transition-prevent") // No 'data-transition-prevent' attribute
-        );
-    });
-
-    // Add event listeners to pre-processed valid links
-    validLinks.forEach(link => {
-        link.addEventListener("click", (event) => {
-            event.preventDefault();
-            const destination = link.href;
-
-            // Show loading grid with animation
-            gsap.set(".transition", { display: "grid" });
-            gsap.fromTo(
-                ".transition-block",
-                { autoAlpha: 0 },
-                {
-                    autoAlpha: 1,
-                    duration: 0.001,
-                    ease: "linear",
-                    stagger: { amount: 0.5, from: "random" },
-                    onComplete: () => {
-                        window.location.href = destination;
-                    }
-                }
-            );
-        });
-    });
-
-    window.addEventListener("pageshow", (event) => {
-        if (event.persisted) {
-            window.location.reload();
-        }
-    });
-
-    window.addEventListener('resize', adjustGrid);
-});
-
 // Run only on MOBILE (mostly not used, just in case)
 mm.add("(max-width: 767px)", () => {
     const tl = gsap.timeline({
@@ -881,4 +782,63 @@ mm.add("(max-width: 767px)", () => {
     //     y: "-200dvh",
     //     ease: "linear"
     // });
+});
+
+// Reviews on mobile
+
+const prevRev = document.getElementById("prev-rev");
+const nextRev = document.getElementById("next-rev");
+const reviews = document.querySelectorAll(".reviews .review");
+
+let currentRevIndex = 0;
+const revDuration = 1;
+let isRevAnimating = false;
+
+function switchToRevIndex(index) {
+    if (index < 0 || index >= reviews.length) return;
+    if (index === currentRevIndex) return;
+    if (isRevAnimating) return;
+
+    isRevAnimating = true;
+
+    const currentRev = reviews[currentRevIndex];
+    const nextRevElem = reviews[index];
+
+    // 1. Outbound card: Immediately starts dropping down, shrinking, and vanishing
+    if (currentRev) {
+        currentRev.classList.remove("active");
+        gsap.to(currentRev, { duration: revDuration });
+    }
+
+    // 2. Inbound card: Wait 150ms before showing it, so it doesn't overlap the dropping card
+    if (nextRevElem) {
+        setTimeout(() => {
+            nextRevElem.classList.add("active");
+            gsap.to(nextRevElem, { duration: revDuration });
+        }, 150); // Small delay allows the old card to drop out of the way first
+    }
+
+    // Protects animation frame spam-clicking for 500ms
+    setTimeout(() => {
+        isRevAnimating = false;
+    }, 500);
+
+    currentRevIndex = index;
+}
+
+// --- Navigation Triggers ---
+prevRev?.addEventListener("click", () => {
+    let targetIndex = currentRevIndex - 1;
+    if (targetIndex < 0) {
+        targetIndex = reviews.length - 1;
+    }
+    switchToRevIndex(targetIndex);
+});
+
+nextRev?.addEventListener("click", () => {
+    let targetIndex = currentRevIndex + 1;
+    if (targetIndex >= reviews.length) {
+        targetIndex = 0;
+    }
+    switchToRevIndex(targetIndex);
 });

@@ -1394,7 +1394,7 @@ body {
     }
 
     .review {
-        transition: 2s all;
+        transition: 0.5s all, 1s opacity;
     }
 
     .review.active {
@@ -1406,8 +1406,8 @@ body {
 
     .review:not(.active) {
         scale: 0.9;
-        opacity: 0.5;
-        transform: translateY(20px);
+        opacity: 0;
+        transform: translateY(40px);
         z-index: 1;
     }
 }
