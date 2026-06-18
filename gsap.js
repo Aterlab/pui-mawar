@@ -625,8 +625,11 @@ mm.add("(min-width: 798px)", () => {
 // Services section
 
 const servicesSection = document.getElementById("services");
-const servicesText = new SplitType(document.querySelector("#services .big-text"));
+const servicesText = new SplitType(document.querySelector("#services .text-wrapper .big-text"));
 const servicesChars = servicesText.chars;
+
+const servicesSmallText = new SplitType(document.querySelector("#services .text-wrapper .small-text"));
+const servicesSmallChars = servicesSmallText.chars;
 
 gsap.from(servicesChars, {
     scrollTrigger: {
@@ -644,18 +647,37 @@ gsap.from(servicesChars, {
     }
 });
 
+gsap.from(servicesSmallChars, {
+    scrollTrigger: {
+        trigger: servicesSection,
+        start: "top 20px",
+        end: "+=300",
+    },
+    opacity: 0,
+    y: 100,
+    duration: 0.6,
+    ease: 'power4.out',
+    stagger: {
+        amount: 0.4,
+        from: 'start',
+    }
+});
+
 gsap.registerPlugin(Draggable, InertiaPlugin)
+
+const categoriesGradients = document.querySelectorAll(".gradients .gradient");
+
+gsap.set(categoriesGradients, { opacity: 0 });
 
 Draggable.create('.categories', {
     type: 'x',
     bounds: document.querySelector('.categories-wrapper'),
     inertia: true,
-    // onClick: function () {
-    //     console.log('clicked');
-    // },
-    // onDragEnd: function () {
-    //     console.log('drag ended');
-    // } gsap debugging
+
+    onDragStart: function () {
+        console.log('drag started');
+        gsap.to(categoriesGradients, { opacity: 1, duration: 0.5, ease: "power4.out" });
+    },
 });
 
 // Draggables cursor
@@ -760,6 +782,62 @@ mm.add("(max-width: 767px)", () => {
     const allReviews = document.querySelectorAll(".review")
     const randomRotate = gsap.utils.random(-5, 5, true)
 
+
+    // Reviews on mobile
+
+    const prevRev = document.getElementById("prev-rev");
+    const nextRev = document.getElementById("next-rev");
+    const reviews = document.querySelectorAll(".reviews .review");
+
+    let currentRevIndex = 0;
+    const revDuration = 1;
+    let isRevAnimating = false;
+
+    function switchToRevIndex(index) {
+        if (index < 0 || index >= reviews.length) return;
+        if (index === currentRevIndex) return;
+        if (isRevAnimating) return;
+
+        isRevAnimating = true;
+
+        const currentRev = reviews[currentRevIndex];
+        const nextRevElem = reviews[index];
+
+        if (currentRev) {
+            currentRev.classList.remove("active");
+            gsap.to(currentRev, { duration: revDuration });
+        }
+
+        if (nextRevElem) {
+            setTimeout(() => {
+                nextRevElem.classList.add("active");
+                gsap.to(nextRevElem, { duration: revDuration });
+            }, 150);
+        }
+
+        setTimeout(() => {
+            isRevAnimating = false;
+        }, 500);
+
+        currentRevIndex = index;
+    }
+
+    prevRev?.addEventListener("click", () => {
+        let targetIndex = currentRevIndex - 1;
+        if (targetIndex < 0) {
+            targetIndex = reviews.length - 1;
+        }
+        switchToRevIndex(targetIndex);
+    });
+
+    nextRev?.addEventListener("click", () => {
+        let targetIndex = currentRevIndex + 1;
+        if (targetIndex >= reviews.length) {
+            targetIndex = 0;
+        }
+        switchToRevIndex(targetIndex);
+    });
+
     // allReviews.forEach(rev => {
     //     gsap.to(rev, {
     //         rotate: randomRotate
@@ -782,63 +860,4 @@ mm.add("(max-width: 767px)", () => {
     //     y: "-200dvh",
     //     ease: "linear"
     // });
-});
-
-// Reviews on mobile
-
-const prevRev = document.getElementById("prev-rev");
-const nextRev = document.getElementById("next-rev");
-const reviews = document.querySelectorAll(".reviews .review");
-
-let currentRevIndex = 0;
-const revDuration = 1;
-let isRevAnimating = false;
-
-function switchToRevIndex(index) {
-    if (index < 0 || index >= reviews.length) return;
-    if (index === currentRevIndex) return;
-    if (isRevAnimating) return;
-
-    isRevAnimating = true;
-
-    const currentRev = reviews[currentRevIndex];
-    const nextRevElem = reviews[index];
-
-    // 1. Outbound card: Immediately starts dropping down, shrinking, and vanishing
-    if (currentRev) {
-        currentRev.classList.remove("active");
-        gsap.to(currentRev, { duration: revDuration });
-    }
-
-    // 2. Inbound card: Wait 150ms before showing it, so it doesn't overlap the dropping card
-    if (nextRevElem) {
-        setTimeout(() => {
-            nextRevElem.classList.add("active");
-            gsap.to(nextRevElem, { duration: revDuration });
-        }, 150); // Small delay allows the old card to drop out of the way first
-    }
-
-    // Protects animation frame spam-clicking for 500ms
-    setTimeout(() => {
-        isRevAnimating = false;
-    }, 500);
-
-    currentRevIndex = index;
-}
-
-// --- Navigation Triggers ---
-prevRev?.addEventListener("click", () => {
-    let targetIndex = currentRevIndex - 1;
-    if (targetIndex < 0) {
-        targetIndex = reviews.length - 1;
-    }
-    switchToRevIndex(targetIndex);
-});
-
-nextRev?.addEventListener("click", () => {
-    let targetIndex = currentRevIndex + 1;
-    if (targetIndex >= reviews.length) {
-        targetIndex = 0;
-    }
-    switchToRevIndex(targetIndex);
 });

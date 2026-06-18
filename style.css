@@ -72,6 +72,7 @@ body {
 }
 
 /** Grain effect from Codepen */
+
 .grain {
     width: 100dvw;
     height: 100dvh;
@@ -141,19 +142,6 @@ body {
     }
 }
 
-/** Animations (except noise) */
-
-/* @keyframes enterAnimation {
-    from {}
-
-    to {
-        opacity: 1;
-        filter: none;
-        transform: translateY(0%);
-        scale: 1;
-    }
-} */
-
 /** Components */
 
 button {
@@ -199,6 +187,7 @@ button #content {
 }
 
 .link {
+    /* Just a normal btn but without bg */
     background-color: transparent;
     color: var(--light);
 }
@@ -265,6 +254,18 @@ section:not(#hero) {
     pointer-events: none;
 }
 
+.text-wrapper {}
+
+.text-wrapper#center {
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.text-wrapper#left {
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
 nav {
     position: fixed;
     top: var(--margin);
@@ -317,7 +318,7 @@ nav .logo:hover::after {
     position: fixed;
     z-index: 14;
     inset: 0 0 auto 0;
-    height: calc(((var(--x-small) * 1.618) + (var(--margin) * 5)));
+    height: calc(((var(--x-small) * 1.618) + (var(--margin) * 4)));
     pointer-events: none;
     transform: rotate(180deg);
     background: linear-gradient(180deg, rgba(29, 29, 29, 0) 0%, rgba(29, 29, 29, 1) 90%)
@@ -423,12 +424,12 @@ nav .logo:hover::after {
     left: var(--margin);
     right: var(--margin);
     pointer-events: none;
+    opacity: 0.0125;
 }
 
 .column {
     height: 100dvh;
     background-color: var(--light);
-    opacity: 0.025;
     width: calc((100dvw - 260px) / 12);
 }
 
@@ -798,12 +799,19 @@ nav .logo:hover::after {
 
 #services {
     position: relative;
+    overflow: hidden;
+}
+
+#services .text-wrapper {
+    position: relative;
+    top: calc((var(--margin) * 1) + (var(--x-small) * var(--button-height-multiplier)));
+    display: flex;
+    flex-direction: column;
+    gap: var(--margin);
 }
 
 #services .big-text {
     max-width: calc(75dvw - (var(--margin) * 1.5));
-    position: relative;
-    top: calc((var(--margin) * 1) + (var(--x-small) * var(--button-height-multiplier)));
     /* font-size: 30px; */
 }
 
@@ -852,6 +860,31 @@ nav .logo:hover::after {
     position: absolute;
     top: var(--margin);
     right: var(--margin);
+}
+
+/* Gradients */
+
+#services .gradients .gradient {
+    position: absolute;
+    height: clamp(300px, calc((100vw - 260px) / 4 + 40px), 400px);
+    width: calc(((var(--x-small) * 1.618) + (var(--margin) * 4)));
+    background: linear-gradient(-90deg, rgba(29, 29, 29, 0) 0%, rgba(29, 29, 29, 1) 100%);
+    bottom: 0;
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* #services .gradients {
+    transition: 0.25s ease;
+} */
+
+#services .gradients #gradient-left {
+    left: 0;
+}
+
+#services .gradients #gradient-right {
+    right: 0;
+    rotate: 180deg;
 }
 
 /*TODO Dodac cursor ( Przesuwaj ) */
@@ -1175,6 +1208,7 @@ body {
     }
 
     /** Components */
+
     :root {
         --x-small: 10px;
         --small: 13px;
