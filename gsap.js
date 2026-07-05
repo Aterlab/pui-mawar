@@ -22,7 +22,7 @@ window.addEventListener('load', () => {
     gsap.from(desc.words, { opacity: 0, y: 100, duration: 0.8, delay: secondaryDelay, ease: 'power4.out', stagger: { amount: 0.25, from: 'start' } });
 
     const headline = new SplitType('.headline', { type: 'chars, lines', mask: 'lines', linesClass: 'line++' });
-    gsap.from(headline.chars, { opacity: 0, y: 200, duration: 0.8, delay: noDelay, ease: 'power4.out', stagger: { amount: 0.25, from: 'start' } });
+    gsap.from(headline.chars, { opacity: 0, yPercent: 100, duration: 0.8, delay: noDelay, ease: 'power4.out', stagger: { amount: 0.25, from: 'start' } });
 
     const notice = new SplitType('#notice', { type: 'chars, lines', mask: 'lines', linesClass: 'line++' });
     gsap.from(notice.chars, { opacity: 0, y: 100, duration: 0.8, delay: secondaryDelay, ease: 'power4.out', stagger: { amount: 0.25, from: 'start' } });
@@ -516,6 +516,150 @@ mm.add("(min-width: 798px)", () => {
         scale: "0.8",
         y: "120dvh",
     });
+
+    // Everything in Contact
+    const contactRect = document.querySelector(".rect");
+    const navBlur = document.getElementById("nav-blur");
+    const navBar = document.getElementById("navBar");
+    const contactSection = document.getElementById("contact")
+
+    const contactTl = gsap.timeline({
+        scrollTrigger: {
+            scrub: 0,
+            pin: false,
+            trigger: "#contact",
+            start: "top 20px",
+            end: "+=1500",
+        },
+        ease: "linear"
+    });
+
+    contactTl.from(contactRect, {
+        // opacity: 0,
+        height: 0,
+    })
+
+    contactTl.to(contactRect, {
+        height: "100dvh",
+        // opacity: 1
+    });
+
+    const ctaFirstLine = document.getElementById("cta-first-line");
+    const ctaSecondLine = document.getElementById("cta-second-line");
+    const contactCard = document.querySelector(".contact-card");
+    const contactBlur = document.querySelector(".contact-gradient-blur");
+
+    const contactBlurTl = gsap.timeline({
+        scrollTrigger: {
+            scrub: 0,
+            pin: false,
+            trigger: "#contact",
+            start: "top -=1500",
+            end: "+=1501",
+        },
+        ease: "linear"
+    });
+
+    contactBlurTl.from(contactBlur, {
+        opacity: 0
+    })
+
+    contactBlurTl.to(contactBlur, {
+        opacity: 1
+    });
+
+    const contactFirstTl = gsap.timeline({
+        scrollTrigger: {
+            scrub: 0,
+            pin: false,
+            trigger: "#contact",
+            start: "top -=1500",
+            end: "+=2000",
+        },
+        ease: "linear"
+    });
+
+    contactFirstTl.from(ctaFirstLine, {
+        scale: 0.95,
+        filter: "blur(15px)",
+        opacity: 0,
+    });
+
+    contactFirstTl.to(ctaFirstLine, {
+        scale: 1,
+        filter: "none",
+        opacity: 1,
+    });
+
+    const contactSecondTl = gsap.timeline({
+        scrollTrigger: {
+            scrub: 0,
+            pin: false,
+            trigger: "#contact",
+            start: "top -=3000",
+            end: "+=3500",
+        },
+        ease: "linear"
+    });
+
+    contactSecondTl.from(ctaSecondLine, {
+        scale: 0.95,
+        filter: "blur(15px)",
+        opacity: 0
+    })
+
+    contactSecondTl.to(ctaSecondLine, {
+        scale: 1,
+        filter: "none",
+        opacity: 1
+    });
+
+    const contactCardTl = gsap.timeline({
+        scrollTrigger: {
+            scrub: 0,
+            pin: false,
+            trigger: "#contact",
+            start: "top -=4000",
+            end: "+=4300",
+        },
+        ease: "linear"
+    });
+
+    contactCardTl.from(contactCard, {
+        scale: 0.8,
+        // opacity: 0.5,
+        filter: "blur(0px)",
+        transform: "translateY(100dvh)",
+        rotate: "-10deg",
+    })
+
+    contactCardTl.to(contactCard, {
+        scale: 1,
+        filter: "none",
+        // opacity: 1,
+        transform: "translateY(0)",
+        rotate: "0deg",
+    });
+
+    gsap.set(navBlur, { opacity: 1 });
+
+    gsap.to(navBlur, {
+        scrollTrigger: {
+            trigger: "#contact",
+            start: "top 20px",
+            toggleActions: "play none play reverse",
+        },
+        // opacity: 0,
+        display: "none",
+        duration: 0.001
+    });
+
+    let contactPin = ScrollTrigger.create({
+        trigger: "#contact",
+        pin: "#contact",
+        start: "top 20px",
+        end: "+=7000",
+    });
 });
 
 
@@ -562,9 +706,11 @@ gsap.from(servicesSmallChars, {
 
 gsap.registerPlugin(Draggable, InertiaPlugin)
 
-const categoriesGradients = document.querySelectorAll(".gradients .gradient");
+// const categoriesGradients = document.querySelectorAll(".gradients .gradient");
+// const rightGradient = document.getElementById("gradient-right")
+const leftGradient = document.getElementById("gradient-left")
 
-gsap.set(categoriesGradients, { opacity: 0 });
+gsap.set(leftGradient, { opacity: 0 });
 
 Draggable.create('.categories', {
     type: 'x',
@@ -573,7 +719,7 @@ Draggable.create('.categories', {
 
     onDragStart: function () {
         console.log('drag started');
-        gsap.to(categoriesGradients, { opacity: 1, duration: 0.5, ease: "power4.out" });
+        gsap.to(leftGradient, { opacity: 1, duration: 0.5, ease: "power4.out" });
     },
 });
 
@@ -647,142 +793,25 @@ gsap.to(navBar, {
     }
 });
 
-const contactTl = gsap.timeline({
+// Footer
+
+const footerSection = document.getElementById("footer");
+const footerText = new SplitType(document.querySelector("#footer-headline"));
+const footerChars = footerText.chars;
+
+gsap.from(footerChars, {
     scrollTrigger: {
-        scrub: 0,
-        pin: false,
-        trigger: "#contact",
-        start: "top 20px",
-        end: "+=1500",
+        trigger: footerSection,
+        start: "top 21px",
     },
-    ease: "linear"
-});
-
-contactTl.from(contactRect, {
-    // opacity: 0,
-    height: 0,
-})
-
-contactTl.to(contactRect, {
-    height: "100dvh",
-    // opacity: 1
-});
-
-const ctaFirstLine = document.getElementById("cta-first-line");
-const ctaSecondLine = document.getElementById("cta-second-line");
-const contactCard = document.querySelector(".contact-card");
-const contactBlur = document.querySelector(".contact-gradient-blur");
-
-const contactBlurTl = gsap.timeline({
-    scrollTrigger: {
-        scrub: 0,
-        pin: false,
-        trigger: "#contact",
-        start: "top -=1500",
-        end: "+=1501",
-    },
-    ease: "linear"
-});
-
-contactBlurTl.from(contactBlur, {
-    opacity: 0
-})
-
-contactBlurTl.to(contactBlur, {
-    opacity: 1
-});
-
-const contactFirstTl = gsap.timeline({
-    scrollTrigger: {
-        scrub: 0,
-        pin: false,
-        trigger: "#contact",
-        start: "top -=1500",
-        end: "+=2000",
-    },
-    ease: "linear"
-});
-
-contactFirstTl.from(ctaFirstLine, {
-    scale: 0.95,
-    filter: "blur(15px)",
     opacity: 0,
-});
-
-contactFirstTl.to(ctaFirstLine, {
-    scale: 1,
-    filter: "none",
-    opacity: 1,
-});
-
-const contactSecondTl = gsap.timeline({
-    scrollTrigger: {
-        scrub: 0,
-        pin: false,
-        trigger: "#contact",
-        start: "top -=3000",
-        end: "+=3500",
-    },
-    ease: "linear"
-});
-
-contactSecondTl.from(ctaSecondLine, {
-    scale: 0.95,
-    filter: "blur(15px)",
-    opacity: 0
-})
-
-contactSecondTl.to(ctaSecondLine, {
-    scale: 1,
-    filter: "none",
-    opacity: 1
-});
-
-const contactCardTl = gsap.timeline({
-    scrollTrigger: {
-        scrub: 0,
-        pin: false,
-        trigger: "#contact",
-        start: "top -=4000",
-        end: "+=4300",
-    },
-    ease: "linear"
-});
-
-contactCardTl.from(contactCard, {
-    scale: 0.8,
-    // opacity: 0.5,
-    filter: "blur(0px)",
-    transform: "translateY(100dvh)",
-    rotate: "-10deg",
-})
-
-contactCardTl.to(contactCard, {
-    scale: 1,
-    filter: "none",
-    // opacity: 1,
-    transform: "translateY(0)",
-    rotate: "0deg",
-});
-
-gsap.set(navBlur, { opacity: 1 });
-
-gsap.to(navBlur, {
-    scrollTrigger: {
-        trigger: "#contact",
-        start: "top 20px",
-        toggleActions: "play none play reverse",
-    },
-    // opacity: 0,
-    display: "none",
-    duration: 0.001
-});
-
-let contactPin = ScrollTrigger.create({
-    trigger: "#contact",
-    pin: "#contact",
-    start: "top 20px",
-    end: "+=7000",
+    yPercent: 100,
+    duration: 0.8,
+    ease: 'power4.out',
+    stagger: {
+        amount: 0.25,
+        from: 'start'
+    }
 });
 
 // Run only on MOBILE (mostly not used, just in case)

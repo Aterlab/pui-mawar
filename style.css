@@ -876,6 +876,9 @@ nav .logo:hover::after {
     background: linear-gradient(-90deg, rgba(29, 29, 29, 0) 0%, rgba(29, 29, 29, 1) 100%);
     bottom: 0;
     z-index: 2;
+}
+
+#services .gradients {
     pointer-events: none;
 }
 
@@ -1227,6 +1230,55 @@ body:active #drag-cursor.hovering {
     background: linear-gradient(180deg, rgba(249, 241, 231, 0) 0%, rgba(249, 241, 231, 1) 90%);
 }
 
+/** Footer section */
+
+#footer {
+    /* height: fit-content; */
+    position: relative;
+    max-height: calc(100dvh - (var(--margin) * 2));
+    overflow: hidden;
+}
+
+#footer .footer-bottom h1 {
+    font-size: 16.5dvw;
+    margin: 0;
+    letter-spacing: -0.04em;
+    border: 1px solid rgba(255, 166, 0, 0);
+    line-height: 16.5dvw;
+}
+
+#footer .footer-bottom {
+    position: absolute;
+    bottom: var(--margin);
+    width: calc(100dvw - (var(--margin) * 2));
+}
+
+#footer .footer-bottom .left,
+#footer .footer-bottom .right {
+    position: absolute;
+}
+
+#footer .footer-bottom .left {
+    left: 0;
+}
+
+#footer a {
+    color: var(--light);
+    text-decoration: 2.5px solid var(--light) underline;
+}
+
+#footer .footer-bottom .right {
+    right: 0;
+}
+
+#footer .footer-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: calc(100dvw - (var(--margin) * 2));
+    border: 1px solid rgba(255, 0, 0, 0);
+}
+
 /** Responsiveness */
 
 .content-wrapper {
@@ -1515,5 +1567,54 @@ body {
         opacity: 0;
         transform: translateY(40px);
         z-index: 1;
+    }
+
+
+    /** Contact section */
+
+    #contact .contact-card {
+        width: calc(100dvw - (var(--margin) * 4));
+        height: auto;
+        aspect-ratio: 1 / 1.618;
+        box-shadow: none;
+    }
+
+    #contact .bg .rect,
+    #contact .bg .rect-blur {
+        border-radius: var(--margin);
+    }
+
+    #contact .bg .rect {
+        height: calc(100dvh - (var(--margin) * 2));
+    }
+
+    #contact {
+        position: relative;
+    }
+
+    #contact .texts {
+        top: var(--margin);
+        position: absolute;
+    }
+
+    /** Footer */
+
+    #footer .footer-bottom h1 {
+        font-size: 15.1dvw;
+    }
+
+    #footer .footer-bottom a {
+        text-decoration: 2px solid var(--light) underline;
+    }
+
+    #footer .footer-bottom .left,
+    #footer .footer-bottom .right {
+        position: static;
+        transform: translateY(20px);
+    }
+
+    #footer .footer-bottom {
+        display: flex;
+        flex-direction: column;
     }
 }
