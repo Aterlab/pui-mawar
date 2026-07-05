@@ -98,24 +98,6 @@ window.addEventListener('load', () => {
     })
 });
 
-const tl = gsap.timeline({
-    scrollTrigger: {
-        scrub: 0,
-        pin: false,
-        trigger: "#hero",
-        start: "top 40px",
-        endTrigger: "#projects",
-        end: "bottom 50%",
-    },
-    ease: "linear"
-});
-
-tl.to("#hero", {
-    opacity: "0",
-    scale: "0.8",
-    y: "120dvh",
-});
-
 
 // Projects
 
@@ -501,29 +483,6 @@ mm.add("(min-width: 798px)", () => {
         end: "+=3500",
     })
 
-    // let contactPin = ScrollTrigger.create({
-    //     trigger: "#contact",
-    //     pin: "#contact",
-    //     start: "top top",
-    //     end: "+=1500",
-    // });
-
-    // const rev1 = gsap.timeline({
-    //     scrollTrigger: {
-    //         scrub: 0,
-    //         pin: false,
-    //         trigger: "#reviews .reviews #rev1",
-    //         start: "top top",
-    //         endTrigger: "#contact",
-    //         end: "+=3500",
-    //         ease: "linear"
-    //     },
-    // });
-
-    // rev1.to("#reviews .reviews #rev1", {
-    //     y: randomOffset,
-    // });
-
     const reviewMove = gsap.timeline({
         scrollTrigger: {
             scrub: 0,
@@ -540,85 +499,23 @@ mm.add("(min-width: 798px)", () => {
         y: "-300vh",
     });
 
-    // const rev2 = gsap.timeline({
-    //     scrollTrigger: {
-    //         scrub: 0,
-    //         pin: false,
-    //         trigger: "#reviews .reviews #rev2",
-    //         start: "top top",
-    //         endTrigger: "#contact",
-    //         end: "+=3500",
-    //         ease: "linear"
-    //     },
-    // });
+    const tl = gsap.timeline({
+        scrollTrigger: {
+            scrub: 0,
+            pin: false,
+            trigger: "#hero",
+            start: "top 40px",
+            endTrigger: "#projects",
+            end: "bottom 50%",
+        },
+        ease: "linear"
+    });
 
-    // rev2.to("#reviews .reviews #rev2", {
-    //     y: randomOffset,
-    // });
-
-    // const rev3 = gsap.timeline({
-    //     scrollTrigger: {
-    //         scrub: 0,
-    //         pin: false,
-    //         trigger: "#reviews .reviews #rev3",
-    //         start: "top top",
-    //         endTrigger: "#contact",
-    //         end: "+=3500",
-    //         ease: "linear"
-    //     },
-    // });
-
-    // rev3.to("#reviews .reviews #rev3", {
-    //     y: randomOffset,
-    // });
-
-    // const rev4 = gsap.timeline({
-    //     scrollTrigger: {
-    //         scrub: 0,
-    //         pin: false,
-    //         trigger: "#reviews .reviews #rev4",
-    //         start: "top top",
-    //         endTrigger: "#contact",
-    //         end: "+=3500",
-    //         ease: "linear"
-    //     },
-    // });
-
-    // rev4.to("#reviews .reviews #rev4", {
-    //     y: randomOffset
-    // });
-
-    // const rev5 = gsap.timeline({
-    //     scrollTrigger: {
-    //         scrub: 0,
-    //         pin: false,
-    //         trigger: "#reviews .reviews #rev5",
-    //         start: "top top",
-    //         endTrigger: "#contact",
-    //         end: "+=3500",
-    //         ease: "linear"
-    //     },
-    // });
-
-    // rev5.to("#reviews .reviews #rev5", {
-    //     y: randomOffset,
-    // });
-
-    // const rev6 = gsap.timeline({
-    //     scrollTrigger: {
-    //         scrub: 0,
-    //         pin: false,
-    //         trigger: "#reviews .reviews #rev6",
-    //         start: "top top",
-    //         endTrigger: "#contact",
-    //         end: "+=3500",
-    //         ease: "linear"
-    //     },
-    // });
-
-    // rev6.to("#reviews .reviews #rev6", {
-    //     y: randomOffset
-    // });
+    tl.to("#hero", {
+        opacity: "0",
+        scale: "0.8",
+        y: "120dvh",
+    });
 });
 
 
@@ -726,45 +623,167 @@ gsap.from(reviewsChars, {
     }
 });
 
-// gsap.to(bottomGradientBlur, {
-//     scrollTrigger: {
-//         trigger: reviewsSection,
-//         start: "bottom bottom",
-//         end: "+=300",
-//         toggleActions: "play reverse play reverse",
-//     },
-//     opacity: 0,
-//     duration: 0.6,
-//     ease: 'power4.out',
-// })
-
-// Reviews section
-
-// const rr1 = -1600;
-// const rr2 = -1400;
-// const rr3 = -1700;
-// const rr4 = -1300;
-// const rr5 = -1600;
-// const rr6 = -1200;
-
 // Contact
 
-// const contactTl = gsap.timeline({
-//     scrollTrigger: {
-//         scrub: 0,
-//         pin: false,
-//         trigger: "#hero",
-//         start: "top 40px",
-//         endTrigger: "#projects",
-//         end: "bottom 50%",
-//     },
-// });
+const contactRect = document.querySelector(".rect");
+const navBlur = document.getElementById("nav-blur");
+const navBar = document.getElementById("navBar");
+const contactSection = document.getElementById("contact")
 
-// tl.to("#hero", {
-//     opacity: "0",
-//     scale: "0.8",
-//     y: 800,
-// });
+gsap.to(navBar, {
+    scrollTrigger: {
+        trigger: contactSection,
+        start: "top 20px",
+        end: "+=300",
+        toggleActions: "play none play reverse",
+    },
+    opacity: 0,
+    y: "-100px",
+    duration: 1,
+    ease: 'power4.inOut',
+    stagger: {
+        amount: 0.4,
+        from: 'start',
+    }
+});
+
+const contactTl = gsap.timeline({
+    scrollTrigger: {
+        scrub: 0,
+        pin: false,
+        trigger: "#contact",
+        start: "top 20px",
+        end: "+=1500",
+    },
+    ease: "linear"
+});
+
+contactTl.from(contactRect, {
+    // opacity: 0,
+    height: 0,
+})
+
+contactTl.to(contactRect, {
+    height: "100dvh",
+    // opacity: 1
+});
+
+const ctaFirstLine = document.getElementById("cta-first-line");
+const ctaSecondLine = document.getElementById("cta-second-line");
+const contactCard = document.querySelector(".contact-card");
+const contactBlur = document.querySelector(".contact-gradient-blur");
+
+const contactBlurTl = gsap.timeline({
+    scrollTrigger: {
+        scrub: 0,
+        pin: false,
+        trigger: "#contact",
+        start: "top -=1500",
+        end: "+=1501",
+    },
+    ease: "linear"
+});
+
+contactBlurTl.from(contactBlur, {
+    opacity: 0
+})
+
+contactBlurTl.to(contactBlur, {
+    opacity: 1
+});
+
+const contactFirstTl = gsap.timeline({
+    scrollTrigger: {
+        scrub: 0,
+        pin: false,
+        trigger: "#contact",
+        start: "top -=1500",
+        end: "+=2000",
+    },
+    ease: "linear"
+});
+
+contactFirstTl.from(ctaFirstLine, {
+    scale: 0.95,
+    filter: "blur(15px)",
+    opacity: 0,
+});
+
+contactFirstTl.to(ctaFirstLine, {
+    scale: 1,
+    filter: "none",
+    opacity: 1,
+});
+
+const contactSecondTl = gsap.timeline({
+    scrollTrigger: {
+        scrub: 0,
+        pin: false,
+        trigger: "#contact",
+        start: "top -=3000",
+        end: "+=3500",
+    },
+    ease: "linear"
+});
+
+contactSecondTl.from(ctaSecondLine, {
+    scale: 0.95,
+    filter: "blur(15px)",
+    opacity: 0
+})
+
+contactSecondTl.to(ctaSecondLine, {
+    scale: 1,
+    filter: "none",
+    opacity: 1
+});
+
+const contactCardTl = gsap.timeline({
+    scrollTrigger: {
+        scrub: 0,
+        pin: false,
+        trigger: "#contact",
+        start: "top -=4000",
+        end: "+=4300",
+    },
+    ease: "linear"
+});
+
+contactCardTl.from(contactCard, {
+    scale: 0.8,
+    // opacity: 0.5,
+    filter: "blur(0px)",
+    transform: "translateY(100dvh)",
+    rotate: "-10deg",
+})
+
+contactCardTl.to(contactCard, {
+    scale: 1,
+    filter: "none",
+    // opacity: 1,
+    transform: "translateY(0)",
+    rotate: "0deg",
+});
+
+gsap.set(navBlur, { opacity: 1 });
+
+gsap.to(navBlur, {
+    scrollTrigger: {
+        trigger: "#contact",
+        start: "top 20px",
+        toggleActions: "play none play reverse",
+    },
+    // opacity: 0,
+    display: "none",
+    duration: 0.001
+});
+
+let contactPin = ScrollTrigger.create({
+    trigger: "#contact",
+    pin: "#contact",
+    start: "top 20px",
+    end: "+=7000",
+});
 
 // Run only on MOBILE (mostly not used, just in case)
 mm.add("(max-width: 767px)", () => {
@@ -779,22 +798,19 @@ mm.add("(max-width: 767px)", () => {
         },
     });
 
-    const allReviews = document.querySelectorAll(".review")
-    const randomRotate = gsap.utils.random(-5, 5, true)
-
+    const allReviews = document.querySelectorAll(".review");
 
     // Reviews on mobile
-
     const prevRev = document.getElementById("prev-rev");
     const nextRev = document.getElementById("next-rev");
     const reviews = document.querySelectorAll(".reviews .review");
 
     let currentRevIndex = 0;
-    const revDuration = 1;
+    const revDuration = 0.333;
     let isRevAnimating = false;
 
     function switchToRevIndex(index) {
-        if (index < 0 || index >= reviews.length) return;
+        // loop
         if (index === currentRevIndex) return;
         if (isRevAnimating) return;
 
@@ -803,21 +819,39 @@ mm.add("(max-width: 767px)", () => {
         const currentRev = reviews[currentRevIndex];
         const nextRevElem = reviews[index];
 
+        // anim out
         if (currentRev) {
             currentRev.classList.remove("active");
-            gsap.to(currentRev, { duration: revDuration });
+            gsap.to(currentRev, {
+                duration: revDuration,
+                opacity: 0,
+                y: -20,
+                scale: 0.9,
+                display: "absolute",
+                filter: "blur(10px)",
+            });
         }
 
+        // Animate in the new review
         if (nextRevElem) {
-            setTimeout(() => {
-                nextRevElem.classList.add("active");
-                gsap.to(nextRevElem, { duration: revDuration });
-            }, 150);
+            // Set initial state before animating in
+            gsap.set(nextRevElem, { display: "flex", opacity: 0, y: 20, scale: 0.9, filter: "blur(10px)" });
+
+            nextRevElem.classList.add("active");
+            gsap.to(nextRevElem, {
+                duration: revDuration,
+                opacity: 1,
+                y: 0,
+                delay: 0.1,
+                scale: 1,
+                filter: "none"
+            });
         }
 
+        // 2. Match this timeout exactly to your animation duration (including delays)
         setTimeout(() => {
             isRevAnimating = false;
-        }, 500);
+        }, (revDuration + 0.1) * 1000);
 
         currentRevIndex = index;
     }
@@ -837,7 +871,6 @@ mm.add("(max-width: 767px)", () => {
         }
         switchToRevIndex(targetIndex);
     });
-
     // allReviews.forEach(rev => {
     //     gsap.to(rev, {
     //         rotate: randomRotate
