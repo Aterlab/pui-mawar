@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PUI MAWAR - Skontaktuj się</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="shortcut icon" href="assets/favicon/favicon.svg" type="image/x-icon">
+
+    <!-- GSAP + ScrollTrigger -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/split-type"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/Draggable.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15/dist/InertiaPlugin.min.js"></script>
+    <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="essentials.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="gsap.js" defer></script>
+</head>
+
+<body>
+    <div class="grain"></div>
+    <div class="gradient-blur" id="nav-blur">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+    <div class="columns">
+        <div class="column"></div>
+        <div class="column"></div>
+        <div class="column"></div>
+        <div class="column"></div>
+        <div class="column" id="mobile-hidden"></div>
+        <div class="column" id="mobile-hidden"></div>
+        <div class="column" id="mobile-hidden"></div>
+        <div class="column" id="mobile-hidden"></div>
+        <div class="column" id="mobile-hidden"></div>
+        <div class="column" id="mobile-hidden"></div>
+        <div class="column" id="mobile-hidden"></div>
+        <div class="column" id="mobile-hidden"></div>
+    </div>
+
+    <nav id="navBar">
+        <div class="left">
+            <button class="logo">
+                <p id="content">PUI MAWAR</p>
+                <p id="content">Pełna strona już wkrótce</p>
+            </button>
+        </div>
+
+        <div class="right">
+            <button class="link" data-href="contact.html">
+                <p id="content">Strona główna</p>
+                <p id="content">Strona główna</p>
+            </button>
+        </div>
+    </nav>
+
+    <div class="content-wrapper">
+        <div class="section-wrapper">
+            <section class="first" id="name">
+                <div class="big-text" id="gsap-text">Jak się nazywasz?</div>
+                <input type="text">
+                <!-- <div class="small-text">Imię i nazwisko</div> -->
+                <button class="next">
+                    <p id="content">Następny</p>
+                    <p id="content">Następny</p>
+                </button>
+            </section>
+            <section id="company-name">
+                <div class="big-text">Jak nazywa się twoja firma?</div>
+                <input type="text">
+                <div class="buttons">
+                    <button class="next">
+                        <p id="content">Następny</p>
+                        <p id="content">Następny</p>
+                    </button>
+                    <button class="next link">
+                        <p id="content">Pomiń</p>
+                        <p id="content">Pomiń</p>
+                    </button>
+                </div>
+            </section>
+            <section id="categories">
+                <div class="big-text">Jaka jest kategoria Twojego projektu?</div>
+                <div class="categories-wrapper">
+                    <div class="category">
+                        <div class="small-text">Biuro</div>
+                    </div>
+                    <div class="category">
+                        <div class="small-text">Mieszkania</div>
+                    </div>
+                    <div class="category">
+                        <div class="small-text">Dom</div>
+                    </div>
+                    <div class="category">
+                        <div class="small-text">Usługi</div>
+                    </div>
+                    <div class="category">
+                        <div class="small-text">Publiczne</div>
+                    </div>
+                    <div class="category">
+                        <div class="small-text">Zabytek</div>
+                    </div>
+                    <div class="category">
+                        <div class="small-text">Krajobraz</div>
+                    </div>
+                    <div class="category">
+                        <div class="small-text">Inne</div>
+                    </div>
+                    <!-- <div class="category">
+                        <div class="small-text">Inne: <input type="text" id="different-category"></div>
+                    </div> -->
+                </div>
+                <button class="next">
+                    <p id="content">Następny</p>
+                    <p id="content">Następny</p>
+                </button>
+            </section>
+            <section id="description">
+                <div class="big-text">Opisz swój projekt</div>
+                <textarea></textarea>
+                <button class="next">
+                    <p id="content">Następny</p>
+                    <p id="content">Następny</p>
+                </button>
+            </section>
+            <section id="time">
+                <div class="big-text">Jaki będzie czas pracy nad projektem (miesiące)?</div>
+                <div class="slider">
+                    <input type="range" min="1" max="6" value="4">
+                    <div class="steps">
+                        <div class="step"></div>
+                        <div class="step"></div>
+                        <div class="step"></div>
+                        <div class="step"></div>
+                        <div class="step"></div>
+                        <div class="step"></div>
+                    </div>
+                    <div class="steps-texts">
+                        <div class="step-text small-text">1</div>
+                        <div class="step-text small-text">2</div>
+                        <div class="step-text small-text">3</div>
+                        <div class="step-text small-text">4</div>
+                        <div class="step-text small-text">5</div>
+                        <div class="step-text small-text">6+</div>
+                    </div>
+                </div>
+                <button class="next">
+                    <p id="content">Następny</p>
+                    <p id="content">Następny</p>
+                </button>
+            </section>
+            <section id="budget">
+                <div class="big-text">Budżet</div>
+                <div class="categories-wrapper">
+                    <div class="category">
+                        <div class="small-text">
+                            < Xzł</div>
+                        </div>
+                        <div class="category">
+                            <div class="small-text">Xzł - Yzł</div>
+                        </div>
+                        <div class="category">
+                            <div class="small-text">Xzł - Yzł</div>
+                        </div>
+                        <div class="category">
+                            <div class="small-text">Yzł +</div>
+                        </div>
+                    </div>
+                    <button class="next">
+                        <p id="content">Następny</p>
+                        <p id="content">Następny</p>
+                    </button>
+            </section>
+            <section id="thanks">
+                <div class="big-text">Dziękujemy za kontakt!</div>
+                <div class="medium-text">Otrzymaliśmy Twój formularz. Postaramy się odpowiedzieć w ciągu najbliższych 24
+                    godzin.</div>
+                <button>
+                    <p id="content">Strona główna</p>
+                    <p id="content">Strona główna</p>
+                </button>
+            </section>
+        </div>
+    </div>
+</body>
+
+</html>
