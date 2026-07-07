@@ -310,11 +310,29 @@ projectsSection.forEach(function (elem, index) {
 
 const aboutSection = document.getElementById("about");
 const aboutText = new SplitType(document.querySelector("#about-section-desc"));
+const aboutSmallText = new SplitType(document.querySelector("#small-about-section-text"));
 const aboutChars = aboutText.chars;
+const aboutSmallChars = aboutSmallText.chars;
 
 const bottomGradientBlur = document.getElementById("bottom-gradient-blur")
 
 gsap.from(aboutChars, {
+    scrollTrigger: {
+        trigger: aboutSection,
+        start: "top 20px",
+        end: "+=3500",
+    },
+    opacity: 0,
+    y: 100,
+    duration: 0.6,
+    ease: 'power4.out',
+    stagger: {
+        amount: 0.4,
+        from: 'start',
+    }
+});
+
+gsap.from(aboutSmallChars, {
     scrollTrigger: {
         trigger: aboutSection,
         start: "top 20px",
@@ -540,7 +558,7 @@ mm.add("(min-width: 798px)", () => {
     })
 
     contactTl.to(contactRect, {
-        height: "100dvh",
+        height: "150dvh",
         // opacity: 1
     });
 
@@ -924,3 +942,32 @@ mm.add("(max-width: 767px)", () => {
     // });
 });
 
+// Page transition
+
+document.querySelectorAll('button[data-href]').forEach(el => {
+    el.addEventListener('click', (e) => {
+        const href = el.dataset.href;
+        if (!href) return;
+
+        e.preventDefault();
+
+        if (href.startsWith('#')) {
+            const target = document.querySelector(href);
+            if (!target) return;
+
+            document.body.classList.add('fade-out');
+
+            setTimeout(() => {
+                target.scrollIntoView({ behavior: 'auto' }); // instant, happens while invisible
+                document.body.classList.remove('fade-out');
+            }, 300);
+
+            return;
+        }
+
+        document.body.classList.add('fade-out');
+        setTimeout(() => {
+            window.location.href = href;
+        }, 300);
+    });
+});

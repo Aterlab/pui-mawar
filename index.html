@@ -20,10 +20,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@500&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="essentials.css">
     <script src="gsap.js" defer></script>
 
     <!-- Hotjar  -->
-    <script src="https://t.contentsquare.net/uxa/713c0dbb978ae.js"></script>
+    <!-- <script src="https://t.contentsquare.net/uxa/713c0dbb978ae.js"></script> -->
 </head>
 
 <body>
@@ -65,15 +66,15 @@
         </div>
 
         <div class="right">
-            <button class="link">
+            <button class="link" data-href="#about">
                 <p id="content">O pracowni</p>
                 <p id="content">O pracowni</p>
             </button>
-            <button class="link">
+            <button class="link" data-href="#projects">
                 <p id="content">Realizacje</p>
                 <p id="content">Realizacje</p>
             </button>
-            <button>
+            <button data-href="contact/contact.html">
                 <p id="content">Skontaktuj się</p>
                 <p id="content">Skontaktuj się</p>
             </button>
@@ -92,7 +93,7 @@
                             Zachowujemy
                             idealną równowagę między estetyką, funkcjonalnością a kosztami.
                         </div>
-                        <button id="heroInfoBtn">
+                        <button id="heroInfoBtn" data-href="#about">
                             <p id="content">O pracowni</p>
                             <p id="content">O pracowni</p>
                         </button>
@@ -393,13 +394,19 @@
         </section>
 
         <section id="about">
-            <!-- <div class="small-text">( O nas )</div> -->
-            <div class="big-text" id="about-section-desc">Pracownia nasza dysponuje posiadającym wieloletnie
-                doświadczenie
-                zespołem projektantów we
-                wszystkich niezbędnych branżach: architektonicznej, konstrukcyjno–budowlanej, sanitarnej,
-                elektrycznej,
-                telekomunikacyjnej, drogowej, architektury zieleni.</div>
+            <div class="about-text-wrapper">
+                <div class="small-text" id="small-about-section-text">( O nas )</div>
+                <div class="big-text" id="about-section-desc">Pracownia nasza dysponuje posiadającym wieloletnie
+                    doświadczenie
+                    zespołem projektantów we
+                    wszystkich niezbędnych branżach: architektonicznej, konstrukcyjno–budowlanej, sanitarnej,
+                    elektrycznej,
+                    telekomunikacyjnej, drogowej, architektury zieleni.</div>
+                <button data-href="contact.html">
+                    <p id="content">Skontaktuj się</p>
+                    <p id="content">Skontaktuj się</p>
+                </button>
+            </div>
 
             <div class="shadow"></div>
 
@@ -1053,7 +1060,7 @@
                     </div>
                 </div>
                 <div class="contact-bottom">
-                    <button>
+                    <button data-href="contact/contact.html">
                         <p id="content">Formularz kontaktowy</p>
                         <p id="content">Formularz kontaktowy</p>
                     </button>
