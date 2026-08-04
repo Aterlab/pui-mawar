@@ -89,26 +89,95 @@ gsap.fromTo(document.body,
 
 const nextButtons = document.querySelectorAll(".next");
 const sectionWrapper = document.querySelector(".section-wrapper")
+const contactForm = document.getElementById("contactForm");
+const progressDots = document.querySelectorAll(".progress-bar .dot");
 
 var xOffset = 0;
+var currentStep = 0;
 
 nextButtons.forEach(button => {
     button.addEventListener('click', (e) => {
-        xOffset += 1;
-        sectionWrapper.style.opacity = 0
-        setTimeout(() => {
-            sectionWrapper.style.transform = `translateX(calc((${xOffset} * (100dvw + 20px)) * -1))`;
-        }, 250);
-        setTimeout(() => {
-            sectionWrapper.style.opacity = 1;
-        }, 250);
+        if (button.classList.contains('submission-trigger')) {
+            e.preventDefault();
+            submitToWeb3Forms();
+            return;
+        }
+
+        advanceSlide();
     });
 });
 
-const categories = document.querySelectorAll(".category")
+function updateProgressBar(step) {
+    progressDots.forEach((dot, i) => {
+        dot.classList.remove('done', 'active', 'waiting');
+        if (i < step) {
+            dot.classList.add('done');
+        } else if (i === step) {
+            dot.classList.add('active');
+        } else {
+            dot.classList.add('waiting');
+        }
+    });
+}
+
+function advanceSlide() {
+    xOffset += 1;
+    currentStep += 1;
+    updateProgressBar(currentStep);
+    sectionWrapper.style.opacity = 0;
+    setTimeout(() => {
+        sectionWrapper.style.transform = `translateX(calc((${xOffset} * (100dvw + 20px)) * -1))`;
+    }, 250);
+    setTimeout(() => {
+        sectionWrapper.style.opacity = 1;
+    }, 250);
+}
+
+const categories = document.querySelectorAll("#categories .category");
+const categoriesInput = document.getElementById("categoriesInput");
 
 categories.forEach((category) => {
     category.addEventListener('click', (e) => {
-        category.classList.toggle('active')
+        category.classList.toggle('active');
+
+        let selected = [];
+        document.querySelectorAll("#categories .category.active").forEach(el => {
+            selected.push(el.getAttribute('data-val'));
+        });
+        categoriesInput.value = selected.join(', ');
+    });
+});
+
+const budgetOptions = document.querySelectorAll(".budget-option");
+const budgetInput = document.getElementById("budgetInput");
+
+budgetOptions.forEach((option) => {
+    option.addEventListener('click', (e) => {
+        budgetOptions.forEach(opt => opt.classList.remove('active'));
+        option.classList.add('active');
+        budgetInput.value = option.getAttribute('data-val');
+    });
+});
+
+
+function submitToWeb3Forms() {
+    const formData = new FormData(contactForm);
+
+    fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData
     })
-})
+        .then(async (response) => {
+            let result = await response.json();
+            if (response.status == 200) {
+                advanceSlide();
+            } else {
+                console.log(result);
+                alert("Coś poszło nie tak: " + result.message);
+            }
+        })
+        .catch(error => {
+            console.log(error);
+            alert("Błąd sieciowy. Spróbuj ponownie później.");
+        });
+}

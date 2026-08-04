@@ -19,7 +19,9 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@500&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="essentials.css">
+    <link rel="shortcut icon" href="favicon/favicon.svg" type="image/x-icon">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/aterlab/pui-mawar-assets@v1/essentials.css">
     <link rel="stylesheet" href="style.css">
     <script src="gsap.js" defer></script>
 </head>
@@ -66,133 +68,218 @@
         </div>
     </nav>
 
+    <div class="progress-bar">
+        <div class="dot active">
+            <svg class="check" width="5" height="6" viewBox="0 0 5 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0.5 3.00012L1.90628 5.34391C1.94687 5.41158 2.04618 5.40777 2.08147 5.33719L4.5 0.500122"
+                    stroke="#1D1D1D" stroke-linecap="round" />
+            </svg>
+
+            <div class="x-small-text">1: Imię</div>
+        </div>
+
+        <div class="line"></div>
+
+        <div class="dot waiting">
+            <svg class="check" width="5" height="6" viewBox="0 0 5 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0.5 3.00012L1.90628 5.34391C1.94687 5.41158 2.04618 5.40777 2.08147 5.33719L4.5 0.500122"
+                    stroke="#1D1D1D" stroke-linecap="round" />
+            </svg>
+
+            <div class="x-small-text">2: Nazwa firmy</div>
+        </div>
+
+        <div class="line"></div>
+
+        <div class="dot waiting">
+            <svg class="check" width="5" height="6" viewBox="0 0 5 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0.5 3.00012L1.90628 5.34391C1.94687 5.41158 2.04618 5.40777 2.08147 5.33719L4.5 0.500122"
+                    stroke="#1D1D1D" stroke-linecap="round" />
+            </svg>
+
+            <div class="x-small-text">3: Kategorie</div>
+        </div>
+
+        <div class="line"></div>
+
+        <div class="dot waiting">
+            <svg class="check" width="5" height="6" viewBox="0 0 5 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0.5 3.00012L1.90628 5.34391C1.94687 5.41158 2.04618 5.40777 2.08147 5.33719L4.5 0.500122"
+                    stroke="#1D1D1D" stroke-linecap="round" />
+            </svg>
+
+            <div class="x-small-text">4: Opis projektu</div>
+        </div>
+
+        <div class="line"></div>
+
+        <div class="dot waiting">
+            <svg class="check" width="5" height="6" viewBox="0 0 5 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0.5 3.00012L1.90628 5.34391C1.94687 5.41158 2.04618 5.40777 2.08147 5.33719L4.5 0.500122"
+                    stroke="#1D1D1D" stroke-linecap="round" />
+            </svg>
+
+            <div class="x-small-text">5: Czas pracy nad projektem</div>
+        </div>
+
+        <div class="line"></div>
+
+        <div class="dot waiting">
+            <svg class="check" width="5" height="6" viewBox="0 0 5 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0.5 3.00012L1.90628 5.34391C1.94687 5.41158 2.04618 5.40777 2.08147 5.33719L4.5 0.500122"
+                    stroke="#1D1D1D" stroke-linecap="round" />
+            </svg>
+
+            <div class="x-small-text">6: Budżet</div>
+        </div>
+
+        <div class="line"></div>
+
+        <div class="dot waiting">
+            <svg class="check" width="5" height="6" viewBox="0 0 5 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0.5 3.00012L1.90628 5.34391C1.94687 5.41158 2.04618 5.40777 2.08147 5.33719L4.5 0.500122"
+                    stroke="#1D1D1D" stroke-linecap="round" />
+            </svg>
+
+            <div class="x-small-text">Wysłano</div>
+        </div>
+    </div>
+
     <div class="content-wrapper">
-        <div class="section-wrapper">
-            <section class="first" id="name">
-                <div class="big-text" id="gsap-text">Jak się nazywasz?</div>
-                <input type="text">
-                <!-- <div class="small-text">Imię i nazwisko</div> -->
-                <button class="next">
-                    <p id="content">Następny</p>
-                    <p id="content">Następny</p>
-                </button>
-            </section>
-            <section id="company-name">
-                <div class="big-text">Jak nazywa się twoja firma?</div>
-                <input type="text">
-                <div class="buttons">
-                    <button class="next">
+        <form id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="1c3d6f5b-ed29-4316-8d47-6502adc5d040">
+            <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+            <div class="section-wrapper">
+                <section class="first" id="name">
+                    <div class="big-text" id="gsap-text">Jak się nazywasz?</div>
+                    <input type="text" name="name" required>
+                    <button type="button" class="next">
                         <p id="content">Następny</p>
                         <p id="content">Następny</p>
                     </button>
-                    <button class="next link">
-                        <p id="content">Pomiń</p>
-                        <p id="content">Pomiń</p>
+                </section>
+
+                <section id="company-name">
+                    <div class="big-text">Jak nazywa się twoja firma?</div>
+                    <input type="text" name="company">
+                    <div class="buttons">
+                        <button type="button" class="next">
+                            <p id="content">Następny</p>
+                            <p id="content">Następny</p>
+                        </button>
+                        <button type="button" class="next link">
+                            <p id="content">Pomiń</p>
+                            <p id="content">Pomiń</p>
+                        </button>
+                    </div>
+                </section>
+
+                <section id="categories">
+                    <div class="big-text">Jaka jest kategoria Twojego projektu?</div>
+                    <input type="hidden" name="categories" id="categoriesInput">
+                    <div class="categories-wrapper">
+                        <div class="category" data-val="Biuro">
+                            <div class="small-text">Biuro</div>
+                        </div>
+                        <div class="category" data-val="Mieszkania">
+                            <div class="small-text">Mieszkania</div>
+                        </div>
+                        <div class="category" data-val="Dom">
+                            <div class="small-text">Dom</div>
+                        </div>
+                        <div class="category" data-val="Usługi">
+                            <div class="small-text">Usługi</div>
+                        </div>
+                        <div class="category" data-val="Publiczne">
+                            <div class="small-text">Publiczne</div>
+                        </div>
+                        <div class="category" data-val="Zabytek">
+                            <div class="small-text">Zabytek</div>
+                        </div>
+                        <div class="category" data-val="Krajobraz">
+                            <div class="small-text">Krajobraz</div>
+                        </div>
+                        <div class="category" data-val="Inne">
+                            <div class="small-text">Inne</div>
+                        </div>
+                    </div>
+                    <button type="button" class="next">
+                        <p id="content">Następny</p>
+                        <p id="content">Następny</p>
                     </button>
-                </div>
-            </section>
-            <section id="categories">
-                <div class="big-text">Jaka jest kategoria Twojego projektu?</div>
-                <div class="categories-wrapper">
-                    <div class="category">
-                        <div class="small-text">Biuro</div>
-                    </div>
-                    <div class="category">
-                        <div class="small-text">Mieszkania</div>
-                    </div>
-                    <div class="category">
-                        <div class="small-text">Dom</div>
-                    </div>
-                    <div class="category">
-                        <div class="small-text">Usługi</div>
-                    </div>
-                    <div class="category">
-                        <div class="small-text">Publiczne</div>
-                    </div>
-                    <div class="category">
-                        <div class="small-text">Zabytek</div>
-                    </div>
-                    <div class="category">
-                        <div class="small-text">Krajobraz</div>
-                    </div>
-                    <div class="category">
-                        <div class="small-text">Inne</div>
-                    </div>
-                    <!-- <div class="category">
-                        <div class="small-text">Inne: <input type="text" id="different-category"></div>
-                    </div> -->
-                </div>
-                <button class="next">
-                    <p id="content">Następny</p>
-                    <p id="content">Następny</p>
-                </button>
-            </section>
-            <section id="description">
-                <div class="big-text">Opisz swój projekt</div>
-                <textarea></textarea>
-                <button class="next">
-                    <p id="content">Następny</p>
-                    <p id="content">Następny</p>
-                </button>
-            </section>
-            <section id="time">
-                <div class="big-text">Jaki będzie czas pracy nad projektem (miesiące)?</div>
-                <div class="slider">
-                    <input type="range" min="1" max="6" value="4">
-                    <div class="steps">
-                        <div class="step"></div>
-                        <div class="step"></div>
-                        <div class="step"></div>
-                        <div class="step"></div>
-                        <div class="step"></div>
-                        <div class="step"></div>
-                    </div>
-                    <div class="steps-texts">
-                        <div class="step-text small-text">1</div>
-                        <div class="step-text small-text">2</div>
-                        <div class="step-text small-text">3</div>
-                        <div class="step-text small-text">4</div>
-                        <div class="step-text small-text">5</div>
-                        <div class="step-text small-text">6+</div>
-                    </div>
-                </div>
-                <button class="next">
-                    <p id="content">Następny</p>
-                    <p id="content">Następny</p>
-                </button>
-            </section>
-            <section id="budget">
-                <div class="big-text">Budżet</div>
-                <div class="categories-wrapper">
-                    <div class="category">
-                        <div class="small-text">
-                            < Xzł</div>
+                </section>
+
+                <section id="description">
+                    <div class="big-text">Opisz swój projekt</div>
+                    <textarea name="description" required></textarea>
+                    <button type="button" class="next">
+                        <p id="content">Następny</p>
+                        <p id="content">Następny</p>
+                    </button>
+                </section>
+
+                <section id="time">
+                    <div class="big-text">Jaki będzie czas pracy nad projektem (miesiące)?</div>
+                    <div class="slider">
+                        <input type="range" name="duration_months" min="1" max="6" value="4">
+                        <div class="steps">
+                            <div class="step"></div>
+                            <div class="step"></div>
+                            <div class="step"></div>
+                            <div class="step"></div>
+                            <div class="step"></div>
+                            <div class="step"></div>
                         </div>
-                        <div class="category">
+                        <div class="steps-texts">
+                            <div class="step-text small-text">1</div>
+                            <div class="step-text small-text">2</div>
+                            <div class="step-text small-text">3</div>
+                            <div class="step-text small-text">4</div>
+                            <div class="step-text small-text">5</div>
+                            <div class="step-text small-text">6+</div>
+                        </div>
+                    </div>
+                    <button type="button" class="next">
+                        <p id="content">Następny</p>
+                        <p id="content">Następny</p>
+                    </button>
+                </section>
+
+                <section id="budget">
+                    <div class="big-text">Budżet</div>
+                    <input type="hidden" name="budget" id="budgetInput">
+                    <div class="categories-wrapper">
+                        <div class="category budget-option" data-val="< Xzł">
+                            <div class="small-text">&lt; Xzł</div>
+                        </div>
+                        <div class="category budget-option" data-val="Xzł - Yzł (1)">
                             <div class="small-text">Xzł - Yzł</div>
                         </div>
-                        <div class="category">
+                        <div class="category budget-option" data-val="Xzł - Yzł (2)">
                             <div class="small-text">Xzł - Yzł</div>
                         </div>
-                        <div class="category">
+                        <div class="category budget-option" data-val="Yzł +">
                             <div class="small-text">Yzł +</div>
                         </div>
                     </div>
-                    <button class="next">
+                    <button type="button" class="next submission-trigger">
                         <p id="content">Następny</p>
                         <p id="content">Następny</p>
                     </button>
-            </section>
-            <section id="thanks">
-                <div class="big-text">Dziękujemy za kontakt!</div>
-                <div class="medium-text">Otrzymaliśmy Twój formularz. Postaramy się odpowiedzieć w ciągu najbliższych 24
-                    godzin.</div>
-                <button>
-                    <p id="content">Strona główna</p>
-                    <p id="content">Strona główna</p>
-                </button>
-            </section>
-        </div>
+                </section>
+
+                <section id="thanks">
+                    <div class="big-text">Dziękujemy za kontakt!</div>
+                    <div class="medium-text">Otrzymaliśmy Twój formularz. Postaramy się odpowiedzieć w ciągu
+                        najbliższych 24 godzin.</div>
+                    <button type="button" onclick="window.location.href='index.html'">
+                        <p id="content">Strona główna</p>
+                        <p id="content">Strona główna</p>
+                    </button>
+                </section>
+            </div>
+        </form>
     </div>
 </body>
 
