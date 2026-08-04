@@ -688,7 +688,7 @@ body:active #drag-cursor.hovering {
 
 #reviews .reviews #rev2,
 #reviews .reviews #rev5 {
-    transform: translateY(-50%);
+    transform: translateY(-30%);
 }
 
 #reviews .review .reviewer {
