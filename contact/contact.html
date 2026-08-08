@@ -54,9 +54,9 @@
 
     <nav id="navBar">
         <div class="left">
-            <button class="logo">
+            <button>
                 <p id="content">PUI MAWAR</p>
-                <p id="content">Pełna strona już wkrótce</p>
+                <p id="content">PUI MAWAR</p>
             </button>
         </div>
 
@@ -97,7 +97,7 @@
                     stroke="#1D1D1D" stroke-linecap="round" />
             </svg>
 
-            <div class="x-small-text">3: Kategorie</div>
+            <div class="x-small-text">3: Numer telefonu</div>
         </div>
 
         <div class="line"></div>
@@ -108,7 +108,7 @@
                     stroke="#1D1D1D" stroke-linecap="round" />
             </svg>
 
-            <div class="x-small-text">4: Opis projektu</div>
+            <div class="x-small-text">4: Adres E-mail</div>
         </div>
 
         <div class="line"></div>
@@ -119,18 +119,7 @@
                     stroke="#1D1D1D" stroke-linecap="round" />
             </svg>
 
-            <div class="x-small-text">5: Czas pracy nad projektem</div>
-        </div>
-
-        <div class="line"></div>
-
-        <div class="dot waiting">
-            <svg class="check" width="5" height="6" viewBox="0 0 5 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M0.5 3.00012L1.90628 5.34391C1.94687 5.41158 2.04618 5.40777 2.08147 5.33719L4.5 0.500122"
-                    stroke="#1D1D1D" stroke-linecap="round" />
-            </svg>
-
-            <div class="x-small-text">6: Budżet</div>
+            <div class="x-small-text">5: Opis projektu</div>
         </div>
 
         <div class="line"></div>
@@ -153,7 +142,7 @@
             <div class="section-wrapper">
                 <section class="first" id="name">
                     <div class="big-text" id="gsap-text">Jak się nazywasz?</div>
-                    <input type="text" name="name" required>
+                    <input type="text" name="Imie i nazwisko" required>
                     <button type="button" class="next">
                         <p id="content">Następny</p>
                         <p id="content">Następny</p>
@@ -162,7 +151,7 @@
 
                 <section id="company-name">
                     <div class="big-text">Jak nazywa się twoja firma?</div>
-                    <input type="text" name="company">
+                    <input type="text" name="Nazwa firmy">
                     <div class="buttons">
                         <button type="button" class="next">
                             <p id="content">Następny</p>
@@ -175,97 +164,34 @@
                     </div>
                 </section>
 
-                <section id="categories">
-                    <div class="big-text">Jaka jest kategoria Twojego projektu?</div>
-                    <input type="hidden" name="categories" id="categoriesInput">
-                    <div class="categories-wrapper">
-                        <div class="category" data-val="Biuro">
-                            <div class="small-text">Biuro</div>
-                        </div>
-                        <div class="category" data-val="Mieszkania">
-                            <div class="small-text">Mieszkania</div>
-                        </div>
-                        <div class="category" data-val="Dom">
-                            <div class="small-text">Dom</div>
-                        </div>
-                        <div class="category" data-val="Usługi">
-                            <div class="small-text">Usługi</div>
-                        </div>
-                        <div class="category" data-val="Publiczne">
-                            <div class="small-text">Publiczne</div>
-                        </div>
-                        <div class="category" data-val="Zabytek">
-                            <div class="small-text">Zabytek</div>
-                        </div>
-                        <div class="category" data-val="Krajobraz">
-                            <div class="small-text">Krajobraz</div>
-                        </div>
-                        <div class="category" data-val="Inne">
-                            <div class="small-text">Inne</div>
-                        </div>
+                <section id="phone-number">
+                    <div class="big-text">Jaki jest twój numer telefonu?</div>
+                    <input type="tel" name="Numer telefonu">
+                    <div class="buttons">
+                        <button type="button" class="next">
+                            <p id="content">Następny</p>
+                            <p id="content">Następny</p>
+                        </button>
                     </div>
-                    <button type="button" class="next">
-                        <p id="content">Następny</p>
-                        <p id="content">Następny</p>
-                    </button>
+                </section>
+
+                <section id="email-adress">
+                    <div class="big-text">Jaki jest twój adres E-mail?</div>
+                    <input type="email" name="Adres e-mail">
+                    <div class="buttons">
+                        <button type="button" class="next">
+                            <p id="content">Następny</p>
+                            <p id="content">Następny</p>
+                        </button>
+                    </div>
                 </section>
 
                 <section id="description">
                     <div class="big-text">Opisz swój projekt</div>
-                    <textarea name="description" required></textarea>
-                    <button type="button" class="next">
-                        <p id="content">Następny</p>
-                        <p id="content">Następny</p>
-                    </button>
-                </section>
-
-                <section id="time">
-                    <div class="big-text">Jaki będzie czas pracy nad projektem (miesiące)?</div>
-                    <div class="slider">
-                        <input type="range" name="duration_months" min="1" max="6" value="4">
-                        <div class="steps">
-                            <div class="step"></div>
-                            <div class="step"></div>
-                            <div class="step"></div>
-                            <div class="step"></div>
-                            <div class="step"></div>
-                            <div class="step"></div>
-                        </div>
-                        <div class="steps-texts">
-                            <div class="step-text small-text">1</div>
-                            <div class="step-text small-text">2</div>
-                            <div class="step-text small-text">3</div>
-                            <div class="step-text small-text">4</div>
-                            <div class="step-text small-text">5</div>
-                            <div class="step-text small-text">6+</div>
-                        </div>
-                    </div>
-                    <button type="button" class="next">
-                        <p id="content">Następny</p>
-                        <p id="content">Następny</p>
-                    </button>
-                </section>
-
-                <section id="budget">
-                    <div class="big-text">Budżet</div>
-                    <input type="hidden" name="budget" id="budgetInput">
-                    <div class="categories-wrapper">
-                        <div class="category budget-option" data-val="< Xzł">
-                            <div class="small-text">&lt; Xzł</div>
-                        </div>
-                        <div class="category budget-option" data-val="Xzł - Yzł (1)">
-                            <div class="small-text">Xzł - Yzł</div>
-                        </div>
-                        <div class="category budget-option" data-val="Xzł - Yzł (2)">
-                            <div class="small-text">Xzł - Yzł</div>
-                        </div>
-                        <div class="category budget-option" data-val="Yzł +">
-                            <div class="small-text">Yzł +</div>
-                        </div>
-                    </div>
+                    <textarea name="Opis projektu" required></textarea>
                     <button type="button" class="next submission-trigger">
-                        <p id="content">Następny</p>
-                        <p id="content">Następny</p>
+                        <p id="content">Wyślij formularz</p>
+                        <p id="content">Wyślij formularz</p>
                     </button>
                 </section>
 

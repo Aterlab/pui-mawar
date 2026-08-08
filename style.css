@@ -168,8 +168,9 @@
 }
 
 .project-info .x-big-text {
-    max-width: calc(50dvw - var(--margin));
+    /* max-width: calc(50dvw - var(--margin)); */
     margin-top: var(--margin);
+    white-space: nowrap;
 }
 
 .project-info .medium-text {
@@ -199,7 +200,7 @@
 
 .project-info .text {
     position: absolute;
-    bottom: calc((var(--margin) * 1) + (var(--x-small) * var(--button-height-multiplier)));
+    bottom: 0;
     pointer-events: none;
 }
 
@@ -209,7 +210,6 @@
 
 .project-info button:not(#static) {
     position: absolute;
-    bottom: var(--margin);
     left: var(--margin);
 }
 
@@ -912,9 +912,9 @@ body {
         width: calc((100dvw - (3 * var(--margin))) / 4);
     }
 
-    nav .right {
+    /* nav .right {
         display: none;
-    }
+    } */
 
     nav .logo {
         max-width: 80.15px;
@@ -978,6 +978,10 @@ body {
     .project-info .x-big-text {
         max-width: calc(100dvw - (var(--margin) * 4));
         width: calc(100dvw - (var(--margin) * 4));
+    }
+
+    .project-info .x-big-text {
+        font-size: var(--big);
     }
 
     .right-info {
@@ -1065,7 +1069,10 @@ body {
         justify-content: center;
         top: auto;
         bottom: 0;
-        filter: none;
+    }
+
+    #reviews .reviews .medium-text {
+        font-size: var(--small);
     }
 
     #reviews .reviews #rev1,
@@ -1086,8 +1093,9 @@ body {
         position: absolute;
         min-width: calc(100dvw - (var(--margin) * 2));
         max-width: calc(100dvw - (var(--margin) * 2));
-        min-height: calc(100dvw - (var(--margin) * 2));
-        max-height: calc(100dvw - (var(--margin) * 2));
+        height: fit-content;
+        max-height: 60vh;
+        min-height: none;
         top: auto;
         bottom: auto;
     }
@@ -1121,13 +1129,14 @@ body {
     }
 
     .review {
-        transition: 0.5s all, 1s opacity;
+        transition: transform 0.5s ease, scale 0.5s ease, filter 0.5s ease, opacity 0.4s ease;
     }
 
     .review.active {
         scale: 1;
         opacity: 1;
         transform: translateY(0);
+        filter: blur(0px);
         z-index: 2;
     }
 
@@ -1135,9 +1144,18 @@ body {
         scale: 0.9;
         opacity: 0;
         transform: translateY(40px);
+        filter: blur(10px);
         z-index: 1;
     }
 
+    #reviews .reviews .review:hover {
+        background-color: #2E2D2B;
+        color: var(--light);
+    }
+
+    #reviews .reviews .review:hover .stars svg {
+        fill: var(--light);
+    }
 
     /** Contact section */
 

@@ -832,73 +832,21 @@ gsap.from(footerChars, {
     }
 });
 
-// Run only on MOBILE (mostly not used, just in case)
+// Run only on MOBILE (some responsiveness things)
 mm.add("(max-width: 767px)", () => {
-    const tl = gsap.timeline({
-        scrollTrigger: {
-            scrub: 1, // only this is changed, since on deskop theres already Lenis for smooth scrolling, but on mobile it doesnt work so scrubbing will help here
-            pin: false,
-            trigger: "#hero",
-            start: "top 40px",
-            endTrigger: "#projects",
-            end: "bottom 50%",
-        },
-    });
-
-    const allReviews = document.querySelectorAll(".review");
-
     // Reviews on mobile
     const prevRev = document.getElementById("prev-rev");
     const nextRev = document.getElementById("next-rev");
     const reviews = document.querySelectorAll(".reviews .review");
 
-    let currentRevIndex = 0;
-    const revDuration = 0.333;
-    let isRevAnimating = false;
+    let currentRevIndex = [...reviews].findIndex(r => r.classList.contains('active'));
+    if (currentRevIndex === -1) currentRevIndex = 0;
 
     function switchToRevIndex(index) {
-        // loop
         if (index === currentRevIndex) return;
-        if (isRevAnimating) return;
 
-        isRevAnimating = true;
-
-        const currentRev = reviews[currentRevIndex];
-        const nextRevElem = reviews[index];
-
-        // anim out
-        if (currentRev) {
-            currentRev.classList.remove("active");
-            gsap.to(currentRev, {
-                duration: revDuration,
-                opacity: 0,
-                y: -20,
-                scale: 0.9,
-                display: "absolute",
-                filter: "blur(10px)",
-            });
-        }
-
-        // Animate in the new review
-        if (nextRevElem) {
-            // Set initial state before animating in
-            gsap.set(nextRevElem, { display: "flex", opacity: 0, y: 20, scale: 0.9, filter: "blur(10px)" });
-
-            nextRevElem.classList.add("active");
-            gsap.to(nextRevElem, {
-                duration: revDuration,
-                opacity: 1,
-                y: 0,
-                delay: 0.1,
-                scale: 1,
-                filter: "none"
-            });
-        }
-
-        // 2. Match this timeout exactly to your animation duration (including delays)
-        setTimeout(() => {
-            isRevAnimating = false;
-        }, (revDuration + 0.1) * 1000);
+        reviews[currentRevIndex]?.classList.remove("active");
+        reviews[index]?.classList.add("active");
 
         currentRevIndex = index;
     }
@@ -918,28 +866,6 @@ mm.add("(max-width: 767px)", () => {
         }
         switchToRevIndex(targetIndex);
     });
-    // allReviews.forEach(rev => {
-    //     gsap.to(rev, {
-    //         rotate: randomRotate
-    //     });
-    // });
-
-    // const reviewsTl = gsap.timeline({
-    //     scrollTrigger: {
-    //         scrub: 0,
-    //         pin: false,
-    //         trigger: reviewsSection,
-    //         start: "top 20px",
-    //         markers: true,
-    //         end: "+=3500",
-    //         ease: "linear"
-    //     },
-    // });
-
-    // reviewsTl.to(".reviews", {
-    //     y: "-200dvh",
-    //     ease: "linear"
-    // });
 });
 
 // Page transition
@@ -958,7 +884,7 @@ document.querySelectorAll('button[data-href]').forEach(el => {
             document.body.classList.add('fade-out');
 
             setTimeout(() => {
-                target.scrollIntoView({ behavior: 'auto' }); // instant, happens while invisible
+                target.scrollIntoView({ behavior: 'auto' });
                 document.body.classList.remove('fade-out');
             }, 300);
 
@@ -970,4 +896,9 @@ document.querySelectorAll('button[data-href]').forEach(el => {
             window.location.href = href;
         }, 300);
     });
+});
+
+// Handles browser back/forward, including pages restored from bfcache
+window.addEventListener('pageshow', (e) => {
+    document.body.classList.remove('fade-out');
 });
